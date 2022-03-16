@@ -1,9 +1,7 @@
 package com.bitutech.security;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 import javax.validation.Valid;
@@ -24,16 +22,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bitutech.employeeMaster.EmployeeMasterBean;
-import com.bitutech.employeeMaster.EmployeeMasterController;
-import com.bitutech.employeeMaster.EmployeeMasterResultBean;
 import com.bitutech.employeeMaster.EmployeeMasterService;
-import com.bitutech.usermanagement.ERole;
-import com.bitutech.usermanagement.Role;
-import com.bitutech.usermanagement.RoleRepository;
-import com.bitutech.usermanagement.SignupRequest;
 import com.bitutech.usermanagement.User;
 import com.bitutech.usermanagement.UserDetailsImpl;
-import com.bitutech.usermanagement.UserRepository;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
