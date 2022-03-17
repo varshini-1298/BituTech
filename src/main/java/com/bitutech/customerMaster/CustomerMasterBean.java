@@ -31,7 +31,6 @@ public class CustomerMasterBean {
 	private String exemptionDoc;
 	private String nonGstDoc;
 	
-	
 	private String name;
 	private String designation;
 	private String department;
