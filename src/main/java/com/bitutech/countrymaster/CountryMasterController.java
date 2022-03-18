@@ -29,7 +29,7 @@ public class CountryMasterController {
 	@RequestMapping(value = "/getList")
    	public CountryMasterResultBean getCustomerList() throws Exception {
 		CountryMasterResultBean objResultBean = new CountryMasterResultBean();
-		objResultBean.setCountryMasterDetails(countryMasterService.getCustomerList());
+		objResultBean.setCountryMasterDetails(countryMasterService.getCountryList());
 		objResultBean.setSuccess(true);
    		return objResultBean;
    	}

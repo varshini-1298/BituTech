@@ -6,6 +6,6 @@ public interface CountryMasterDao {
 
 	CountryMasterBean save(CountryMasterBean bean) throws Exception;
 
-	List<CountryMasterBean> getCustomerList() throws Exception;
+	List<CountryMasterBean> getCountryList() throws Exception;
 
 }

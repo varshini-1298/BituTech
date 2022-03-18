@@ -6,6 +6,6 @@ public interface CountryMasterService {
 
 	CountryMasterBean save(CountryMasterBean bean) throws Exception;
 
-	public List<CountryMasterBean> getCustomerList() throws Exception;
+	public List<CountryMasterBean> getCountryList() throws Exception;
 
 }

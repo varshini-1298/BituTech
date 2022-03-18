@@ -3,6 +3,6 @@ package com.bitutech.countrymaster;
 public class CountryMasterQueryUtil {
 
 	public static final String INSERT_CUSTOMER_MASTER = null;
-	public static final String getCustomerList = "select form_code as territory,form_name as name,display_order as zipCode,module_code as addressOfCus,is_parent as organisationName from auth.form";
+	public static final String getCustomerList = "select form_code as countryCode,form_name as countryName,display_order as currency  from auth.form";
 
 }

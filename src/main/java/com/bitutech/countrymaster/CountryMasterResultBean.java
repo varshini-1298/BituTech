@@ -20,15 +20,15 @@ public class CountryMasterResultBean extends BasicResultBean implements Serializ
 		Success = success;
 	}
 
-	public List<CountryMasterBean> getCustomerMasterDetails() {
+	public List<CountryMasterBean> getCountryMasterDetails() {
 		return countryMasterDetails;
 	}
 
-	
 	public void setCountryMasterDetails(List<CountryMasterBean> countryMasterDetails) {
 		this.countryMasterDetails = countryMasterDetails;
 	}
 
+	
 
 	
 	

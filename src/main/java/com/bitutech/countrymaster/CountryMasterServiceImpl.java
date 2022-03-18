@@ -16,9 +16,9 @@ public class CountryMasterServiceImpl implements CountryMasterService {
 	}
 
 	@Override
-	public List<CountryMasterBean> getCustomerList() throws Exception {
+	public List<CountryMasterBean> getCountryList() throws Exception {
 		// TODO Auto-generated method stub
-		return customerMasterDao.getCustomerList();
+		return customerMasterDao.getCountryList();
 	}
 
 	
