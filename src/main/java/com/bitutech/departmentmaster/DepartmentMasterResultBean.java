@@ -20,7 +20,7 @@ public class DepartmentMasterResultBean extends BasicResultBean implements Seria
 		Success = success;
 	}
 
-	public List<DepartmentMasterBean> getCustomerMasterDetails() {
+	public List<DepartmentMasterBean> getDepartmentMasterDetails() {
 		return departmentMasterDetails;
 	}
 

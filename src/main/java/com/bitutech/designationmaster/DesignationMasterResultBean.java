@@ -20,7 +20,7 @@ public class DesignationMasterResultBean extends BasicResultBean implements Seri
 		Success = success;
 	}
 
-	public List<DesignationMasterBean> getCustomerMasterDetails() {
+	public List<DesignationMasterBean> getDesignationMasterDetails() {
 		return designationMasterDetails;
 	}
 

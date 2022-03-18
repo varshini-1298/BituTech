@@ -27,9 +27,9 @@ public class DesignationMasterController {
 	
 	
 	@RequestMapping(value = "/getList")
-   	public DesignationMasterResultBean getCustomerList() throws Exception {
+   	public DesignationMasterResultBean getDesignationList() throws Exception {
 		DesignationMasterResultBean objResultBean = new DesignationMasterResultBean();
-		objResultBean.setDesignationMasterDetails(designationMasterService.getCustomerList());
+		objResultBean.setDesignationMasterDetails(designationMasterService.getDesignationList());
 		objResultBean.setSuccess(true);
    		return objResultBean;
    	}

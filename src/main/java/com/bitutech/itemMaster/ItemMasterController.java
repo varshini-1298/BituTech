@@ -28,9 +28,9 @@ public class ItemMasterController {
 	
 	
 	@RequestMapping(value = "/getList")
-   	public ItemMasterResultBean getCustomerList() throws Exception {
+   	public ItemMasterResultBean getItemList() throws Exception {
 		ItemMasterResultBean objResultBean = new ItemMasterResultBean();
-		objResultBean.setItemMasterDetails(itemMasterService.getCustomerList());
+		objResultBean.setItemMasterDetails(itemMasterService.getItemList());
 		objResultBean.setSuccess(true);
    		return objResultBean;
    	}

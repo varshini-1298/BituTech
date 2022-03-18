@@ -18,7 +18,7 @@ public class SalesCallEntryController {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		return bean;
+		return objbean;
 		
 	}
 

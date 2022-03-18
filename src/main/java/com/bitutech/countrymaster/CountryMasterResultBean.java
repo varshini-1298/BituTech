@@ -27,6 +27,7 @@ public class CountryMasterResultBean extends BasicResultBean implements Serializ
 	public void setCountryMasterDetails(List<CountryMasterBean> countryMasterDetails) {
 		this.countryMasterDetails = countryMasterDetails;
 	}
+	
 
 	
 

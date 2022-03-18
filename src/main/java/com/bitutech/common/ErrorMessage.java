@@ -1,7 +1,7 @@
 package com.bitutech.common;
 
 public class ErrorMessage {
-	public static final String ADDED_ERROR = "Katz Error";
+	public static final String ADDED_ERROR = "Katz";
 	public static final String ERROR_ADD = "Unable to add record";
 	public static final String ERROR_LIST = "Unable to fetch record(s)";
 	public static final String ERROR_EDIT = "Unable to edit record(s)";
