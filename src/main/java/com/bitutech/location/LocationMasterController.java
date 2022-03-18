@@ -29,7 +29,7 @@ public class LocationMasterController {
 	@RequestMapping(value = "/getList")
    	public LocationMasterResultBean getLocationList() throws Exception {
 		LocationMasterResultBean objResultBean = new LocationMasterResultBean();
-		objResultBean.setLocationMasterDetailsMasterDetails(locationMasterService.getLocationList());
+		objResultBean.setLocationMasterDetails(locationMasterService.getLocationList());
 		objResultBean.setSuccess(true);
    		return objResultBean;
    	}

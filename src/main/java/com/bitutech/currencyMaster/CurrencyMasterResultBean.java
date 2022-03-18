@@ -20,7 +20,7 @@ public class CurrencyMasterResultBean extends BasicResultBean implements Seriali
 		Success = success;
 	}
 
-	public List<CurrencyMasterBean> getCustomerMasterDetails() {
+	public List<CurrencyMasterBean> getCurrencyMasterDetails() {
 		return currencyMasterDetails;
 	}
 

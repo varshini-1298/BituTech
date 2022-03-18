@@ -20,12 +20,12 @@ public class LocationMasterResultBean extends BasicResultBean implements Seriali
 		Success = success;
 	}
 
-	public List<LocationMasterBean> getCustomerMasterDetails() {
+	public List<LocationMasterBean> getLocationMasterDetails() {
 		return locationMasterDetails;
 	}
 
 	
-	public void setLocationMasterDetailsMasterDetails(List<LocationMasterBean> locationMasterDetails) {
+	public void setLocationMasterDetails(List<LocationMasterBean> locationMasterDetails) {
 		this.locationMasterDetails = locationMasterDetails;
 	}
 

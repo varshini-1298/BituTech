@@ -20,7 +20,7 @@ public class ItemMasterResultBean extends BasicResultBean implements Serializabl
 		Success = success;
 	}
 
-	public List<ItemMasterBean> getCustomerMasterDetails() {
+	public List<ItemMasterBean> getItemMasterDetails() {
 		return itemMasterDetails;
 	}
 

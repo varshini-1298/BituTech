@@ -20,7 +20,7 @@ public class BillOfOperationResultBean extends BasicResultBean implements Serial
 		Success = success;
 	}
 
-	public List<BillOfOperationBean> getCustomerMasterDetails() {
+	public List<BillOfOperationBean> getDesignationMasterDetails() {
 		return designationMasterDetails;
 	}
 
