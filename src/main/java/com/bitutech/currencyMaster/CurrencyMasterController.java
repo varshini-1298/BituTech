@@ -7,15 +7,15 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bitutech.core.util.CustomException;
 
 @RestController
-@RequestMapping("/api/auth/app/customerMaster")
+@RequestMapping("/api/auth/app/currencyMaster")
 public class CurrencyMasterController {
-	CurrencyMasterService customerMasterService;
+	CurrencyMasterService currencyMasterService;
 	
 	@RequestMapping(value="/save")
 	public CurrencyMasterBean save(@RequestBody CurrencyMasterBean bean) {
 		CurrencyMasterBean objbean = new CurrencyMasterBean();
 		try {
-			objbean = customerMasterService.save(bean);
+			objbean = currencyMasterService.save(bean);
 		}catch(Exception e){
 			e.printStackTrace();	
 		}
@@ -27,7 +27,7 @@ public class CurrencyMasterController {
 	@RequestMapping(value = "/getList")
    	public CurrencyMasterResultBean getCustomerList() throws Exception {
 		CurrencyMasterResultBean objResultBean = new CurrencyMasterResultBean();
-		objResultBean.setCurrencyMasterDetails(customerMasterService.getCustomerList());
+		objResultBean.setCurrencyMasterDetails(currencyMasterService.getCustomerList());
 		objResultBean.setSuccess(true);
    		return objResultBean;
    	}

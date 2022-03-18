@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bitutech.core.util.CustomException;
 
 @RestController
-@RequestMapping("/api/auth/app/customerMaster")
+@RequestMapping("/api/auth/app/countryMaster")
 public class CountryMasterController {
 	CountryMasterService customerMasterService;
 	

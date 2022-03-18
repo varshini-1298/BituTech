@@ -7,17 +7,17 @@ import org.springframework.stereotype.Service;
 @Service
 public class DepartmentMasterServiceImpl implements DepartmentMasterService {
 	
-	DepartmentMasterDao customerMasterDao;
+	DepartmentMasterDao departmentMasterDao;
 
 	@Override
 	public DepartmentMasterBean save(DepartmentMasterBean bean) throws Exception {
-		return customerMasterDao.save(bean);
+		return departmentMasterDao.save(bean);
 	}
 
 	@Override
 	public List<DepartmentMasterBean> getCustomerList() throws Exception {
 		// TODO Auto-generated method stub
-		return customerMasterDao.getCustomerList();
+		return departmentMasterDao.getCustomerList();
 	}
 
 	

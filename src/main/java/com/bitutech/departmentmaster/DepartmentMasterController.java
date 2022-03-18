@@ -7,15 +7,15 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bitutech.core.util.CustomException;
 
 @RestController
-@RequestMapping("/api/auth/app/customerMaster")
+@RequestMapping("/api/auth/app/departmentMaster")
 public class DepartmentMasterController {
-	DepartmentMasterService customerMasterService;
+	DepartmentMasterService departmentMasterService;
 	
 	@RequestMapping(value="/save")
 	public DepartmentMasterBean save(@RequestBody DepartmentMasterBean bean) {
 		DepartmentMasterBean objbean = new DepartmentMasterBean();
 		try {
-			objbean = customerMasterService.save(bean);
+			objbean = departmentMasterService.save(bean);
 		}catch(Exception e){
 			e.printStackTrace();	
 		}
@@ -27,7 +27,7 @@ public class DepartmentMasterController {
 	@RequestMapping(value = "/getList")
    	public DepartmentMasterResultBean getCustomerList() throws Exception {
 		DepartmentMasterResultBean objResultBean = new DepartmentMasterResultBean();
-		objResultBean.setDepartmentMasterDetails(customerMasterService.getCustomerList());
+		objResultBean.setDepartmentMasterDetails(departmentMasterService.getCustomerList());
 		objResultBean.setSuccess(true);
    		return objResultBean;
    	}

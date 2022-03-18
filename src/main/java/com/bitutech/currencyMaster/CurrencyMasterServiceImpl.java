@@ -7,17 +7,17 @@ import org.springframework.stereotype.Service;
 @Service
 public class CurrencyMasterServiceImpl implements CurrencyMasterService {
 	
-	CurrencyMasterDao customerMasterDao;
+	CurrencyMasterDao currencyMasterDao;
 
 	@Override
 	public CurrencyMasterBean save(CurrencyMasterBean bean) throws Exception {
-		return customerMasterDao.save(bean);
+		return currencyMasterDao.save(bean);
 	}
 
 	@Override
 	public List<CurrencyMasterBean> getCustomerList() throws Exception {
 		// TODO Auto-generated method stub
-		return customerMasterDao.getCustomerList();
+		return currencyMasterDao.getCustomerList();
 	}
 
 	
