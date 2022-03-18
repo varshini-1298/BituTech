@@ -27,9 +27,9 @@ public class CurrencyMasterController {
 	
 	
 	@RequestMapping(value = "/getList")
-   	public CurrencyMasterResultBean getCustomerList() throws Exception {
+   	public CurrencyMasterResultBean getCurrencyList() throws Exception {
 		CurrencyMasterResultBean objResultBean = new CurrencyMasterResultBean();
-		objResultBean.setCurrencyMasterDetails(currencyMasterService.getCustomerList());
+		objResultBean.setCurrencyMasterDetails(currencyMasterService.getCurrencyList());
 		objResultBean.setSuccess(true);
    		return objResultBean;
    	}

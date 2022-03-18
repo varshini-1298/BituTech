@@ -6,6 +6,6 @@ public interface DesignationMasterDao {
 
 	DesignationMasterBean save(DesignationMasterBean bean) throws Exception;
 
-	List<DesignationMasterBean> getCustomerList() throws Exception;
+	List<DesignationMasterBean> getDesignationList() throws Exception;
 
 }

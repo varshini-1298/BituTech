@@ -6,6 +6,6 @@ public interface ItemMasterDao {
 
 	ItemMasterBean save(ItemMasterBean bean) throws Exception;
 
-	List<ItemMasterBean> getCustomerList() throws Exception;
+	List<ItemMasterBean> getItemList() throws Exception;
 
 }

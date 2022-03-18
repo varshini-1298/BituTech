@@ -6,6 +6,6 @@ public interface DesignationMasterService {
 
 	DesignationMasterBean save(DesignationMasterBean bean) throws Exception;
 
-	public List<DesignationMasterBean> getCustomerList() throws Exception;
+	public List<DesignationMasterBean> getDesignationList() throws Exception;
 
 }

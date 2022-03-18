@@ -27,9 +27,9 @@ public class DepartmentMasterController {
 	
 	
 	@RequestMapping(value = "/getList")
-   	public DepartmentMasterResultBean getCustomerList() throws Exception {
+   	public DepartmentMasterResultBean getDepartmentList() throws Exception {
 		DepartmentMasterResultBean objResultBean = new DepartmentMasterResultBean();
-		objResultBean.setDepartmentMasterDetails(departmentMasterService.getCustomerList());
+		objResultBean.setDepartmentMasterDetails(departmentMasterService.getDepartmentList());
 		objResultBean.setSuccess(true);
    		return objResultBean;
    	}

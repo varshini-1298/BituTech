@@ -1,4 +1,4 @@
-package com.bitutech.itemMaster;
+package com.bitutech.workorder;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -8,17 +8,16 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bitutech.core.util.CustomException;
 
 @RestController
-@RequestMapping("/api/auth/app/itemMaster")
-public class ItemMasterController {
-	
+@RequestMapping("/api/auth/app/workOrder")
+public class WorkOrderController {
 	@Autowired
-	ItemMasterService itemMasterService;
+	WorkOrderService workOrderService;
 	
 	@RequestMapping(value="/save")
-	public ItemMasterBean save(@RequestBody ItemMasterBean bean) {
-		ItemMasterBean objbean = new ItemMasterBean();
+	public WorkOrderBean save(@RequestBody WorkOrderBean bean) {
+		WorkOrderBean objbean = new WorkOrderBean();
 		try {
-			objbean = itemMasterService.save(bean);
+			objbean = workOrderService.save(bean);
 		}catch(Exception e){
 			e.printStackTrace();	
 		}
@@ -28,9 +27,9 @@ public class ItemMasterController {
 	
 	
 	@RequestMapping(value = "/getList")
-   	public ItemMasterResultBean getItemList() throws Exception {
-		ItemMasterResultBean objResultBean = new ItemMasterResultBean();
-		objResultBean.setItemMasterDetails(itemMasterService.getItemList());
+   	public WorkOrderResultBean getWorkOrderList() throws Exception {
+		WorkOrderResultBean objResultBean = new WorkOrderResultBean();
+		objResultBean.setLocationMasterDetailsMasterDetails(workOrderService.getWorkOrderList());
 		objResultBean.setSuccess(true);
    		return objResultBean;
    	}

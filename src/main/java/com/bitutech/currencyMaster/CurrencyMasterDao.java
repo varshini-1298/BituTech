@@ -6,6 +6,6 @@ public interface CurrencyMasterDao {
 
 	CurrencyMasterBean save(CurrencyMasterBean bean) throws Exception;
 
-	List<CurrencyMasterBean> getCustomerList() throws Exception;
+	List<CurrencyMasterBean> getCurrencyList() throws Exception;
 
 }

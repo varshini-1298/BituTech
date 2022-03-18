@@ -16,9 +16,9 @@ public class CurrencyMasterServiceImpl implements CurrencyMasterService {
 	}
 
 	@Override
-	public List<CurrencyMasterBean> getCustomerList() throws Exception {
+	public List<CurrencyMasterBean> getCurrencyList() throws Exception {
 		// TODO Auto-generated method stub
-		return currencyMasterDao.getCustomerList();
+		return currencyMasterDao.getCurrencyList();
 	}
 
 	

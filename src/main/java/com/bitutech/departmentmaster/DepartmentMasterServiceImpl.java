@@ -16,9 +16,9 @@ public class DepartmentMasterServiceImpl implements DepartmentMasterService {
 	}
 
 	@Override
-	public List<DepartmentMasterBean> getCustomerList() throws Exception {
+	public List<DepartmentMasterBean> getDepartmentList() throws Exception {
 		// TODO Auto-generated method stub
-		return departmentMasterDao.getCustomerList();
+		return departmentMasterDao.getDepartmentList();
 	}
 
 	

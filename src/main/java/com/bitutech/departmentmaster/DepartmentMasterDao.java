@@ -6,6 +6,6 @@ public interface DepartmentMasterDao {
 
 	DepartmentMasterBean save(DepartmentMasterBean bean) throws Exception;
 
-	List<DepartmentMasterBean> getCustomerList() throws Exception;
+	List<DepartmentMasterBean> getDepartmentList() throws Exception;
 
 }

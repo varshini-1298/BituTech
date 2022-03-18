@@ -16,6 +16,7 @@ public class SalesCallEntryBean {
 	private String containerType;
 	private String boxes;
 	private String expectedOn;
+	
 	public String getObjective() {
 		return objective;
 	}

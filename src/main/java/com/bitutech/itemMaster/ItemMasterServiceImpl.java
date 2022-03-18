@@ -16,9 +16,9 @@ public class ItemMasterServiceImpl implements ItemMasterService {
 	}
 
 	@Override
-	public List<ItemMasterBean> getCustomerList() throws Exception {
+	public List<ItemMasterBean> getItemList() throws Exception {
 		// TODO Auto-generated method stub
-		return itemMasterDao.getCustomerList();
+		return itemMasterDao.getItemList();
 	}
 
 	

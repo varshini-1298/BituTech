@@ -16,9 +16,9 @@ public class DesignationMasterServiceImpl implements DesignationMasterService {
 	}
 
 	@Override
-	public List<DesignationMasterBean> getCustomerList() throws Exception {
+	public List<DesignationMasterBean> getDesignationList() throws Exception {
 		// TODO Auto-generated method stub
-		return designationMasterDao.getCustomerList();
+		return designationMasterDao.getDesignationList();
 	}
 
 	
