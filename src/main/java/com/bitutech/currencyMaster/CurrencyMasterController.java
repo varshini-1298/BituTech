@@ -1,5 +1,6 @@
 package com.bitutech.currencyMaster;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,6 +10,7 @@ import com.bitutech.core.util.CustomException;
 @RestController
 @RequestMapping("/api/auth/app/currencyMaster")
 public class CurrencyMasterController {
+	@Autowired
 	CurrencyMasterService currencyMasterService;
 	
 	@RequestMapping(value="/save")

@@ -2,11 +2,12 @@ package com.bitutech.designationmaster;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class DesignationMasterServiceImpl implements DesignationMasterService {
-	
+	@Autowired
 	DesignationMasterDao designationMasterDao;
 
 	@Override
