@@ -24,11 +24,11 @@ public class CustomerMasterResultBean extends BasicResultBean implements Seriali
 		return customerMasterDetails;
 	}
 
-	
-	public void setCustomerMasterDetails(List<CustomerMasterBean> customerList) {
-		// TODO Auto-generated method stub
-		
+	public void setCustomerMasterDetails(List<CustomerMasterBean> customerMasterDetails) {
+		this.customerMasterDetails = customerMasterDetails;
 	}
+
+	
 
 	
 	
