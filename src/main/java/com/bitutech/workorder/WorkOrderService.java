@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface WorkOrderService {
 
-	WorkOrderBean save(WorkOrderBean bean) throws Exception;
+	WorkOrderResultBean save(WorkOrderBean bean) throws Exception;
 
 	public List<WorkOrderBean> getWorkOrderList() throws Exception;
 

@@ -11,7 +11,7 @@ public class WorkOrderServiceImpl implements WorkOrderService {
 	WorkOrderDao designationMasterDao;
 
 	@Override
-	public WorkOrderBean save(WorkOrderBean bean) throws Exception {
+	public WorkOrderResultBean save(WorkOrderBean bean) throws Exception {
 		return designationMasterDao.save(bean);
 	}
 

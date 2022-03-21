@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface CurrencyMasterDao {
 
-	CurrencyMasterBean save(CurrencyMasterBean bean) throws Exception;
+	CurrencyMasterResultBean save(CurrencyMasterBean bean) throws Exception;
 
 	List<CurrencyMasterBean> getCurrencyList() throws Exception;
 

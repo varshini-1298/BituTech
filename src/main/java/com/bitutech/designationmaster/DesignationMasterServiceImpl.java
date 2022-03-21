@@ -11,7 +11,7 @@ public class DesignationMasterServiceImpl implements DesignationMasterService {
 	DesignationMasterDao designationMasterDao;
 
 	@Override
-	public DesignationMasterBean save(DesignationMasterBean bean) throws Exception {
+	public DesignationMasterResultBean save(DesignationMasterBean bean) throws Exception {
 		return designationMasterDao.save(bean);
 	}
 

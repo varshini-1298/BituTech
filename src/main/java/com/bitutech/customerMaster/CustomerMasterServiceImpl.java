@@ -11,7 +11,7 @@ public class CustomerMasterServiceImpl implements CustomerMasterService {
 	CustomerMasterDao customerMasterDao;
 
 	@Override
-	public CustomerMasterBean save(CustomerMasterBean bean) throws Exception {
+	public CustomerMasterResultBean save(CustomerMasterBean bean) throws Exception {
 		return customerMasterDao.save(bean);
 	}
 

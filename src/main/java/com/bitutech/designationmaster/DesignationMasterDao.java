@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface DesignationMasterDao {
 
-	DesignationMasterBean save(DesignationMasterBean bean) throws Exception;
+	DesignationMasterResultBean save(DesignationMasterBean bean) throws Exception;
 
 	List<DesignationMasterBean> getDesignationList() throws Exception;
 

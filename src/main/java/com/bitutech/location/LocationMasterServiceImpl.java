@@ -8,17 +8,17 @@ import org.springframework.stereotype.Service;
 @Service
 public class LocationMasterServiceImpl implements LocationMasterService {
 	@Autowired
-	LocationMasterDao designationMasterDao;
+	LocationMasterDao locationMasterDao;
 
 	@Override
-	public LocationMasterBean save(LocationMasterBean bean) throws Exception {
-		return designationMasterDao.save(bean);
+	public LocationMasterResultBean save(LocationMasterBean bean) throws Exception {
+		return locationMasterDao.save(bean);
 	}
 
 	@Override
 	public List<LocationMasterBean> getLocationList() throws Exception {
 		// TODO Auto-generated method stub
-		return designationMasterDao.getLocationList();
+		return locationMasterDao.getLocationList();
 	}
 
 	

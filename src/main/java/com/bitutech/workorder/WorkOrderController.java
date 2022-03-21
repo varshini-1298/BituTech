@@ -14,8 +14,8 @@ public class WorkOrderController {
 	WorkOrderService workOrderService;
 	
 	@RequestMapping(value="/save")
-	public WorkOrderBean save(@RequestBody WorkOrderBean bean) {
-		WorkOrderBean objbean = new WorkOrderBean();
+	public WorkOrderResultBean save(@RequestBody WorkOrderBean bean) {
+		WorkOrderResultBean objbean = new WorkOrderResultBean();
 		try {
 			objbean = workOrderService.save(bean);
 		}catch(Exception e){

@@ -17,19 +17,22 @@ public class DesignationMasterDaoImpl implements DesignationMasterDao {
 	JdbcTemplate jdbcTemplate;
 
 	@Override
-	public DesignationMasterBean save(DesignationMasterBean bean) throws Exception {
-		DesignationMasterBean designationMasterBean = new DesignationMasterBean();
+	public DesignationMasterResultBean save(DesignationMasterBean bean) throws Exception {
+		DesignationMasterResultBean resultBean = new DesignationMasterResultBean();
 		try {
 			Map<String, Object> designationMasterMap = new HashMap<String, Object>();
 		    
+			designationMasterMap.put("designationName", bean.getDesignationName());
+			designationMasterMap.put("remarks", bean.getDesignationName());
 		    
 		   jdbcTemplate.update(DesignationMasterQueryUtil.INSERT_DESIGNATION_MASTER,designationMasterMap);
-			
+		   resultBean.setSuccess(true);
 		}catch(Exception e) {
 			e.printStackTrace();
+			resultBean.setSuccess(false);
 		}
 		
-		return designationMasterBean;
+		return resultBean;
 	}
 
 	@Override

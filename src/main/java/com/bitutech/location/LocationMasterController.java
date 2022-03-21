@@ -14,8 +14,8 @@ public class LocationMasterController {
 	LocationMasterService locationMasterService;
 	
 	@RequestMapping(value="/save")
-	public LocationMasterBean save(@RequestBody LocationMasterBean bean) {
-		LocationMasterBean objbean = new LocationMasterBean();
+	public LocationMasterResultBean save(@RequestBody LocationMasterBean bean) {
+		LocationMasterResultBean objbean = new LocationMasterResultBean();
 		try {
 			objbean = locationMasterService.save(bean);
 		}catch(Exception e){

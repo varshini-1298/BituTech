@@ -11,7 +11,7 @@ public class ItemMasterServiceImpl implements ItemMasterService {
 	ItemMasterDao itemMasterDao;
 
 	@Override
-	public ItemMasterBean save(ItemMasterBean bean) throws Exception {
+	public ItemMasterResultBean save(ItemMasterBean bean) throws Exception {
 		return itemMasterDao.save(bean);
 	}
 

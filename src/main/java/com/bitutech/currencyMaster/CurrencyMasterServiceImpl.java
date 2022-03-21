@@ -11,7 +11,7 @@ public class CurrencyMasterServiceImpl implements CurrencyMasterService {
 	CurrencyMasterDao currencyMasterDao;
 
 	@Override
-	public CurrencyMasterBean save(CurrencyMasterBean bean) throws Exception {
+	public CurrencyMasterResultBean save(CurrencyMasterBean bean) throws Exception {
 		return currencyMasterDao.save(bean);
 	}
 

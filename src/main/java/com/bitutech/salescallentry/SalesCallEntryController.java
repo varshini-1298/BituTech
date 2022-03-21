@@ -11,8 +11,8 @@ public class SalesCallEntryController {
 	SalesCallEntryService SalesCallEntryService;
 	
 	@RequestMapping(value = "/save")
-	public SalesCallEntryBean save(SalesCallEntryBean bean) {
-		SalesCallEntryBean objbean = new SalesCallEntryBean();
+	public SalesCallEntryResultBean save(SalesCallEntryBean bean) {
+		SalesCallEntryResultBean objbean = new SalesCallEntryResultBean();
 		try {
 			objbean = SalesCallEntryService.save(bean);
 		}catch(Exception e) {

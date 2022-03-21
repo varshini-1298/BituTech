@@ -17,19 +17,26 @@ public class WorkOrderDaoImpl implements WorkOrderDao {
 	JdbcTemplate jdbcTemplate;
 
 	@Override
-	public WorkOrderBean save(WorkOrderBean bean) throws Exception {
-		WorkOrderBean workOrderBean = new WorkOrderBean();
+	public WorkOrderResultBean save(WorkOrderBean bean) throws Exception {
+		WorkOrderResultBean resultBean = new WorkOrderResultBean();
 		try {
 			Map<String, Object> workOrderMap = new HashMap<String, Object>();
+			
+			workOrderMap.put("workorderNo",bean.getWorkorderNo());
+			workOrderMap.put("date",bean.getDate());
+			workOrderMap.put("bomNo",bean.getBomNo());
+			workOrderMap.put("booNo",bean.getBooNo());
+			workOrderMap.put("customerOrderNo",bean.getCustomerOrderNo());
 		    
 		    
 		   jdbcTemplate.update(WorkOrderQueryUtil.INSERT_WORKORDER_MASTER,workOrderMap);
-			
+		   resultBean.setSuccess(true);
 		}catch(Exception e) {
 			e.printStackTrace();
+			resultBean.setSuccess(false);
 		}
 		
-		return workOrderBean;
+		return resultBean;
 	}
 
 	@Override

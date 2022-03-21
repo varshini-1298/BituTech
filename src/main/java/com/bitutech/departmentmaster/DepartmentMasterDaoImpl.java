@@ -17,18 +17,24 @@ public class DepartmentMasterDaoImpl implements DepartmentMasterDao {
 	JdbcTemplate jdbcTemplate;
 
 	@Override
-	public DepartmentMasterBean save(DepartmentMasterBean bean) throws Exception {
-		DepartmentMasterBean departmentMasterBean = new DepartmentMasterBean();
+	public DepartmentMasterResultBean save(DepartmentMasterBean bean) throws Exception {
+		DepartmentMasterResultBean resultBean = new DepartmentMasterResultBean();
 		try {
 			Map<String, Object> departmentMasterMap = new HashMap<String, Object>();
-		     
-		   jdbcTemplate.update(DepartmentMasterQueryUtil.INSERT_DEPARTMENT_MASTER,departmentMasterMap);
 			
+			departmentMasterMap.put("departmentName",bean.getDepartmentName());
+			departmentMasterMap.put("departmentHead", bean.getDepartmentHead());
+			departmentMasterMap.put("profitCenter", bean.getProfitCenter());
+			departmentMasterMap.put("remarks", bean.getRemarks());
+			
+		   jdbcTemplate.update(DepartmentMasterQueryUtil.INSERT_DEPARTMENT_MASTER,departmentMasterMap);
+		   resultBean.setSuccess(true);
 		}catch(Exception e) {
 			e.printStackTrace();
+			resultBean.setSuccess(false);
 		}
 		
-		return departmentMasterBean;
+		return resultBean;
 	}
 
 	@Override

@@ -17,63 +17,23 @@ public class CountryMasterDaoImpl implements CountryMasterDao {
 	JdbcTemplate jdbcTemplate;
 
 	@Override
-	public CountryMasterBean save(CountryMasterBean bean) throws Exception {
-		CountryMasterBean customerMasterBean = new CountryMasterBean();
+	public CountryMasterResultBean save(CountryMasterBean bean) throws Exception {
+		CountryMasterResultBean resultBean = new CountryMasterResultBean();
 		try {
-			Map<String, Object> customerMasterMap = new HashMap<String, Object>();
-			/*
-			 * customerMasterMap.put("country", customerMasterBean.getCountry());
-			 * customerMasterMap.put("city", customerMasterBean.getCity());
-			 * customerMasterMap.put("territory", customerMasterBean.getTerritory());
-			 * customerMasterMap.put("salesPerson", customerMasterBean.getSalesPerson());
-			 * customerMasterMap.put("addressOfCus", customerMasterBean.getAddressOfCus());
-			 * customerMasterMap.put("business", customerMasterBean.getBusiness());
-			 * customerMasterMap.put("stp", customerMasterBean.getStp());
-			 * customerMasterMap.put("organisationName",
-			 * customerMasterBean.getOrganisationName()); customerMasterMap.put("zipCode",
-			 * customerMasterBean.getZipCode()); customerMasterMap.put("shortName",
-			 * customerMasterBean.getShortName()); customerMasterMap.put("cusWebsite",
-			 * customerMasterBean.getCusWebsite()); customerMasterMap.put("companyRegn",
-			 * customerMasterBean.getCompanyRegn()); customerMasterMap.put("keyName",
-			 * customerMasterBean.getKeyName());
-			 * 
-			 * customerMasterMap.put("keyNumber", customerMasterBean.getKeyNumber());
-			 * customerMasterMap.put("transactionGST",
-			 * customerMasterBean.getTransactionGST()); customerMasterMap.put("vatNumber",
-			 * customerMasterBean.getVatNumber()); customerMasterMap.put("panNumber",
-			 * customerMasterBean.getPanNumber());
-			 * 
-			 * customerMasterMap.put("paymentCenter",
-			 * customerMasterBean.getPaymentCenter()); customerMasterMap.put("creditLimit",
-			 * customerMasterBean.getCreditLimit()); customerMasterMap.put("creditUsd",
-			 * customerMasterBean.getCreditUsd()); customerMasterMap.put("creditDays",
-			 * customerMasterBean.getCreditDays()); customerMasterMap.put("keymail",
-			 * customerMasterBean.getKeymail());
-			 * 
-			 * customerMasterMap.put("notificationMail",
-			 * customerMasterBean.getNotificationMail());
-			 * customerMasterMap.put("invoiceMail", customerMasterBean.getInvoiceMail());
-			 * customerMasterMap.put("creditAgreement",
-			 * customerMasterBean.getCreditAgreement()); customerMasterMap.put("kycDoc",
-			 * customerMasterBean.getKycDoc()); customerMasterMap.put("exemptionDoc",
-			 * customerMasterBean.getExemptionDoc()); customerMasterMap.put("nonGstDoc",
-			 * customerMasterBean.getNonGstDoc()); customerMasterMap.put("name",
-			 * customerMasterBean.getName()); customerMasterMap.put("designation",
-			 * customerMasterBean.getDesignation()); customerMasterMap.put("department",
-			 * customerMasterBean.getDepartment());
-			 * 
-			 * customerMasterMap.put("phoneno", customerMasterBean.getPhoneno());
-			 * customerMasterMap.put("landline", customerMasterBean.getLandline());
-			 * customerMasterMap.put("email", customerMasterBean.getEmail());
-			 */
-		    
-		   jdbcTemplate.update(CountryMasterQueryUtil.INSERT_CUSTOMER_MASTER,customerMasterMap);
+			Map<String, Object> countryMasterMap = new HashMap<String, Object>();
 			
+			countryMasterMap.put("countryCode", bean.getCountryCode());
+			countryMasterMap.put("countryName", bean.getCurrency());
+			countryMasterMap.put("currency", bean.getCurrency());
+			 
+		   jdbcTemplate.update(CountryMasterQueryUtil.INSERT_CUSTOMER_MASTER,countryMasterMap);
+		   resultBean.setSuccess(true);
 		}catch(Exception e) {
 			e.printStackTrace();
+			resultBean.setSuccess(false);
 		}
 		
-		return customerMasterBean;
+		return resultBean;
 	}
 
 	@Override

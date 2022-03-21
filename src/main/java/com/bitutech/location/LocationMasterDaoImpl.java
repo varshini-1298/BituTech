@@ -17,19 +17,29 @@ public class LocationMasterDaoImpl implements LocationMasterDao {
 	JdbcTemplate jdbcTemplate;
 
 	@Override
-	public LocationMasterBean save(LocationMasterBean bean) throws Exception {
-		LocationMasterBean LocationMasterBean = new LocationMasterBean();
+	public LocationMasterResultBean save(LocationMasterBean bean) throws Exception {
+		LocationMasterResultBean resultBean = new LocationMasterResultBean();
 		try {
-			Map<String, Object> LocationMasterMap = new HashMap<String, Object>();
+			Map<String, Object> locationMasterMap = new HashMap<String, Object>();
 		    
-		    
-		   jdbcTemplate.update(LocationMasterQueryUtil.INSERT_LOCATION_MASTER,LocationMasterMap);
+			locationMasterMap.put("commodity", bean.getCommodity());
+			locationMasterMap.put("imdgClass", bean.getImdgClass());
+			locationMasterMap.put("classification", bean.getClassification());
+			locationMasterMap.put("hsCode", bean.getHsCode());
+			locationMasterMap.put("imdgcodePage", bean.getImdgcodePage());
+			locationMasterMap.put("blClause", bean.getBlClause());
+			locationMasterMap.put("unNo", bean.getUnNo());
+			locationMasterMap.put("flashPoint", bean.getFlashPoint());
 			
+		    
+		   jdbcTemplate.update(LocationMasterQueryUtil.INSERT_LOCATION_MASTER,locationMasterMap);
+		   resultBean.setSuccess(true);
 		}catch(Exception e) {
 			e.printStackTrace();
+			resultBean.setSuccess(false);
 		}
 		
-		return LocationMasterBean;
+		return resultBean;
 	}
 
 	@Override

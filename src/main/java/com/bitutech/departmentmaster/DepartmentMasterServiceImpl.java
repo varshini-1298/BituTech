@@ -11,7 +11,7 @@ public class DepartmentMasterServiceImpl implements DepartmentMasterService {
 	DepartmentMasterDao departmentMasterDao;
 
 	@Override
-	public DepartmentMasterBean save(DepartmentMasterBean bean) throws Exception {
+	public DepartmentMasterResultBean save(DepartmentMasterBean bean) throws Exception {
 		return departmentMasterDao.save(bean);
 	}
 

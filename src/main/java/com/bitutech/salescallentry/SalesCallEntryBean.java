@@ -17,6 +17,72 @@ public class SalesCallEntryBean {
 	private String boxes;
 	private String expectedOn;
 	
+	private String country;
+	private String customerType;
+	private String typeOfCall;
+	private String emailId;
+	private String personMet;
+	private String assignTo;
+	private String visitDate;
+	private String modeOfContact;
+	private String designation;
+	
+	
+	
+	public String getCountry() {
+		return country;
+	}
+	public void setCountry(String country) {
+		this.country = country;
+	}
+	public String getCustomerType() {
+		return customerType;
+	}
+	public void setCustomerType(String customerType) {
+		this.customerType = customerType;
+	}
+	public String getTypeOfCall() {
+		return typeOfCall;
+	}
+	public void setTypeOfCall(String typeOfCall) {
+		this.typeOfCall = typeOfCall;
+	}
+	public String getEmailId() {
+		return emailId;
+	}
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
+	}
+	public String getPersonMet() {
+		return personMet;
+	}
+	public void setPersonMet(String personMet) {
+		this.personMet = personMet;
+	}
+	public String getAssignTo() {
+		return assignTo;
+	}
+	public void setAssignTo(String assignTo) {
+		this.assignTo = assignTo;
+	}
+	public String getVisitDate() {
+		return visitDate;
+	}
+	public void setVisitDate(String visitDate) {
+		this.visitDate = visitDate;
+	}
+	public String getModeOfContact() {
+		return modeOfContact;
+	}
+	public void setModeOfContact(String modeOfContact) {
+		this.modeOfContact = modeOfContact;
+	}
+	public String getDesignation() {
+		return designation;
+	}
+	public void setDesignation(String designation) {
+		this.designation = designation;
+	}
 	public String getObjective() {
 		return objective;
 	}

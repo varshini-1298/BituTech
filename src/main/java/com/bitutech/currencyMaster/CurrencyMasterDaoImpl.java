@@ -17,18 +17,26 @@ public class CurrencyMasterDaoImpl implements CurrencyMasterDao {
 	JdbcTemplate jdbcTemplate;
 
 	@Override
-	public CurrencyMasterBean save(CurrencyMasterBean bean) throws Exception {
-		CurrencyMasterBean currencyMasterBean = new CurrencyMasterBean();
+	public CurrencyMasterResultBean save(CurrencyMasterBean bean) throws Exception {
+		CurrencyMasterResultBean resultBean = new CurrencyMasterResultBean();
 		try {
 			Map<String, Object> currencyMasterMap = new HashMap<String, Object>();
+			
+			currencyMasterMap.put("currencyCode", bean.getCurrencyCode());
+			currencyMasterMap.put("currencyName", bean.getCurrencyName());
+			currencyMasterMap.put("Fromcurrency", bean.getFromcurrency());
+			currencyMasterMap.put("toCurrency", bean.getToCurrency());
+			currencyMasterMap.put("defaultValue", bean.getDefaultValue());
+			currencyMasterMap.put("fractionPart", bean.getFractionPart());
 		    
 		   jdbcTemplate.update(CurrencyMasterQueryUtil.INSERT_CURRENCY_MASTER,currencyMasterMap);
-			
+		   resultBean.setSuccess(true);
 		}catch(Exception e) {
 			e.printStackTrace();
+			resultBean.setSuccess(false);
 		}
 		
-		return currencyMasterBean;
+		return resultBean;
 	}
 
 	@Override

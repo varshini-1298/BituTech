@@ -14,8 +14,8 @@ public class DesignationMasterController {
 	DesignationMasterService designationMasterService;
 	
 	@RequestMapping(value="/save")
-	public DesignationMasterBean save(@RequestBody DesignationMasterBean bean) {
-		DesignationMasterBean objbean = new DesignationMasterBean();
+	public DesignationMasterResultBean save(@RequestBody DesignationMasterBean bean) {
+		DesignationMasterResultBean objbean = new DesignationMasterResultBean();
 		try {
 			objbean = designationMasterService.save(bean);
 		}catch(Exception e){

@@ -11,7 +11,7 @@ public class CountryMasterServiceImpl implements CountryMasterService {
 	CountryMasterDao customerMasterDao;
 
 	@Override
-	public CountryMasterBean save(CountryMasterBean bean) throws Exception {
+	public CountryMasterResultBean save(CountryMasterBean bean) throws Exception {
 		return customerMasterDao.save(bean);
 	}
 

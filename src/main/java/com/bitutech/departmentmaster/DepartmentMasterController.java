@@ -14,8 +14,8 @@ public class DepartmentMasterController {
 	DepartmentMasterService departmentMasterService;
 	
 	@RequestMapping(value="/save")
-	public DepartmentMasterBean save(@RequestBody DepartmentMasterBean bean) {
-		DepartmentMasterBean objbean = new DepartmentMasterBean();
+	public DepartmentMasterResultBean save(@RequestBody DepartmentMasterBean bean) {
+		DepartmentMasterResultBean objbean = new DepartmentMasterResultBean();
 		try {
 			objbean = departmentMasterService.save(bean);
 		}catch(Exception e){

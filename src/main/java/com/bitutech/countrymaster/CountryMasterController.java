@@ -14,8 +14,8 @@ public class CountryMasterController {
 	CountryMasterService countryMasterService;
 	
 	@RequestMapping(value="/save")
-	public CountryMasterBean save(@RequestBody CountryMasterBean bean) {
-		CountryMasterBean objbean = new CountryMasterBean();
+	public CountryMasterResultBean save(@RequestBody CountryMasterBean bean) {
+		CountryMasterResultBean objbean = new CountryMasterResultBean();
 		try {
 			objbean = countryMasterService.save(bean);
 		}catch(Exception e){

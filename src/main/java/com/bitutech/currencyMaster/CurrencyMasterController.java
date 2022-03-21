@@ -14,8 +14,8 @@ public class CurrencyMasterController {
 	CurrencyMasterService currencyMasterService;
 	
 	@RequestMapping(value="/save")
-	public CurrencyMasterBean save(@RequestBody CurrencyMasterBean bean) {
-		CurrencyMasterBean objbean = new CurrencyMasterBean();
+	public CurrencyMasterResultBean save(@RequestBody CurrencyMasterBean bean) {
+		CurrencyMasterResultBean objbean = new CurrencyMasterResultBean();
 		try {
 			objbean = currencyMasterService.save(bean);
 		}catch(Exception e){

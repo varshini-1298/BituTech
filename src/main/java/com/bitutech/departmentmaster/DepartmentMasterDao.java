@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface DepartmentMasterDao {
 
-	DepartmentMasterBean save(DepartmentMasterBean bean) throws Exception;
+	DepartmentMasterResultBean save(DepartmentMasterBean bean) throws Exception;
 
 	List<DepartmentMasterBean> getDepartmentList() throws Exception;
 

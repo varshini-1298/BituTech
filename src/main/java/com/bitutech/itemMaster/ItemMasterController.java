@@ -15,8 +15,8 @@ public class ItemMasterController {
 	ItemMasterService itemMasterService;
 	
 	@RequestMapping(value="/save")
-	public ItemMasterBean save(@RequestBody ItemMasterBean bean) {
-		ItemMasterBean objbean = new ItemMasterBean();
+	public ItemMasterResultBean save(@RequestBody ItemMasterBean bean) {
+		ItemMasterResultBean objbean = new ItemMasterResultBean();
 		try {
 			objbean = itemMasterService.save(bean);
 		}catch(Exception e){

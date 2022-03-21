@@ -17,19 +17,26 @@ public class ItemMasterDaoImpl implements ItemMasterDao {
 	JdbcTemplate jdbcTemplate;
 
 	@Override
-	public ItemMasterBean save(ItemMasterBean bean) throws Exception {
-		ItemMasterBean itemMasterBean = new ItemMasterBean();
+	public ItemMasterResultBean save(ItemMasterBean bean) throws Exception {
+		ItemMasterResultBean resultBean = new ItemMasterResultBean();
 		try {
 			Map<String, Object> itemMasterMap = new HashMap<String, Object>();
 		    
-		    
+			itemMasterMap.put("itemType", bean.getItemType());
+			itemMasterMap.put("itemName", bean.getItemName());
+			itemMasterMap.put("itemDescription", bean.getItemDescription());
+			itemMasterMap.put("itemCode", bean.getItemCode());
+			itemMasterMap.put("saleable", bean.getSaleable());
+			itemMasterMap.put("purchaseable", bean.getPurchaseable());
+					    
 		   jdbcTemplate.update(ItemMasterQueryUtil.INSERT_ITEM_MASTER,itemMasterMap);
-			
+		   resultBean.setSuccess(true);
 		}catch(Exception e) {
 			e.printStackTrace();
+			 resultBean.setSuccess(false);
 		}
 		
-		return itemMasterBean;
+		return resultBean;
 	}
 
 	@Override

@@ -14,8 +14,8 @@ public class CustomerMasterController {
 	CustomerMasterService customerMasterService;
 	
 	@RequestMapping(value="/save")
-	public CustomerMasterBean save(@RequestBody CustomerMasterBean bean) {
-		CustomerMasterBean objbean = new CustomerMasterBean();
+	public CustomerMasterResultBean save(@RequestBody CustomerMasterBean bean) {
+		CustomerMasterResultBean objbean = new CustomerMasterResultBean();
 		try {
 			objbean = customerMasterService.save(bean);
 		}catch(Exception e){
