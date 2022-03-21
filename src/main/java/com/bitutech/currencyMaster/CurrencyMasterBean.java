@@ -3,10 +3,27 @@ package com.bitutech.currencyMaster;
 public class CurrencyMasterBean {
 	private String currencyCode;
 	private String currencyName;
-	private String Fromcurrency;
-    private String toCurrency;
-    private String defaultValue;
-    private String fractionPart;
+	private Integer fromcurrency;
+    private Integer toCurrency;
+    private Integer defaultValue;
+    private Integer fractionPart;
+    private Boolean bookCurrency;
+    private Boolean isActive;
+    
+    
+	
+	public Boolean getBookCurrency() {
+		return bookCurrency;
+	}
+	public void setBookCurrency(Boolean bookCurrency) {
+		this.bookCurrency = bookCurrency;
+	}
+	public Boolean getIsActive() {
+		return isActive;
+	}
+	public void setIsActive(Boolean isActive) {
+		this.isActive = isActive;
+	}
 	public String getCurrencyCode() {
 		return currencyCode;
 	}
@@ -19,29 +36,31 @@ public class CurrencyMasterBean {
 	public void setCurrencyName(String currencyName) {
 		this.currencyName = currencyName;
 	}
-	public String getFromcurrency() {
-		return Fromcurrency;
+	
+	public Integer getFromcurrency() {
+		return fromcurrency;
 	}
-	public void setFromcurrency(String fromcurrency) {
-		Fromcurrency = fromcurrency;
+	public void setFromcurrency(Integer fromcurrency) {
+		this.fromcurrency = fromcurrency;
 	}
-	public String getToCurrency() {
+	public Integer getToCurrency() {
 		return toCurrency;
 	}
-	public void setToCurrency(String toCurrency) {
+	public void setToCurrency(Integer toCurrency) {
 		this.toCurrency = toCurrency;
 	}
-	public String getDefaultValue() {
+	public Integer getDefaultValue() {
 		return defaultValue;
 	}
-	public void setDefaultValue(String defaultValue) {
+	public void setDefaultValue(Integer defaultValue) {
 		this.defaultValue = defaultValue;
 	}
-	public String getFractionPart() {
+	public Integer getFractionPart() {
 		return fractionPart;
 	}
-	public void setFractionPart(String fractionPart) {
+	public void setFractionPart(Integer fractionPart) {
 		this.fractionPart = fractionPart;
 	}
+	
     
 }

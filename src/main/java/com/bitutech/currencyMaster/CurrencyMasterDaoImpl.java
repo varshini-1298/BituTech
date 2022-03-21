@@ -8,6 +8,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -15,6 +16,9 @@ public class CurrencyMasterDaoImpl implements CurrencyMasterDao {
 	
 	@Autowired
 	JdbcTemplate jdbcTemplate;
+	
+	@Autowired
+	NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
 	@Override
 	public CurrencyMasterResultBean save(CurrencyMasterBean bean) throws Exception {
@@ -24,12 +28,14 @@ public class CurrencyMasterDaoImpl implements CurrencyMasterDao {
 			
 			currencyMasterMap.put("currencyCode", bean.getCurrencyCode());
 			currencyMasterMap.put("currencyName", bean.getCurrencyName());
-			currencyMasterMap.put("Fromcurrency", bean.getFromcurrency());
+			currencyMasterMap.put("fromcurrency", bean.getFromcurrency());
 			currencyMasterMap.put("toCurrency", bean.getToCurrency());
 			currencyMasterMap.put("defaultValue", bean.getDefaultValue());
 			currencyMasterMap.put("fractionPart", bean.getFractionPart());
+			currencyMasterMap.put("isActive", bean.getIsActive());
+			currencyMasterMap.put("bookCurrency", bean.getBookCurrency());
 		    
-		   jdbcTemplate.update(CurrencyMasterQueryUtil.INSERT_CURRENCY_MASTER,currencyMasterMap);
+			namedParameterJdbcTemplate.update(CurrencyMasterQueryUtil.INSERT_CURRENCY_MASTER,currencyMasterMap);
 		   resultBean.setSuccess(true);
 		}catch(Exception e) {
 			e.printStackTrace();
