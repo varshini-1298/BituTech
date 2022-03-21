@@ -5,6 +5,30 @@ public class CountryMasterBean {
 	private String countryCode;
 	private String countryName;
 	private String currency;
+	private String clientType;
+	
+	private String id;
+	private String text;
+	
+	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getText() {
+		return text;
+	}
+	public void setText(String text) {
+		this.text = text;
+	}
+	public String getClientType() {
+		return clientType;
+	}
+	public void setClientType(String clientType) {
+		this.clientType = clientType;
+	}
 	public String getCountryCode() {
 		return countryCode;
 	}

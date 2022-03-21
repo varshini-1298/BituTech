@@ -8,6 +8,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -15,7 +16,9 @@ public class CountryMasterDaoImpl implements CountryMasterDao {
 	
 	@Autowired
 	JdbcTemplate jdbcTemplate;
-
+	
+	@Autowired
+	NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 	@Override
 	public CountryMasterResultBean save(CountryMasterBean bean) throws Exception {
 		CountryMasterResultBean resultBean = new CountryMasterResultBean();
@@ -23,10 +26,11 @@ public class CountryMasterDaoImpl implements CountryMasterDao {
 			Map<String, Object> countryMasterMap = new HashMap<String, Object>();
 			
 			countryMasterMap.put("countryCode", bean.getCountryCode());
-			countryMasterMap.put("countryName", bean.getCurrency());
+			countryMasterMap.put("countryName", bean.getCountryName());
 			countryMasterMap.put("currency", bean.getCurrency());
+			countryMasterMap.put("clientType", bean.getClientType());
 			 
-		   jdbcTemplate.update(CountryMasterQueryUtil.INSERT_CUSTOMER_MASTER,countryMasterMap);
+			namedParameterJdbcTemplate.update(CountryMasterQueryUtil.INSERT_CUSTOMER_MASTER,countryMasterMap);
 		   resultBean.setSuccess(true);
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -38,14 +42,26 @@ public class CountryMasterDaoImpl implements CountryMasterDao {
 
 	@Override
 	public List<CountryMasterBean> getCountryList() throws Exception {
-		List<CountryMasterBean> objCustomerMasterBean = new ArrayList<CountryMasterBean>();
+		List<CountryMasterBean> objCountryMasterBean = new ArrayList<CountryMasterBean>();
 		try {
-			objCustomerMasterBean = jdbcTemplate.query(CountryMasterQueryUtil.getCustomerList, new BeanPropertyRowMapper<CountryMasterBean>(CountryMasterBean.class));
+			objCountryMasterBean = jdbcTemplate.query(CountryMasterQueryUtil.getCustomerList, new BeanPropertyRowMapper<CountryMasterBean>(CountryMasterBean.class));
 			
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		return objCustomerMasterBean;
+		return objCountryMasterBean;
+	}
+
+	@Override
+	public List<CountryMasterBean> getCurrencyList() throws Exception {
+		List<CountryMasterBean> objCountryMasterBean = new ArrayList<CountryMasterBean>();
+		try {
+			objCountryMasterBean = jdbcTemplate.query(CountryMasterQueryUtil.getCurrencyList, new BeanPropertyRowMapper<CountryMasterBean>(CountryMasterBean.class));
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return objCountryMasterBean;
 	}
 
 

@@ -33,5 +33,13 @@ public class CountryMasterController {
 		objResultBean.setSuccess(true);
    		return objResultBean;
    	}
+	
+	@RequestMapping(value = "/getCurrencyList")
+   	public CountryMasterResultBean getCurrencyList() throws Exception {
+		CountryMasterResultBean objResultBean = new CountryMasterResultBean();
+		objResultBean.setCurrencyList(countryMasterService.getCurrencyList());
+		objResultBean.setSuccess(true);
+   		return objResultBean;
+   	}
 
 }

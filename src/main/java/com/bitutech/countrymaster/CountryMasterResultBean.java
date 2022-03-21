@@ -11,6 +11,7 @@ public class CountryMasterResultBean extends BasicResultBean implements Serializ
 	public boolean Success;
 	
 	private List<CountryMasterBean> countryMasterDetails;
+	private List<CountryMasterBean> currencyList;
 	
 	public boolean isSuccess() {
 		return Success;
@@ -26,6 +27,14 @@ public class CountryMasterResultBean extends BasicResultBean implements Serializ
 
 	public void setCountryMasterDetails(List<CountryMasterBean> countryMasterDetails) {
 		this.countryMasterDetails = countryMasterDetails;
+	}
+
+	public List<CountryMasterBean> getCurrencyList() {
+		return currencyList;
+	}
+
+	public void setCurrencyList(List<CountryMasterBean> currencyList) {
+		this.currencyList = currencyList;
 	}
 	
 

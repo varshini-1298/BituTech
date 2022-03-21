@@ -21,6 +21,12 @@ public class CountryMasterServiceImpl implements CountryMasterService {
 		return customerMasterDao.getCountryList();
 	}
 
+	@Override
+	public List<CountryMasterBean> getCurrencyList() throws Exception {
+		// TODO Auto-generated method stub
+		return customerMasterDao.getCurrencyList();
+	}
+
 	
 
 

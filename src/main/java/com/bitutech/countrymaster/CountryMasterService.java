@@ -8,4 +8,6 @@ public interface CountryMasterService {
 
 	public List<CountryMasterBean> getCountryList() throws Exception;
 
+	public List<CountryMasterBean> getCurrencyList() throws Exception;
+
 }

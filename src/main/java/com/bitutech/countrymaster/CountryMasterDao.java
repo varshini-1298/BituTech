@@ -8,4 +8,6 @@ public interface CountryMasterDao {
 
 	List<CountryMasterBean> getCountryList() throws Exception;
 
+	List<CountryMasterBean> getCurrencyList()  throws Exception;
+
 }
