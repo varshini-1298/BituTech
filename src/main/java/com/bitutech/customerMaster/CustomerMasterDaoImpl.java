@@ -10,6 +10,8 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.bitutech.employeeMaster.EmployeeMasterQueryUtil;
+
 @Repository
 public class CustomerMasterDaoImpl implements CustomerMasterDao {
 	
@@ -59,6 +61,8 @@ public class CustomerMasterDaoImpl implements CustomerMasterDao {
 		    customerMasterMap.put("phoneno", customerMasterBean.getPhoneno());
 		    customerMasterMap.put("landline", customerMasterBean.getLandline());
 		    customerMasterMap.put("email", customerMasterBean.getEmail());
+//			String empId =  jdbcTemplate.queryForObject(CustomerMasterQueryUtil.GETCUSCODE, String.class);
+//			customerMasterMap.put("empId", empId);
 		    
 		   jdbcTemplate.update(CustomerMasterQueryUtil.INSERT_CUSTOMER_MASTER,customerMasterMap);
 			
