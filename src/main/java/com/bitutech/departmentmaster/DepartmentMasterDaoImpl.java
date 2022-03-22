@@ -8,6 +8,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -15,6 +16,9 @@ public class DepartmentMasterDaoImpl implements DepartmentMasterDao {
 	
 	@Autowired
 	JdbcTemplate jdbcTemplate;
+	
+	@Autowired
+	NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
 	@Override
 	public DepartmentMasterResultBean save(DepartmentMasterBean bean) throws Exception {
@@ -24,10 +28,11 @@ public class DepartmentMasterDaoImpl implements DepartmentMasterDao {
 			
 			departmentMasterMap.put("departmentName",bean.getDepartmentName());
 			departmentMasterMap.put("departmentHead", bean.getDepartmentHead());
-			departmentMasterMap.put("profitCenter", bean.getProfitCenter());
+			departmentMasterMap.put("deptStatus", bean.isDeptStatus());
 			departmentMasterMap.put("remarks", bean.getRemarks());
-			
-		   jdbcTemplate.update(DepartmentMasterQueryUtil.INSERT_DEPARTMENT_MASTER,departmentMasterMap);
+			String deptCode = jdbcTemplate.queryForObject(DepartmentMasterQueryUtil.GET_DEPT_CODE, String.class);
+			departmentMasterMap.put("deptCode", deptCode);
+			namedParameterJdbcTemplate.update(DepartmentMasterQueryUtil.INSERT_DEPARTMENT_MASTER,departmentMasterMap);
 		   resultBean.setSuccess(true);
 		}catch(Exception e) {
 			e.printStackTrace();

@@ -4,8 +4,22 @@ public class DepartmentMasterBean {
 	
 	private String departmentName;
 	private String departmentHead;
-	private String profitCenter;
 	private String remarks;
+	private String deptCode;
+	private boolean deptStatus;
+	
+	public String getDeptCode() {
+		return deptCode;
+	}
+	public void setDeptCode(String deptCode) {
+		this.deptCode = deptCode;
+	}
+	public boolean isDeptStatus() {
+		return deptStatus;
+	}
+	public void setDeptStatus(boolean deptStatus) {
+		this.deptStatus = deptStatus;
+	}
 	public String getDepartmentName() {
 		return departmentName;
 	}
@@ -17,12 +31,6 @@ public class DepartmentMasterBean {
 	}
 	public void setDepartmentHead(String departmentHead) {
 		this.departmentHead = departmentHead;
-	}
-	public String getProfitCenter() {
-		return profitCenter;
-	}
-	public void setProfitCenter(String profitCenter) {
-		this.profitCenter = profitCenter;
 	}
 	public String getRemarks() {
 		return remarks;

@@ -8,6 +8,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -15,6 +16,9 @@ public class DesignationMasterDaoImpl implements DesignationMasterDao {
 	
 	@Autowired
 	JdbcTemplate jdbcTemplate;
+	
+	@Autowired
+	NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
 	@Override
 	public DesignationMasterResultBean save(DesignationMasterBean bean) throws Exception {
@@ -24,8 +28,12 @@ public class DesignationMasterDaoImpl implements DesignationMasterDao {
 		    
 			designationMasterMap.put("designationName", bean.getDesignationName());
 			designationMasterMap.put("remarks", bean.getDesignationName());
+			designationMasterMap.put("active", bean.isActive());
+			String desgnCode =  jdbcTemplate.queryForObject(DesignationMasterQueryUtil.GETDESGCODE, String.class);
+			designationMasterMap.put("desgnCode", desgnCode);
+			
 		    
-		   jdbcTemplate.update(DesignationMasterQueryUtil.INSERT_DESIGNATION_MASTER,designationMasterMap);
+			namedParameterJdbcTemplate.update(DesignationMasterQueryUtil.INSERT_DESIGNATION_MASTER,designationMasterMap);
 		   resultBean.setSuccess(true);
 		}catch(Exception e) {
 			e.printStackTrace();
