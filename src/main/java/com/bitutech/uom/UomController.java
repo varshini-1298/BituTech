@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bitutech.core.util.CustomException;
 
 @RestController
-@RequestMapping("/api/auth/app/uomCategory")
+@RequestMapping("/api/auth/app/uom")
 public class UomController {
 	@Autowired
 	UomService uomService;
