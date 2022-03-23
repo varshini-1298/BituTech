@@ -1,10 +1,10 @@
 package com.bitutech.salescallentry;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 @RequestMapping(value = "/api/auth/app/salesCallEntry")
 public class SalesCallEntryController {
 	@Autowired
@@ -23,7 +23,7 @@ public class SalesCallEntryController {
 	}
 	
 	@RequestMapping(value = "/getList")
-   	public SalesCallEntryResultBean getDesignationList() throws Exception {
+   	public SalesCallEntryResultBean getList() throws Exception {
 		SalesCallEntryResultBean objResultBean = new SalesCallEntryResultBean();
 		objResultBean.setSalesCallEntryDetails(SalesCallEntryService.getList());
 		objResultBean.setSuccess(true);
