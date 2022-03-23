@@ -11,6 +11,7 @@ public class UomResultBean extends BasicResultBean implements Serializable {
 	public boolean Success;
 	
 	private List<UomBean> uomDetails;
+	private List<UomBean> uomCategoryList;
 	
 	public boolean isSuccess() {
 		return Success;
@@ -26,6 +27,14 @@ public class UomResultBean extends BasicResultBean implements Serializable {
 
 	public void setUomDetails(List<UomBean> uomDetails) {
 		this.uomDetails = uomDetails;
+	}
+
+	public List<UomBean> getUomCategoryList() {
+		return uomCategoryList;
+	}
+
+	public void setUomCategoryList(List<UomBean> uomCategoryList) {
+		this.uomCategoryList = uomCategoryList;
 	}
 
 	

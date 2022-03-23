@@ -8,4 +8,6 @@ public interface UomDao {
 
 	List<UomBean> getUomList() throws Exception;
 
+	List<UomBean> getUomcateList() throws Exception;
+
 }

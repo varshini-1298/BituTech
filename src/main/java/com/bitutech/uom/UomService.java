@@ -8,4 +8,6 @@ public interface UomService {
 
 	public List<UomBean> getUomList() throws Exception;
 
+	public List<UomBean> getUomcateList() throws Exception;
+
 }

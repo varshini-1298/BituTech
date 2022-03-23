@@ -8,6 +8,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.bitutech.employeeMaster.EmployeeMasterQueryUtil;
@@ -17,6 +18,9 @@ public class CustomerMasterDaoImpl implements CustomerMasterDao {
 	
 	@Autowired
 	JdbcTemplate jdbcTemplate;
+	
+	@Autowired
+	NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
 	@Override
 	public CustomerMasterResultBean save(CustomerMasterBean bean) throws Exception {
@@ -64,7 +68,7 @@ public class CustomerMasterDaoImpl implements CustomerMasterDao {
 			String cusCode =  jdbcTemplate.queryForObject(CustomerMasterQueryUtil.GETCUSCODE, String.class);
 			customerMasterMap.put("cusCode", cusCode);
 		    
-		   jdbcTemplate.update(CustomerMasterQueryUtil.INSERT_CUSTOMER_MASTER,customerMasterMap);
+			namedParameterJdbcTemplate.update(CustomerMasterQueryUtil.INSERT_CUSTOMER_MASTER,customerMasterMap);
 		   resultBean.setSuccess(true);
 		}catch(Exception e) {
 			e.printStackTrace();

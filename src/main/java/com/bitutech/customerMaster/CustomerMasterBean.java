@@ -20,9 +20,9 @@ public class CustomerMasterBean {
 	private String vatNumber;
 	private String panNumber;
 	private String paymentCenter;
-	private String creditLimit;
+	private Integer creditLimit;
 	private String creditUsd;
-	private String creditDays;
+	private Integer creditDays;
 	private String keymail;
 	private String notificationMail;
 	private String invoiceMail;
@@ -153,22 +153,23 @@ public class CustomerMasterBean {
 	public void setPaymentCenter(String paymentCenter) {
 		this.paymentCenter = paymentCenter;
 	}
-	public String getCreditLimit() {
-		return creditLimit;
-	}
-	public void setCreditLimit(String creditLimit) {
-		this.creditLimit = creditLimit;
-	}
 	public String getCreditUsd() {
 		return creditUsd;
 	}
 	public void setCreditUsd(String creditUsd) {
 		this.creditUsd = creditUsd;
 	}
-	public String getCreditDays() {
+	
+	public Integer getCreditLimit() {
+		return creditLimit;
+	}
+	public void setCreditLimit(Integer creditLimit) {
+		this.creditLimit = creditLimit;
+	}
+	public Integer getCreditDays() {
 		return creditDays;
 	}
-	public void setCreditDays(String creditDays) {
+	public void setCreditDays(Integer creditDays) {
 		this.creditDays = creditDays;
 	}
 	public String getKeymail() {

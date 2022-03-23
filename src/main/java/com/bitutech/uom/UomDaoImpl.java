@@ -11,6 +11,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.bitutech.countrymaster.CountryMasterBean;
+import com.bitutech.countrymaster.CountryMasterQueryUtil;
+
 @Repository
 public class UomDaoImpl implements UomDao {
 	
@@ -27,7 +30,7 @@ public class UomDaoImpl implements UomDao {
 			Map<String, Object> uomCategoryMap = new HashMap<String, Object>();
 		    
 			uomCategoryMap.put("unitMeasure", bean.getUnitMeasure());
-			uomCategoryMap.put("categoryDesp", bean.getUomCategory());
+			uomCategoryMap.put("uomCategory", bean.getUomCategory());
 			uomCategoryMap.put("description", bean.getDescription());;
 			
 			namedParameterJdbcTemplate.update(UomQueryUtil.INSERT_UOM,uomCategoryMap);
@@ -50,6 +53,18 @@ public class UomDaoImpl implements UomDao {
 			e.printStackTrace();
 		}
 		return uomCategoryBean;
+	}
+
+	@Override
+	public List<UomBean> getUomcateList() throws Exception {
+		List<UomBean> objUomMasterBean = new ArrayList<UomBean>();
+		try {
+			objUomMasterBean = jdbcTemplate.query(UomQueryUtil.getUomcategoryList, new BeanPropertyRowMapper<UomBean>(UomBean.class));
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return objUomMasterBean;
 	}
 
 
