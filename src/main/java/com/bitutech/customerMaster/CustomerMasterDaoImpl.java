@@ -61,8 +61,8 @@ public class CustomerMasterDaoImpl implements CustomerMasterDao {
 		    customerMasterMap.put("phoneno", bean.getPhoneno());
 		    customerMasterMap.put("landline", bean.getLandline());
 		    customerMasterMap.put("email", bean.getEmail());
-//			String empId =  jdbcTemplate.queryForObject(CustomerMasterQueryUtil.GETCUSCODE, String.class);
-//			customerMasterMap.put("empId", empId);
+			String cusCode =  jdbcTemplate.queryForObject(CustomerMasterQueryUtil.GETCUSCODE, String.class);
+			customerMasterMap.put("cusCode", cusCode);
 		    
 		   jdbcTemplate.update(CustomerMasterQueryUtil.INSERT_CUSTOMER_MASTER,customerMasterMap);
 		   resultBean.setSuccess(true);

@@ -37,6 +37,14 @@ public class CustomerMasterBean {
 	private String phoneno;
 	private String landline;
 	private String email;
+	private String cusCode;
+	
+	public String getCusCode() {
+		return cusCode;
+	}
+	public void setCusCode(String cusCode) {
+		this.cusCode = cusCode;
+	}
 	public String getCountry() {
 		return country;
 	}
