@@ -8,6 +8,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.bitutech.designationmaster.DesignationMasterQueryUtil;
@@ -17,6 +18,9 @@ public class SalesCallEntryDaoImpl implements SalesCallEntryDao {
 	
 	@Autowired
 	JdbcTemplate jdbcTemplate;
+	
+	@Autowired
+	NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
 	@Override
 	public SalesCallEntryResultBean save(SalesCallEntryBean bean) throws Exception {
@@ -34,7 +38,7 @@ public class SalesCallEntryDaoImpl implements SalesCallEntryDao {
 			salesCallEntryMap.put("reasonNotSupport", bean.getReasonNotSupport());
 			salesCallEntryMap.put("remarks", bean.getRemarks());
 			
-			salesCallEntryMap.put("country", bean.getCountry());
+			salesCallEntryMap.put("customer", bean.getCustomer());
 			salesCallEntryMap.put("customerType", bean.getCustomerType());
 			salesCallEntryMap.put("typeOfCall", bean.getTypeOfCall());
 			salesCallEntryMap.put("emailId", bean.getEmailId());
@@ -44,9 +48,7 @@ public class SalesCallEntryDaoImpl implements SalesCallEntryDao {
 			salesCallEntryMap.put("modeOfContact", bean.getModeOfContact());
 			salesCallEntryMap.put("designation", bean.getDesignation());
 			
-			
-			
-			jdbcTemplate.update(SalesEntryMasterQueryUtil.INSERT_SALESENTRY_MASTER,salesCallEntryMap);
+			namedParameterJdbcTemplate.update(SalesEntryMasterQueryUtil.INSERT_SALESENTRY_HDR,salesCallEntryMap);
 			resultBean.setSuccess(true);
 		}catch(Exception e){
 			e.printStackTrace();

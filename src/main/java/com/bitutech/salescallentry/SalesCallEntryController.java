@@ -1,6 +1,7 @@
 package com.bitutech.salescallentry;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,7 +12,7 @@ public class SalesCallEntryController {
 	SalesCallEntryService SalesCallEntryService;
 	
 	@RequestMapping(value = "/save")
-	public SalesCallEntryResultBean save(SalesCallEntryBean bean) {
+	public SalesCallEntryResultBean save(@RequestBody SalesCallEntryBean bean) {
 		SalesCallEntryResultBean objbean = new SalesCallEntryResultBean();
 		try {
 			objbean = SalesCallEntryService.save(bean);
