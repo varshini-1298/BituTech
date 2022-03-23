@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(value = "/api/salesCallEntry")
+@RequestMapping(value = "/api/auth/app/salesCallEntry")
 public class SalesCallEntryController {
 	@Autowired
 	SalesCallEntryService SalesCallEntryService;
@@ -25,7 +25,7 @@ public class SalesCallEntryController {
 	@RequestMapping(value = "/getList")
    	public SalesCallEntryResultBean getDesignationList() throws Exception {
 		SalesCallEntryResultBean objResultBean = new SalesCallEntryResultBean();
-		objResultBean.setGetSalesCallEntryDetails(SalesCallEntryService.getList());
+		objResultBean.setSalesCallEntryDetails(SalesCallEntryService.getList());
 		objResultBean.setSuccess(true);
    		return objResultBean;
    	}
