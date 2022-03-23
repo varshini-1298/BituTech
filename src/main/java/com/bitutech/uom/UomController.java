@@ -35,7 +35,7 @@ public class UomController {
    		return objResultBean;
    	}
 
-	@RequestMapping(value = "/getUomcateList")
+	@RequestMapping(value = "/getUomCategory")
    	public UomResultBean getUomcateList() throws Exception {
 		UomResultBean objResultBean = new UomResultBean();
 		objResultBean.setUomCategoryList(uomService.getUomcateList());

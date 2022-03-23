@@ -29,8 +29,8 @@ public class UomCategoryDaoImpl implements UomCategoryDao {
 			uomCategoryMap.put("categoryName", bean.getCategoryName());
 			uomCategoryMap.put("categoryDesp", bean.getCategoryDesp());
 			uomCategoryMap.put("active", bean.isActive());
-			String desgnCode =  jdbcTemplate.queryForObject(UomCategoryQueryUtil.GETUOMODE, String.class);
-			uomCategoryMap.put("desgnCode", desgnCode);
+			String uomCode =  jdbcTemplate.queryForObject(UomCategoryQueryUtil.GETUOMODE, String.class);
+			uomCategoryMap.put("uomCode", uomCode);
 			
 		    
 			namedParameterJdbcTemplate.update(UomCategoryQueryUtil.INSERT_UOM_CATEGORY,uomCategoryMap);
