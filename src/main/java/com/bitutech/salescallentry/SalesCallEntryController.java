@@ -21,5 +21,12 @@ public class SalesCallEntryController {
 		return objbean;
 		
 	}
-
+	
+	@RequestMapping(value = "/getList")
+   	public SalesCallEntryResultBean getDesignationList() throws Exception {
+		SalesCallEntryResultBean objResultBean = new SalesCallEntryResultBean();
+		objResultBean.setGetSalesCallEntryDetails(SalesCallEntryService.getList());
+		objResultBean.setSuccess(true);
+   		return objResultBean;
+   	}
 }

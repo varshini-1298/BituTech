@@ -1,9 +1,12 @@
 package com.bitutech.salescallentry;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -51,6 +54,19 @@ public class SalesCallEntryDaoImpl implements SalesCallEntryDao {
 		}
 		
 		return resultBean;
+	}
+
+	@Override
+	public List<SalesCallEntryBean> getList() throws Exception {
+		// TODO Auto-generated method stub
+		List<SalesCallEntryBean> salesCallEntryBeanList = new ArrayList<SalesCallEntryBean>();
+		try {
+			salesCallEntryBeanList = jdbcTemplate.query(SalesEntryMasterQueryUtil.getList, new BeanPropertyRowMapper<SalesCallEntryBean>(SalesCallEntryBean.class));
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return salesCallEntryBeanList;
 	}
 
 }

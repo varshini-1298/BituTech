@@ -27,8 +27,23 @@ public class SalesCallEntryBean {
 	private String modeOfContact;
 	private String designation;
 	
+	private String customer;
+	private String salesCallNumber;
 	
 	
+	
+	public String getCustomer() {
+		return customer;
+	}
+	public void setCustomer(String customer) {
+		this.customer = customer;
+	}
+	public String getSalesCallNumber() {
+		return salesCallNumber;
+	}
+	public void setSalesCallNumber(String salesCallNumber) {
+		this.salesCallNumber = salesCallNumber;
+	}
 	public String getCountry() {
 		return country;
 	}
