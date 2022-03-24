@@ -1,13 +1,11 @@
-package com.bitutech.salesorder;
+package com.bitutech.salesquote;
 
-public class SalesOrderBean {
+public class SalesQuoteBean {
 	
 	private String customer;
 	private String validFrom;
 	private String validTo;
-	private String currency;
-	private String deliveryDate;
-	
+	private String termCondition;
 	private String id;
 	private String text;
 	
@@ -42,17 +40,11 @@ public class SalesOrderBean {
 	public void setValidTo(String validTo) {
 		this.validTo = validTo;
 	}
-	public String getCurrency() {
-		return currency;
+	public String getTermCondition() {
+		return termCondition;
 	}
-	public void setCurrency(String currency) {
-		this.currency = currency;
-	}
-	public String getDeliveryDate() {
-		return deliveryDate;
-	}
-	public void setDeliveryDate(String deliveryDate) {
-		this.deliveryDate = deliveryDate;
+	public void setTermCondition(String termCondition) {
+		this.termCondition = termCondition;
 	}
 	
 	

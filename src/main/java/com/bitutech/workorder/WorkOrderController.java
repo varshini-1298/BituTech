@@ -29,7 +29,7 @@ public class WorkOrderController {
 	@RequestMapping(value = "/getList")
    	public WorkOrderResultBean getWorkOrderList() throws Exception {
 		WorkOrderResultBean objResultBean = new WorkOrderResultBean();
-		objResultBean.setWorkOrderrDetails(workOrderService.getWorkOrderList());
+		objResultBean.setWorkOrderDetails(workOrderService.getWorkOrderList());
 		objResultBean.setSuccess(true);
    		return objResultBean;
    	}

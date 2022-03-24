@@ -10,7 +10,7 @@ public class WorkOrderResultBean extends BasicResultBean implements Serializable
 	
 	public boolean Success;
 	
-	private List<WorkOrderBean> workOrderrDetails;
+	private List<WorkOrderBean> workOrderDetails;
 	
 	public boolean isSuccess() {
 		return Success;
@@ -20,13 +20,14 @@ public class WorkOrderResultBean extends BasicResultBean implements Serializable
 		Success = success;
 	}
 
-	public List<WorkOrderBean> getWorkOrderrDetails() {
-		return workOrderrDetails;
+	public List<WorkOrderBean> getWorkOrderDetails() {
+		return workOrderDetails;
 	}
 
-	public void setWorkOrderrDetails(List<WorkOrderBean> workOrderrDetails) {
-		this.workOrderrDetails = workOrderrDetails;
+	public void setWorkOrderDetails(List<WorkOrderBean> workOrderDetails) {
+		this.workOrderDetails = workOrderDetails;
 	}
+
 
 	
 

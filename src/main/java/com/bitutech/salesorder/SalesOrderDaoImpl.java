@@ -29,9 +29,9 @@ public class SalesOrderDaoImpl implements SalesOrderDao {
 		try {
 			Map<String, Object> salesOrderMap = new HashMap<String, Object>();
 		    
-			salesOrderMap.put("unitMeasure", bean.getUnitMeasure());
-			salesOrderMap.put("uomCategory", bean.getUomCategory());
-			salesOrderMap.put("description", bean.getDescription());;
+			salesOrderMap.put("customer", bean.getCustomer());
+			salesOrderMap.put("validFrom", bean.getValidFrom());
+			salesOrderMap.put("validTo", bean.getValidTo());
 			
 			namedParameterJdbcTemplate.update(SalesOrderQueryUtil.INSERT_SALES_ORDER,salesOrderMap);
 		   resultBean.setSuccess(true);

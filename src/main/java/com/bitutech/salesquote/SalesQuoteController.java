@@ -1,4 +1,4 @@
-package com.bitutech.salesorder;
+package com.bitutech.salesquote;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -9,16 +9,16 @@ import com.bitutech.core.util.CustomException;
 import com.bitutech.countrymaster.CountryMasterResultBean;
 
 @RestController
-@RequestMapping("/api/auth/app/saleOrder")
-public class SalesOrderController {
+@RequestMapping("/api/auth/app/saleQuote")
+public class SalesQuoteController {
 	@Autowired
-	SalesOrderService salesOrderService;
+	SalesQuoteService salesQuoteService;
 	
 	@RequestMapping(value="/save")
-	public SalesOrderResultBean save(@RequestBody SalesOrderBean bean) {
-		SalesOrderResultBean objbean = new SalesOrderResultBean();
+	public SalesQuoteResultBean save(@RequestBody SalesQuoteBean bean) {
+		SalesQuoteResultBean objbean = new SalesQuoteResultBean();
 		try {
-			objbean = salesOrderService.save(bean);
+			objbean = salesQuoteService.save(bean);
 		}catch(Exception e){
 			e.printStackTrace();	
 		}
@@ -28,18 +28,18 @@ public class SalesOrderController {
 	
 	
 	@RequestMapping(value = "/getList")
-   	public SalesOrderResultBean getSalesOrderList() throws Exception {
-		SalesOrderResultBean objResultBean = new SalesOrderResultBean();
-		objResultBean.setSalesOrderList(salesOrderService.getSalesOrderList());
+   	public SalesQuoteResultBean getSalesQuoteList() throws Exception {
+		SalesQuoteResultBean objResultBean = new SalesQuoteResultBean();
+		objResultBean.setSalesQuoteList(salesQuoteService.getSalesQuoteList());
 		objResultBean.setSuccess(true);
    		return objResultBean;
    	}
 
 	//drop down method
 	@RequestMapping(value = "/getUomCategory")
-   	public SalesOrderResultBean getUomcateList() throws Exception {
-		SalesOrderResultBean objResultBean = new SalesOrderResultBean();
-		objResultBean.setSalesOrderList(salesOrderService.getUomcateList());
+   	public SalesQuoteResultBean getUomcateList() throws Exception {
+		SalesQuoteResultBean objResultBean = new SalesQuoteResultBean();
+		objResultBean.setSalesQuoteList(salesQuoteService.getUomcateList());
 		objResultBean.setSuccess(true);
    		return objResultBean;
    	}
