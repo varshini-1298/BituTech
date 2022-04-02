@@ -27,6 +27,12 @@ public class CountryMasterServiceImpl implements CountryMasterService {
 		return customerMasterDao.getCurrencyList();
 	}
 
+	@Override
+	public CountryMasterResultBean deleteCountryDtl(String countryCode) throws Exception {
+		// TODO Auto-generated method stub
+		return customerMasterDao.deleteCountryDtl(countryCode);
+	}
+
 	
 
 

@@ -1,8 +1,10 @@
 package com.bitutech.countrymaster;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bitutech.core.util.CustomException;
@@ -41,5 +43,17 @@ public class CountryMasterController {
 		objResultBean.setSuccess(true);
    		return objResultBean;
    	}
+	
+	@GetMapping(value = "/delete")
+	public CountryMasterResultBean deleteCountryDtl(@RequestParam String countryCode) {
+		CountryMasterResultBean countryMasterResultBean = new CountryMasterResultBean();
+		try {
+			countryMasterResultBean = countryMasterService.deleteCountryDtl(countryCode);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return countryMasterResultBean;
+
+	}
 
 }

@@ -64,5 +64,21 @@ public class CountryMasterDaoImpl implements CountryMasterDao {
 		return objCountryMasterBean;
 	}
 
+	@Override
+	public CountryMasterResultBean deleteCountryDtl(String countryCode) throws Exception {
+		CountryMasterResultBean resultBean = new CountryMasterResultBean();
+		try {
+			if (countryCode != null){
+				jdbcTemplate.update(CountryMasterQueryUtil.DELETE_COUNTRY_DTL, countryCode);
+				resultBean.setSuccess(true);
+			}
+			
+		} catch (Exception e) {
+			resultBean.setSuccess(false);
+			e.printStackTrace();
+		}
+		return resultBean;
+	}
+
 
 }
