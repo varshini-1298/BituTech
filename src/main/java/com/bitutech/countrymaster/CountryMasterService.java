@@ -10,4 +10,6 @@ public interface CountryMasterService {
 
 	public List<CountryMasterBean> getCurrencyList() throws Exception;
 
+	public CountryMasterResultBean deleteCountryDtl(String countryCode) throws Exception;
+
 }

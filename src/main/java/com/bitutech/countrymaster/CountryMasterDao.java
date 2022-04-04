@@ -10,4 +10,6 @@ public interface CountryMasterDao {
 
 	List<CountryMasterBean> getCurrencyList()  throws Exception;
 
+	CountryMasterResultBean deleteCountryDtl(String countryCode) throws Exception;
+
 }
