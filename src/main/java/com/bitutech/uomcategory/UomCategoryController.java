@@ -49,11 +49,11 @@ public class UomCategoryController {
 		return objResultBean;
 	}
 	
-	@RequestMapping(value = "/edit")
-	public UomCategoryResultBean edit(@RequestBody UomCategoryBean bean) {
+	@RequestMapping(value = "/delete")
+	public UomCategoryResultBean delete(@RequestParam("uomCategory") String uomCategory) {
 		UomCategoryResultBean objResultBean = new UomCategoryResultBean();
 		try {
-			objResultBean = uomCategoryService.edit(bean);
+			objResultBean = uomCategoryService.delete(uomCategory);
 		}
 		catch(Exception e){
 			e.printStackTrace();

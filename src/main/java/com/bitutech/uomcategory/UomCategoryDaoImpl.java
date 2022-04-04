@@ -60,7 +60,7 @@ public class UomCategoryDaoImpl implements UomCategoryDao {
 	public UomCategoryResultBean update(UomCategoryBean bean) throws Exception {
 		UomCategoryResultBean resultBean = new UomCategoryResultBean();
 		try {
-Map<String, Object> uomCategoryMap = new HashMap<String, Object>();
+			Map<String, Object> uomCategoryMap = new HashMap<String, Object>();
 		    
 			uomCategoryMap.put("categoryName", bean.getCategoryName());
 			uomCategoryMap.put("categoryDesp", bean.getCategoryDesp());
@@ -69,19 +69,6 @@ Map<String, Object> uomCategoryMap = new HashMap<String, Object>();
 		
 		}
 		catch(Exception e){
-			e.printStackTrace();
-		}
-		return resultBean;
-	}
-
-	@Override
-	public UomCategoryResultBean edit(UomCategoryBean bean) throws Exception {
-		UomCategoryResultBean resultBean = new UomCategoryResultBean();
-		try {
-			
-
-		}
-		catch(Exception e) {
 			e.printStackTrace();
 		}
 		return resultBean;
@@ -101,6 +88,22 @@ Map<String, Object> uomCategoryMap = new HashMap<String, Object>();
 			e.printStackTrace();
 			resultBean.setSuccess(false);
 		}
+		return resultBean;
+	}
+
+	@Override
+	public UomCategoryResultBean delete(String uomCode) throws Exception {
+		UomCategoryResultBean resultBean = new UomCategoryResultBean();
+		try {
+			if(uomCode!=null) {
+				jdbcTemplate.update(UomCategoryQueryUtil.DELETE_UOM_CATEGORY,uomCode);
+			}
+			resultBean.setSuccess(true);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			resultBean.setSuccess(false);
+		}	
 		return resultBean;
 	}
 

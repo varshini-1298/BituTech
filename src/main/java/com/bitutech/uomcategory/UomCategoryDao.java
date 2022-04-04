@@ -8,7 +8,7 @@ public interface UomCategoryDao {
 
 	UomCategoryResultBean update(UomCategoryBean bean) throws Exception;
 
-	UomCategoryResultBean edit(UomCategoryBean bean) throws Exception;
+	UomCategoryResultBean delete(String bean) throws Exception;
 
 	UomCategoryResultBean getCode(String token) throws Exception;
 
