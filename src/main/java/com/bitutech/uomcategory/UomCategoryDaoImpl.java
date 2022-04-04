@@ -11,6 +11,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+
 @Repository
 public class UomCategoryDaoImpl implements UomCategoryDao {
 	
@@ -53,6 +54,54 @@ public class UomCategoryDaoImpl implements UomCategoryDao {
 			e.printStackTrace();
 		}
 		return uomCategoryBean;
+	}
+
+	@Override
+	public UomCategoryResultBean update(UomCategoryBean bean) throws Exception {
+		UomCategoryResultBean resultBean = new UomCategoryResultBean();
+		try {
+Map<String, Object> uomCategoryMap = new HashMap<String, Object>();
+		    
+			uomCategoryMap.put("categoryName", bean.getCategoryName());
+			uomCategoryMap.put("categoryDesp", bean.getCategoryDesp());
+			uomCategoryMap.put("uomCode", bean.getUomCode());
+			namedParameterJdbcTemplate.update(UomCategoryQueryUtil.UPDATE_UOM_CATEGORY,uomCategoryMap);
+		
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		return resultBean;
+	}
+
+	@Override
+	public UomCategoryResultBean edit(UomCategoryBean bean) throws Exception {
+		UomCategoryResultBean resultBean = new UomCategoryResultBean();
+		try {
+			
+
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return resultBean;
+	}
+	
+	// For Edit
+
+	@Override
+	public UomCategoryResultBean getCode(String bean) throws Exception {
+		UomCategoryResultBean resultBean = new UomCategoryResultBean();
+		resultBean.setSuccess(false);
+		try {
+			resultBean.setUomCategoryBean(jdbcTemplate.queryForObject(UomCategoryQueryUtil.SELECT_UOM_CATEGORY,new Object[] { bean }, new BeanPropertyRowMapper<UomCategoryBean>(UomCategoryBean.class)));
+			resultBean.setSuccess(true);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			resultBean.setSuccess(false);
+		}
+		return resultBean;
 	}
 
 

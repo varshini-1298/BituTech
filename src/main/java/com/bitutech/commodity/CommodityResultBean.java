@@ -28,12 +28,5 @@ public class CommodityResultBean extends BasicResultBean implements Serializable
 		this.commodityListDetails = commodityListDetails;
 	}
 
-
-	
-
-	
-
-
-	
 	
 }

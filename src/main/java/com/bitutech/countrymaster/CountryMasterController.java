@@ -5,8 +5,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bitutech.core.util.CustomException;
-
 @RestController
 @RequestMapping("/api/auth/app/countryMaster")
 public class CountryMasterController {
@@ -27,7 +25,7 @@ public class CountryMasterController {
 	
 	
 	@RequestMapping(value = "/getList")
-   	public CountryMasterResultBean getCustomerList() throws Exception {
+   	public CountryMasterResultBean getCountryList() throws Exception {
 		CountryMasterResultBean objResultBean = new CountryMasterResultBean();
 		objResultBean.setCountryMasterDetails(countryMasterService.getCountryList());
 		objResultBean.setSuccess(true);

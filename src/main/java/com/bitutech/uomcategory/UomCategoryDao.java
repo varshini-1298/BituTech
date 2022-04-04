@@ -6,6 +6,12 @@ public interface UomCategoryDao {
 
 	UomCategoryResultBean save(UomCategoryBean bean) throws Exception;
 
+	UomCategoryResultBean update(UomCategoryBean bean) throws Exception;
+
+	UomCategoryResultBean edit(UomCategoryBean bean) throws Exception;
+
+	UomCategoryResultBean getCode(String token) throws Exception;
+
 	List<UomCategoryBean> getUomList() throws Exception;
 
 }

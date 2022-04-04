@@ -21,6 +21,24 @@ public class UomCategoryServiceImpl implements UomCategoryService {
 		return uomCategoryDao.getUomList();
 	}
 
+	@Override
+	public UomCategoryResultBean update(UomCategoryBean bean) throws Exception {
+		// TODO Auto-generated method stub
+		return uomCategoryDao.update(bean);
+	}
+
+	@Override
+	public UomCategoryResultBean edit(UomCategoryBean bean) throws Exception {
+		// TODO Auto-generated method stub
+		return uomCategoryDao.edit(bean);
+	}
+
+	@Override
+	public UomCategoryResultBean getCode(String token) throws Exception {
+		// TODO Auto-generated method stub
+		return uomCategoryDao.getCode(token);
+	}
+
 	
 
 

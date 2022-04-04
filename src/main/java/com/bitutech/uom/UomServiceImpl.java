@@ -27,6 +27,12 @@ public class UomServiceImpl implements UomService {
 		return uomDao.getUomcateList();
 	}
 
+	@Override
+	public UomResultBean update(UomBean bean) throws Exception {
+		// TODO Auto-generated method stub
+		return uomDao.update(bean);
+	}
+
 	
 
 

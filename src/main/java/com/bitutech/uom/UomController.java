@@ -5,8 +5,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bitutech.core.util.CustomException;
-import com.bitutech.countrymaster.CountryMasterResultBean;
 
 @RestController
 @RequestMapping("/api/auth/app/uom")
@@ -20,7 +18,7 @@ public class UomController {
 		try {
 			objbean = uomService.save(bean);
 		}catch(Exception e){
-			e.printStackTrace();	
+			e.printStackTrace();
 		}
 		return objbean;
 		
@@ -42,4 +40,16 @@ public class UomController {
 		objResultBean.setSuccess(true);
    		return objResultBean;
    	}
+	
+	@RequestMapping(value = "/update")
+	public UomResultBean update(@RequestBody UomBean bean) {
+		UomResultBean objResultbean = new UomResultBean();
+		try {
+			objResultbean = uomService.update(bean);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return objResultbean;
+	}
 }

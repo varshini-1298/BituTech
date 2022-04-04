@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
 import com.bitutech.countrymaster.CountryMasterBean;
@@ -22,6 +23,7 @@ public class UomDaoImpl implements UomDao {
 	
 	@Autowired
 	NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+
 
 	@Override
 	public UomResultBean save(UomBean bean) throws Exception {
@@ -52,6 +54,7 @@ public class UomDaoImpl implements UomDao {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+		
 		return uomCategoryBean;
 	}
 
@@ -64,7 +67,20 @@ public class UomDaoImpl implements UomDao {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+		
 		return objUomMasterBean;
+	}
+
+	@Override
+	public UomResultBean update(UomBean bean) throws Exception {
+		UomResultBean resultBean = new UomResultBean();
+		try {
+			jdbcTemplate.update(UomQueryUtil.UPDATE_UOM,bean.getUnitMeasure(),bean.getDescription());		//check this
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return resultBean;
 	}
 
 

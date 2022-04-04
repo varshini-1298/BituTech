@@ -19,6 +19,7 @@ public class CountryMasterDaoImpl implements CountryMasterDao {
 	
 	@Autowired
 	NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+	
 	@Override
 	public CountryMasterResultBean save(CountryMasterBean bean) throws Exception {
 		CountryMasterResultBean resultBean = new CountryMasterResultBean();
