@@ -2,17 +2,13 @@ package com.bitutech.boo;
 
 public class BillOfOperationBean {
 	
-	private String booNo;
+	private Integer booNo;
 	private String bomRef;
 	private String productName;
 	private String date;
 	
-	public String getBooNo() {
-		return booNo;
-	}
-	public void setBooNo(String booNo) {
-		this.booNo = booNo;
-	}
+
+
 	public String getBomRef() {
 		return bomRef;
 	}
@@ -30,6 +26,12 @@ public class BillOfOperationBean {
 	}
 	public void setDate(String date) {
 		this.date = date;
+	}
+	public Integer getBooNo() {
+		return booNo;
+	}
+	public void setBooNo(Integer booNo) {
+		this.booNo = booNo;
 	}
 	
 	

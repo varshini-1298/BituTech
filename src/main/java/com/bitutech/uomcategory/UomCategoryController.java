@@ -35,6 +35,7 @@ public class UomCategoryController {
    		return objResultBean;
    	}
 	
+	// Edit
 	@GetMapping(value = "/getCode")
 	public UomCategoryResultBean getCode(@RequestParam("uomCategory") String uomCategory) {
 		UomCategoryResultBean objResultBean = new UomCategoryResultBean();

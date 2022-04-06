@@ -10,7 +10,9 @@ public class BillOfOperationResultBean extends BasicResultBean implements Serial
 	
 	public boolean Success;
 	
-	private List<BillOfOperationBean> designationMasterDetails;
+	private List<BillOfOperationBean> billOfOperationDetails;
+	
+	private BillOfOperationBean billOfOperationBean;
 	
 	public boolean isSuccess() {
 		return Success;
@@ -20,14 +22,24 @@ public class BillOfOperationResultBean extends BasicResultBean implements Serial
 		Success = success;
 	}
 
-	public List<BillOfOperationBean> getDesignationMasterDetails() {
-		return designationMasterDetails;
+	public List<BillOfOperationBean> getBillOfOperationDetails() {
+		return billOfOperationDetails;
 	}
 
 	
-	public void setDesignationMasterDetails(List<BillOfOperationBean> designationMasterDetails) {
-		this.designationMasterDetails = designationMasterDetails;
+	public void setBillOfOperationDetails(List<BillOfOperationBean> billOfOperationDetails) {
+		this.billOfOperationDetails = billOfOperationDetails;
 	}
+
+	public BillOfOperationBean getBillOfOperationBean() {
+		return billOfOperationBean;
+	}
+
+	public void setBillOfOperationBean(BillOfOperationBean billOfOperationBean) {
+		this.billOfOperationBean = billOfOperationBean;
+	}
+
+	
 
 
 	

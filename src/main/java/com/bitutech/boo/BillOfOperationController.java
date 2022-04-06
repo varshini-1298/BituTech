@@ -1,11 +1,13 @@
 package com.bitutech.boo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bitutech.core.util.CustomException;
+
 
 @RestController
 @RequestMapping("/api/auth/app/billOfOperation")
@@ -14,8 +16,8 @@ public class BillOfOperationController {
 	BillOfOperationService billOfOperationService;
 	
 	@RequestMapping(value="/save")
-	public BillOfOperationBean save(@RequestBody BillOfOperationBean bean) {
-		BillOfOperationBean objbean = new BillOfOperationBean();
+	public BillOfOperationResultBean save(@RequestBody BillOfOperationBean bean) {
+		BillOfOperationResultBean objbean = new BillOfOperationResultBean();
 		try {
 			objbean = billOfOperationService.save(bean);
 		}catch(Exception e){
@@ -29,9 +31,47 @@ public class BillOfOperationController {
 	@RequestMapping(value = "/getList")
    	public BillOfOperationResultBean getBooList() throws Exception {
 		BillOfOperationResultBean objResultBean = new BillOfOperationResultBean();
-		objResultBean.setDesignationMasterDetails(billOfOperationService.getBooList());
+		objResultBean.setBillOfOperationDetails(billOfOperationService.getBooList());
 		objResultBean.setSuccess(true);
    		return objResultBean;
    	}
+	
+	@GetMapping(value="edit")
+	public BillOfOperationResultBean edit(@RequestParam("billOfOperation") Integer billOfOperation) {
+		BillOfOperationResultBean objResultBean = new BillOfOperationResultBean();
+		try {
+			objResultBean = billOfOperationService.edit(billOfOperation);
+		
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		return objResultBean;
+	}
+	
+	@RequestMapping(value = "/update")
+	public BillOfOperationResultBean update(@RequestBody BillOfOperationBean bean) {
+		BillOfOperationResultBean objResultBean = new BillOfOperationResultBean();
+		try {
+			objResultBean = billOfOperationService.update(bean);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return objResultBean;
+	}
+	
+	@RequestMapping(value = "/delete")
+	public BillOfOperationResultBean delete(@RequestParam("billOfOperation") Integer billOfOperation) {
+		BillOfOperationResultBean objResultBean = new BillOfOperationResultBean();
+		try {
+			objResultBean = billOfOperationService.delete(billOfOperation);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		return objResultBean;
+	}
+	
 
 }
