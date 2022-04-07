@@ -21,6 +21,24 @@ public class DesignationMasterServiceImpl implements DesignationMasterService {
 		return designationMasterDao.getDesignationList();
 	}
 
+	@Override
+	public DesignationMasterResultBean edit(String bean) throws Exception {
+		// TODO Auto-generated method stub
+		return designationMasterDao.edit(bean);
+	}
+
+	@Override
+	public DesignationMasterResultBean update(DesignationMasterBean bean) throws Exception {
+		// TODO Auto-generated method stub
+		return designationMasterDao.update(bean);
+	}
+
+	@Override
+	public DesignationMasterResultBean delete(String bean) throws Exception {
+		// TODO Auto-generated method stub
+		return designationMasterDao.delete(bean);
+	}
+
 	
 
 

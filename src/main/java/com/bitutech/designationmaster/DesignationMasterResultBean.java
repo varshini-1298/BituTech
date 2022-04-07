@@ -12,6 +12,8 @@ public class DesignationMasterResultBean extends BasicResultBean implements Seri
 	
 	private List<DesignationMasterBean> designationMasterDetails;
 	
+	private DesignationMasterBean designationMasterBean;
+	
 	public boolean isSuccess() {
 		return Success;
 	}
@@ -23,13 +25,18 @@ public class DesignationMasterResultBean extends BasicResultBean implements Seri
 	public List<DesignationMasterBean> getDesignationMasterDetails() {
 		return designationMasterDetails;
 	}
-
 	
 	public void setDesignationMasterDetails(List<DesignationMasterBean> designationMasterDetails) {
 		this.designationMasterDetails = designationMasterDetails;
 	}
 
+	public DesignationMasterBean getDesignationMasterBean() {
+		return designationMasterBean;
+	}
 
-	
+	public void setDesignationMasterBean(DesignationMasterBean designationMasterBean) {
+		this.designationMasterBean = designationMasterBean;
+	}
+
 	
 }

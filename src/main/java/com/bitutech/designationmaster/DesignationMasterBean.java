@@ -7,7 +7,6 @@ public class DesignationMasterBean {
 	private boolean active;
 	private String desgnCode;
 	
-	
 	public String getDesgnCode() {
 		return desgnCode;
 	}
