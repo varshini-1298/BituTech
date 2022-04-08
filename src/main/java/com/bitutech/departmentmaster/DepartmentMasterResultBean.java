@@ -12,6 +12,8 @@ public class DepartmentMasterResultBean extends BasicResultBean implements Seria
 	
 	private List<DepartmentMasterBean> departmentMasterDetails;
 	
+	private DepartmentMasterBean departmentMasterBean;
+	
 	public boolean isSuccess() {
 		return Success;
 	}
@@ -29,7 +31,12 @@ public class DepartmentMasterResultBean extends BasicResultBean implements Seria
 		this.departmentMasterDetails = departmentMasterDetails;
 	}
 
+	public DepartmentMasterBean getDepartmentMasterBean() {
+		return departmentMasterBean;
+	}
 
-	
+	public void setDepartmentMasterBean(DepartmentMasterBean departmentMasterBean) {
+		this.departmentMasterBean = departmentMasterBean;
+	}
 	
 }

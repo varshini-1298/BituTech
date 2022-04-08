@@ -11,6 +11,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+
 @Repository
 public class DepartmentMasterDaoImpl implements DepartmentMasterDao {
 	
@@ -54,5 +55,52 @@ public class DepartmentMasterDaoImpl implements DepartmentMasterDao {
 		return objCustomerMasterBean;
 	}
 
+	@Override
+	public DepartmentMasterResultBean edit(String bean) throws Exception {
+		DepartmentMasterResultBean resultBean = new DepartmentMasterResultBean();
+		resultBean.setSuccess(false);
+		try {
+			resultBean.setDepartmentMasterBean(jdbcTemplate.queryForObject(DepartmentMasterQueryUtil.SELECT_DEPARTMENT_MASTER,new Object[] { bean }, new BeanPropertyRowMapper<DepartmentMasterBean>(DepartmentMasterBean.class)));
+			resultBean.setSuccess(true);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		return resultBean; 
+	}
+
+	@Override
+	public DepartmentMasterResultBean update(DepartmentMasterBean bean) throws Exception {
+		DepartmentMasterResultBean resultBean = new DepartmentMasterResultBean();
+		try {
+			Map<String, Object> departmentMasterMap = new HashMap<String, Object>();
+			departmentMasterMap.put("departmentName",bean.getDepartmentName());
+			departmentMasterMap.put("departmentHead", bean.getDepartmentHead());
+			departmentMasterMap.put("remarks", bean.getRemarks());
+			departmentMasterMap.put("deptCode", bean.getDeptCode());
+			namedParameterJdbcTemplate.update(DepartmentMasterQueryUtil.UPDATE_DEPARTMENT_MASTER,departmentMasterMap);
+
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return resultBean;
+	}
+
+	@Override
+	public DepartmentMasterResultBean delete(String deptCode) throws Exception {
+		DepartmentMasterResultBean resultBean = new DepartmentMasterResultBean();
+		try {
+			if(deptCode!=null) {
+				jdbcTemplate.update(DepartmentMasterQueryUtil.DELETE_DEPARTMENT_MASTER,deptCode);
+			}
+			resultBean.setSuccess(true);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			resultBean.setSuccess(false);
+		}	
+		return resultBean;
+	}
 
 }
