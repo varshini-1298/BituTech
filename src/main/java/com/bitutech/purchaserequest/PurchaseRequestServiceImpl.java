@@ -8,27 +8,44 @@ import org.springframework.stereotype.Service;
 @Service
 public class PurchaseRequestServiceImpl implements PurchaseRequestService {
 	@Autowired
-	PurchaseRequestDao uomDao;
-
+	PurchaseRequestDao purchaseRequestDao;
+	
 	@Override
 	public PurchaseRequestResultBean save(PurchaseRequestBean bean) throws Exception {
-		return uomDao.save(bean);
+		return purchaseRequestDao.save(bean);
 	}
-
+	
 	@Override
 	public List<PurchaseRequestBean> getPurchaseRequestList() throws Exception {
 		// TODO Auto-generated method stub
-		return uomDao.getPurchaseRequestList();
+				return purchaseRequestDao.getPurchaseRequestList();
+				
+			
+	}
+	
+//	@Override
+//	public List<PurchaseRequestBean> getUomcategoryList() throws Exception {
+//		// TODO Auto-generated method stub
+//				return purchaseRequestDao.getPurchaseRequestList();
+//	}
+	
+	@Override
+	public PurchaseRequestResultBean edit(Integer bean) throws Exception {
+		// TODO Auto-generated method stub
+		return  purchaseRequestDao.edit(bean);
 	}
 
 	@Override
-	public List<PurchaseRequestBean> getUomcateList() throws Exception {
+	public PurchaseRequestResultBean update( PurchaseRequestBean bean) throws Exception {
 		// TODO Auto-generated method stub
-		return uomDao.getUomcateList();
+		return purchaseRequestDao.update(bean);
 	}
 
-	
+	@Override
+	public PurchaseRequestResultBean delete(Integer bean) throws Exception {
+		// TODO Auto-generated method stub
+		return purchaseRequestDao.delete(bean);
+	}
 
 
-	
 }
