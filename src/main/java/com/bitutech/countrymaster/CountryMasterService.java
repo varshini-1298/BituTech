@@ -12,4 +12,6 @@ public interface CountryMasterService {
 
 	public CountryMasterResultBean deleteCountryDtl(String countryCode) throws Exception;
 
+	CountryMasterResultBean getCode(String countryMaster) throws Exception;
+
 }
