@@ -1,29 +1,61 @@
 package com.bitutech.itemproperties;
 
+
 public class ItemPropertiesBean {
 	
-	private String unitMeasure;
-	private String uomCategory;
-	private String description;
+	private Integer propertyType;
+	private Integer type;
+	private String propertyName;
+	private Integer length;
+	private Integer value;
+	private String defaultValue;
+	private boolean active;
 	
-	public String getUnitMeasure() {
-		return unitMeasure;
+	
+	public Integer getPropertyType() {
+		return propertyType;
 	}
-	public void setUnitMeasure(String unitMeasure) {
-		this.unitMeasure = unitMeasure;
+	public void setPropertyType(Integer propertyType) {
+		this.propertyType = propertyType;
 	}
-	public String getUomCategory() {
-		return uomCategory;
+	public Integer getType() {
+		return type;
 	}
-	public void setUomCategory(String uomCategory) {
-		this.uomCategory = uomCategory;
+	public void setType(Integer type) {
+		this.type = type;
 	}
-	public String getDescription() {
-		return description;
+	public String getPropertyName() {
+		return propertyName;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+	public void setPropertyName(String propertyName) {
+		this.propertyName = propertyName;
 	}
+	public Integer getLength() {
+		return length;
+	}
+	public void setLength(Integer length) {
+		this.length = length;
+	}
+	public Integer getValue() {
+		return value;
+	}
+	public void setValue(Integer value) {
+		this.value = value;
+	}
+	public String getDefaultValue() {
+		return defaultValue;
+	}
+	public void setDefaultValue(String defaultValue) {
+		this.defaultValue = defaultValue;
+	}
+	public boolean isActive() {
+		return active;
+	}
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+	
+	
 	
 	
 	
