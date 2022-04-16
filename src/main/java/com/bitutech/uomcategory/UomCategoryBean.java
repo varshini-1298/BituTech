@@ -6,6 +6,7 @@ public class UomCategoryBean {
 	private String categoryDesp;
 	private boolean active;
 	private String uomCode;
+	private String id;
 	
 	public String getUomCode() {
 		return uomCode;
@@ -30,6 +31,12 @@ public class UomCategoryBean {
 	}
 	public void setActive(boolean active) {
 		this.active = active;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
 	}
 	
 	
