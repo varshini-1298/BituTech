@@ -10,8 +10,19 @@ public class CustomerMasterResultBean extends BasicResultBean implements Seriali
 	
 	public boolean Success;
 	
+	private CustomerMasterBean customerMasterBean;
+	
 	private List<CustomerMasterBean> customerMasterDetails;
 	
+	
+	public final CustomerMasterBean getCustomerMasterBean() {
+		return customerMasterBean;
+	}
+
+	public final void setCustomerMasterBean(CustomerMasterBean customerMasterBean) {
+		this.customerMasterBean = customerMasterBean;
+	}
+
 	public boolean isSuccess() {
 		return Success;
 	}
