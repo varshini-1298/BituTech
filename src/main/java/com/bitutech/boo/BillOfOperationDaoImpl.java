@@ -26,17 +26,8 @@ public class BillOfOperationDaoImpl implements BillOfOperationDao {
 	public BillOfOperationResultBean save(BillOfOperationBean Bean) throws Exception {
 		BillOfOperationResultBean resultBean = new BillOfOperationResultBean();
 		try {
-			/*
-			 * Map<String, Object> booMap = new HashMap<String, Object>();
-			 * 
-			 * booMap.put("booNo",bean.getBooNo()); booMap.put("bomRef",bean.getBomRef());
-			 * booMap.put("productName",bean.getProductName());
-			 * booMap.put("date",bean.getDate());
-			 */
-		/*	namedParameterJdbcTemplate.update(BillOfOperationQueryUtil.INSERT_BILL_OF_OPERATION_DETAIL,booMap);
-			   resultBean.setSuccess(true);*/
 			   
-jdbcTemplate.queryForObject(BillOfOperationQueryUtil.INSERT_BILL_OF_OPERATION_DETAIL,new BeanPropertyRowMapper<BillOfOperationBean>(BillOfOperationBean.class), new Object[]
+jdbcTemplate.queryForObject(BillOfOperationQueryUtil.INSERT_BILL_OF_OPERATION,new BeanPropertyRowMapper<BillOfOperationBean>(BillOfOperationBean.class), new Object[]
 		{ Bean.getBooNo(),Bean.getBomRef(),Bean.getProductName(),Bean.getDate()});
 	
 resultBean.setSuccess(true);
@@ -66,7 +57,7 @@ resultBean.setSuccess(true);
 		BillOfOperationResultBean resultBean = new BillOfOperationResultBean();
 		resultBean.setSuccess(false);
 		try {
-			resultBean.setBillOfOperationBean(jdbcTemplate.queryForObject(BillOfOperationQueryUtil.SELECT_BILL_OF_OPERATION_DETAIL,new Object[] { bean }, new BeanPropertyRowMapper<BillOfOperationBean>(BillOfOperationBean.class)));
+			resultBean.setBillOfOperationBean(jdbcTemplate.queryForObject(BillOfOperationQueryUtil.SELECT_BILL_OF_OPERATION,new Object[] { bean }, new BeanPropertyRowMapper<BillOfOperationBean>(BillOfOperationBean.class)));
 			resultBean.setSuccess(true);
 		}
 		catch(Exception e) {
@@ -81,16 +72,9 @@ resultBean.setSuccess(true);
 	public BillOfOperationResultBean update(BillOfOperationBean Bean) throws Exception {
 		BillOfOperationResultBean resultBean = new BillOfOperationResultBean();
 		try {
-//			Map<String, Object> booMap = new HashMap<String, Object>();
-//		    
-//			booMap.put("booNo", bean.getBooNo());
-//			booMap.put("bomRef", bean.getBomRef());
-//			booMap.put("productName", bean.getProductName());
-//			booMap.put("date", bean.getDate());
-//			namedParameterJdbcTemplate.update(BillOfOperationQueryUtil.UPDATE_BILL_OF_OPERATION_DETAIL,booMap);
-//		
-			jdbcTemplate.queryForObject(BillOfOperationQueryUtil.UPDATE_BILL_OF_OPERATION_DETAIL,new BeanPropertyRowMapper<BillOfOperationBean>(BillOfOperationBean.class), new Object[]
-					{ Bean.getBomRef(),Bean.getProductName(),Bean.getDate(),Bean.getBooNo()});
+		
+			jdbcTemplate.queryForObject(BillOfOperationQueryUtil.UPDATE_BILL_OF_OPERATION,new BeanPropertyRowMapper<BillOfOperationBean>(BillOfOperationBean.class), new Object[]
+					{Bean.getBooNo(), Bean.getBomRef(),Bean.getProductName(),Bean.getDate(),Bean.getIdNo()});
 				
 			resultBean.setSuccess(true);
 			
@@ -103,11 +87,11 @@ resultBean.setSuccess(true);
 
 	//delete
 	@Override
-	public BillOfOperationResultBean delete(Integer booNo) throws Exception {
+	public BillOfOperationResultBean delete(Integer idNo) throws Exception {
 		BillOfOperationResultBean resultBean = new BillOfOperationResultBean();
 		try {
-			if(booNo!=null) {
-				jdbcTemplate.update(BillOfOperationQueryUtil.DELETE_BILL_OF_OPERATION_DETAIL,booNo);
+			if(idNo!=null) {
+				jdbcTemplate.update(BillOfOperationQueryUtil.DELETE_BILL_OF_OPERATION,idNo);
 			}
 			resultBean.setSuccess(true);
 		}

@@ -12,6 +12,8 @@ public class ItemPropertiesResultBean extends BasicResultBean implements Seriali
 	
 	private List<ItemPropertiesBean> itemPropertyDetails;
 	
+	private ItemPropertiesBean itemPropertiesBean;
+	
 	public boolean isSuccess() {
 		return Success;
 	}
@@ -26,6 +28,14 @@ public class ItemPropertiesResultBean extends BasicResultBean implements Seriali
 
 	public void setItemPropertyDetails(List<ItemPropertiesBean> itemPropertyDetails) {
 		this.itemPropertyDetails = itemPropertyDetails;
+	}
+
+	public ItemPropertiesBean getItemPropertiesBean() {
+		return itemPropertiesBean;
+	}
+
+	public void setItemPropertiesBean(ItemPropertiesBean itemPropertiesBean) {
+		this.itemPropertiesBean = itemPropertiesBean;
 	}
 
 	
