@@ -3,6 +3,7 @@ package com.bitutech.uom;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -23,7 +24,6 @@ public class UomController {
 		return objbean;
 		
 	}
-	
 	
 	@RequestMapping(value = "/getList")
    	public UomResultBean getUomList() throws Exception {
@@ -46,6 +46,30 @@ public class UomController {
 		UomResultBean objResultbean = new UomResultBean();
 		try {
 			objResultbean = uomService.update(bean);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return objResultbean;
+	}
+	
+	@RequestMapping(value = "/edit")
+	public UomResultBean edit(@RequestParam("manageUom") Integer manageUom) {
+		UomResultBean objResultbean = new UomResultBean();
+		try {
+			objResultbean = uomService.edit(manageUom);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return objResultbean;
+	}
+	
+	@RequestMapping(value = "/delete")
+	public UomResultBean delete(@RequestParam("manageUom") Integer manageUom) {
+		UomResultBean objResultbean = new UomResultBean();
+		try {
+			objResultbean = uomService.delete(manageUom);
 		}
 		catch(Exception e) {
 			e.printStackTrace();

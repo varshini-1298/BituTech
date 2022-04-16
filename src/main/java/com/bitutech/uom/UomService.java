@@ -8,6 +8,10 @@ public interface UomService {
 	
 	UomResultBean update(UomBean bean) throws Exception;
 
+	UomResultBean edit(Integer bean) throws Exception;
+
+	UomResultBean delete(Integer bean) throws Exception;
+
 	public List<UomBean> getUomList() throws Exception;
 
 	public List<UomBean> getUomcateList() throws Exception;
