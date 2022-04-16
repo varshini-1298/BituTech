@@ -14,7 +14,7 @@ public class WorkOrderController {
 	WorkOrderService workOrderService;
 	
 	@RequestMapping(value="/save")
-	public WorkOrderResultBean save(@RequestBody WorkOrderBean bean) {
+	public WorkOrderResultBean save(@RequestBody WorkOrderHdrObjBean bean) {
 		WorkOrderResultBean objbean = new WorkOrderResultBean();
 		try {
 			objbean = workOrderService.save(bean);
@@ -34,4 +34,22 @@ public class WorkOrderController {
    		return objResultBean;
    	}
 
+	
+	@RequestMapping(value = "/getWorkOrderNumber")
+   	public WorkOrderResultBean getWorkOrderNumber() throws Exception {
+		WorkOrderResultBean objResultBean = new WorkOrderResultBean();
+		objResultBean = workOrderService.getWorkOrderNumber();
+		objResultBean.setSuccess(true);
+   		return objResultBean;
+   	}
+	
+	@RequestMapping(value = "/getSalesOrderNoList")
+   	public WorkOrderResultBean getSalesOrderNoList() throws Exception {
+   		return workOrderService.getSalesOrderNoList();
+   	}
+	
+	@RequestMapping(value = "/getUomList")
+   	public WorkOrderResultBean getUomList() throws Exception {
+   		return workOrderService.getUomList();
+   	}
 }

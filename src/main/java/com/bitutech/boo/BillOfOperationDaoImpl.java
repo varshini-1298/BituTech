@@ -99,7 +99,8 @@ resultBean.setSuccess(true);
 			e.printStackTrace();
 			resultBean.setSuccess(false);
 		}	
-		return resultBean;	}
+		return resultBean;	
+		}
 
 
 }
