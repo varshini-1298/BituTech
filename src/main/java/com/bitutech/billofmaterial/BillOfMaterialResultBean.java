@@ -1,4 +1,4 @@
-package com.bitutech.workorder;
+package com.bitutech.billofmaterial;
 
 import java.io.Serializable;
 import java.util.List;
@@ -6,18 +6,16 @@ import java.util.List;
 import com.bitutech.core.util.BasicResultBean;
 import com.bitutech.core.util.DropDownList;
 
-public class WorkOrderResultBean extends BasicResultBean implements Serializable {
+public class BillOfMaterialResultBean extends BasicResultBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	public boolean Success;
 	
-	private List<WorkOrderHdrObjBean> workOrderDetails;
+	private List<BillOfMaterialHdrObjBean> bomDetails;
 	
 	private String workOrderNumber;
 	
 	private List<DropDownList> workOrderNoList;
-	
-	private List<DropDownList> uomList;
 	
 	
 	
@@ -37,14 +35,6 @@ public class WorkOrderResultBean extends BasicResultBean implements Serializable
 		Success = success;
 	}
 
-	public List<WorkOrderHdrObjBean> getWorkOrderDetails() {
-		return workOrderDetails;
-	}
-
-	public void setWorkOrderDetails(List<WorkOrderHdrObjBean> workOrderDetails) {
-		this.workOrderDetails = workOrderDetails;
-	}
-
 	public List<DropDownList> getWorkOrderNoList() {
 		return workOrderNoList;
 	}
@@ -53,12 +43,12 @@ public class WorkOrderResultBean extends BasicResultBean implements Serializable
 		this.workOrderNoList = workOrderNoList;
 	}
 
-	public List<DropDownList> getUomList() {
-		return uomList;
+	public List<BillOfMaterialHdrObjBean> getBomDetails() {
+		return bomDetails;
 	}
 
-	public void setUomList(List<DropDownList> uomList) {
-		this.uomList = uomList;
+	public void setBomDetails(List<BillOfMaterialHdrObjBean> bomDetails) {
+		this.bomDetails = bomDetails;
 	}
 
 

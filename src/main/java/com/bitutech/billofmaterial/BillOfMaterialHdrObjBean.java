@@ -1,12 +1,18 @@
-package com.bitutech.workorder;
+package com.bitutech.billofmaterial;
 
-public class WorkOrderBean {
+import java.util.List;
+
+public class BillOfMaterialHdrObjBean {
 	
 	private String workorderNo;
 	private String date;
 	private String bomNo;
 	private String booNo;
 	private String customerOrderNo;
+	
+	private List<BillOfMaterialDtlObjBean> workOrderDtlObjBean;
+	
+	
 	public String getWorkorderNo() {
 		return workorderNo;
 	}
@@ -36,6 +42,12 @@ public class WorkOrderBean {
 	}
 	public void setCustomerOrderNo(String customerOrderNo) {
 		this.customerOrderNo = customerOrderNo;
+	}
+	public List<BillOfMaterialDtlObjBean> getWorkOrderDtlObjBean() {
+		return workOrderDtlObjBean;
+	}
+	public void setWorkOrderDtlObjBean(List<BillOfMaterialDtlObjBean> workOrderDtlObjBean) {
+		this.workOrderDtlObjBean = workOrderDtlObjBean;
 	}
 	
 	
