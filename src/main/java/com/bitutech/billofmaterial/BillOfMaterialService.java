@@ -12,5 +12,7 @@ public interface BillOfMaterialService {
 	
 	BillOfMaterialResultBean getWorkOrderList() throws Exception;
 	
+	BillOfMaterialResultBean getBomNumber() throws Exception;
+	
 	
 }

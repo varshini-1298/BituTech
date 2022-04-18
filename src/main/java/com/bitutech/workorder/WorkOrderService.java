@@ -15,4 +15,6 @@ public interface WorkOrderService {
 	WorkOrderResultBean getSalesOrderNoList() throws Exception;
 	
 	WorkOrderResultBean getUomList() throws Exception;
+	
+	WorkOrderResultBean getItemList() throws Exception;
 }

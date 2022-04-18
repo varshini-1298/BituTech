@@ -13,19 +13,11 @@ public class BillOfMaterialResultBean extends BasicResultBean implements Seriali
 	
 	private List<BillOfMaterialHdrObjBean> bomDetails;
 	
-	private String workOrderNumber;
+	private String bomNumber;
 	
 	private List<DropDownList> workOrderNoList;
 	
 	
-	
-	public String getWorkOrderNumber() {
-		return workOrderNumber;
-	}
-
-	public void setWorkOrderNumber(String workOrderNumber) {
-		this.workOrderNumber = workOrderNumber;
-	}
 
 	public boolean isSuccess() {
 		return Success;
@@ -49,6 +41,14 @@ public class BillOfMaterialResultBean extends BasicResultBean implements Seriali
 
 	public void setBomDetails(List<BillOfMaterialHdrObjBean> bomDetails) {
 		this.bomDetails = bomDetails;
+	}
+
+	public String getBomNumber() {
+		return bomNumber;
+	}
+
+	public void setBomNumber(String bomNumber) {
+		this.bomNumber = bomNumber;
 	}
 
 

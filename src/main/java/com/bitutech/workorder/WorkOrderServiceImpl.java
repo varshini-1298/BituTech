@@ -41,6 +41,12 @@ public class WorkOrderServiceImpl implements WorkOrderService {
 		return workOrderDao.getUomList();
 	}
 
+	@Override
+	public WorkOrderResultBean getItemList() throws Exception {
+		// TODO Auto-generated method stub
+		return workOrderDao.getItemList();
+	}
+
 	
 
 

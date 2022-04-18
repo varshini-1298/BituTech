@@ -7,7 +7,7 @@ public class WorkOrderHdrObjBean {
 	private String workorderNo;
 	private String workorderDate;
 	private String salesOrderNo;
-	
+	private List<WorkOrderDtlBean> workOrderDtlObjBean;
 	
 	
 	public String getWorkorderDate() {
@@ -22,7 +22,6 @@ public class WorkOrderHdrObjBean {
 	public void setSalesOrderNo(String salesOrderNo) {
 		this.salesOrderNo = salesOrderNo;
 	}
-	private List<WorkOrderDtlBean> workOrderDtlObjBean;
 	
 	
 	public String getWorkorderNo() {

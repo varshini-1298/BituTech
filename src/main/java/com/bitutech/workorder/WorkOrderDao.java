@@ -15,4 +15,6 @@ public interface WorkOrderDao {
 	WorkOrderResultBean getSalesOrderNoList() throws Exception;
 	
 	WorkOrderResultBean getUomList() throws Exception;
+	
+	WorkOrderResultBean getItemList() throws Exception;
 }

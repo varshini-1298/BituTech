@@ -25,6 +25,7 @@ public class WorkOrderDaoImpl implements WorkOrderDao {
 	@Override
 	public WorkOrderResultBean save(WorkOrderHdrObjBean bean) throws Exception {
 		WorkOrderResultBean resultBean = new WorkOrderResultBean();
+		resultBean.setSuccess(false);
 		try {
 			Map<String, Object> workOrderMap = new HashMap<String, Object>();
 			
@@ -32,7 +33,24 @@ public class WorkOrderDaoImpl implements WorkOrderDao {
 			workOrderMap.put("workorderDate",bean.getWorkorderDate());
 			workOrderMap.put("salesOrderNo",bean.getSalesOrderNo());
 		    
-			namedParameterJdbcTemplate.update(WorkOrderQueryUtil.INSERT_WORKORDER_MASTER,workOrderMap);
+			String workorderNo = namedParameterJdbcTemplate.queryForObject(WorkOrderQueryUtil.INSERT_WORKORDER_HDR,workOrderMap,String.class);
+			
+			if(!workorderNo.isEmpty()) {
+				if(bean.getWorkOrderDtlObjBean().size()>0) {
+					for(WorkOrderDtlBean workOrderDtlBean: bean.getWorkOrderDtlObjBean() ) {
+						Map<String, Object> dtlMap = new HashMap<>();
+						dtlMap.put("workorderNo",workorderNo);
+						dtlMap.put("itemId",workOrderDtlBean.getItemId());
+						dtlMap.put("quantity",workOrderDtlBean.getQuantity());
+						dtlMap.put("uomId",workOrderDtlBean.getUomId());
+						dtlMap.put("deliveryDate",workOrderDtlBean.getDeliveryDate());
+						dtlMap.put("remarks",workOrderDtlBean.getRemarks());
+						namedParameterJdbcTemplate.update(WorkOrderQueryUtil.INSERT_WORKORDER_DTL,dtlMap);
+					}
+				}
+			}
+			
+			
 		   resultBean.setSuccess(true);
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -86,6 +104,21 @@ public class WorkOrderDaoImpl implements WorkOrderDao {
 		workOrderResultBean.setSuccess(false);
 		try {
 			workOrderResultBean.setUomList(jdbcTemplate.query(WorkOrderQueryUtil.getUomList, new BeanPropertyRowMapper<DropDownList>(DropDownList.class)));
+			workOrderResultBean.setSuccess(true);
+		}catch(Exception e) {
+			e.printStackTrace();
+			workOrderResultBean.setSuccess(false);
+		}
+		return workOrderResultBean;
+	}
+
+	@Override
+	public WorkOrderResultBean getItemList() throws Exception {
+		// TODO Auto-generated method stub
+		WorkOrderResultBean workOrderResultBean = new WorkOrderResultBean();
+		workOrderResultBean.setSuccess(false);
+		try {
+			workOrderResultBean.setItemList(jdbcTemplate.query(WorkOrderQueryUtil.getItemList, new BeanPropertyRowMapper<DropDownList>(DropDownList.class)));
 			workOrderResultBean.setSuccess(true);
 		}catch(Exception e) {
 			e.printStackTrace();

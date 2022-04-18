@@ -11,4 +11,7 @@ public interface BillOfMaterialDao {
 	BillOfMaterialResultBean getList() throws Exception;
 	
 	BillOfMaterialResultBean getWorkOrderList() throws Exception;
+	
+	BillOfMaterialResultBean getBomNumber() throws Exception;
+	
 }

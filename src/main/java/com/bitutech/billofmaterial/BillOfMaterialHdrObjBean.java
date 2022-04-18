@@ -4,13 +4,26 @@ import java.util.List;
 
 public class BillOfMaterialHdrObjBean {
 	
-	private String workorderNo;
-	private String date;
-	private String bomNo;
-	private String booNo;
-	private String customerOrderNo;
 	
-	private List<BillOfMaterialDtlObjBean> workOrderDtlObjBean;
+	private String bomNo;
+	private String workorderNo;
+	private String booNo;
+	private String date;
+	private List<BillOfMaterialDtlObjBean> billOfMaterialDtlObjBean;
+	
+	
+	public String getBooNo() {
+		return booNo;
+	}
+	public void setBooNo(String booNo) {
+		this.booNo = booNo;
+	}
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
+	}
 	
 	
 	public String getWorkorderNo() {
@@ -19,35 +32,19 @@ public class BillOfMaterialHdrObjBean {
 	public void setWorkorderNo(String workorderNo) {
 		this.workorderNo = workorderNo;
 	}
-	public String getDate() {
-		return date;
-	}
-	public void setDate(String date) {
-		this.date = date;
-	}
+	
 	public String getBomNo() {
 		return bomNo;
 	}
 	public void setBomNo(String bomNo) {
 		this.bomNo = bomNo;
 	}
-	public String getBooNo() {
-		return booNo;
+	
+	public List<BillOfMaterialDtlObjBean> getBillOfMaterialDtlObjBean() {
+		return billOfMaterialDtlObjBean;
 	}
-	public void setBooNo(String booNo) {
-		this.booNo = booNo;
-	}
-	public String getCustomerOrderNo() {
-		return customerOrderNo;
-	}
-	public void setCustomerOrderNo(String customerOrderNo) {
-		this.customerOrderNo = customerOrderNo;
-	}
-	public List<BillOfMaterialDtlObjBean> getWorkOrderDtlObjBean() {
-		return workOrderDtlObjBean;
-	}
-	public void setWorkOrderDtlObjBean(List<BillOfMaterialDtlObjBean> workOrderDtlObjBean) {
-		this.workOrderDtlObjBean = workOrderDtlObjBean;
+	public void setBillOfMaterialDtlObjBean(List<BillOfMaterialDtlObjBean> billOfMaterialDtlObjBean) {
+		this.billOfMaterialDtlObjBean = billOfMaterialDtlObjBean;
 	}
 	
 	

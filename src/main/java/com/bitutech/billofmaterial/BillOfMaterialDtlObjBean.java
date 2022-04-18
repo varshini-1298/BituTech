@@ -2,49 +2,61 @@ package com.bitutech.billofmaterial;
 
 public class BillOfMaterialDtlObjBean {
 	
-	private String workorderDtlObjId;
-	private String workorderHdrId;
-	private String productName;
-	private String productNo;
-	private String quantity;
-	private String uom;
-	private String deliveryDate;
-	private String remarks;
+	private String bomNo;
+	private String itemId;
+	private String uomId;
+	private Integer quantity;
+	
 	private String createdBy;
 	private String createdDate;
 	private String modifiedBy;
 	
 	
-	public String getProductNo() {
-		return productNo;
+	public String getBomNo() {
+		return bomNo;
 	}
-	public void setProductNo(String productNo) {
-		this.productNo = productNo;
+	public void setBomNo(String bomNo) {
+		this.bomNo = bomNo;
 	}
-	public String getQuantity() {
+	public String getItemId() {
+		return itemId;
+	}
+	public void setItemId(String itemId) {
+		this.itemId = itemId;
+	}
+	public Integer getQuantity() {
 		return quantity;
 	}
-	public void setQuantity(String quantity) {
+	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
-	public String getUom() {
-		return uom;
+	public String getCreatedBy() {
+		return createdBy;
 	}
-	public void setUom(String uom) {
-		this.uom = uom;
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
 	}
-	public String getDeliveryDate() {
-		return deliveryDate;
+	public String getCreatedDate() {
+		return createdDate;
 	}
-	public void setDeliveryDate(String deliveryDate) {
-		this.deliveryDate = deliveryDate;
+	public void setCreatedDate(String createdDate) {
+		this.createdDate = createdDate;
 	}
-	public String getRemarks() {
-		return remarks;
+	public String getModifiedBy() {
+		return modifiedBy;
 	}
-	public void setRemarks(String remarks) {
-		this.remarks = remarks;
+	public void setModifiedBy(String modifiedBy) {
+		this.modifiedBy = modifiedBy;
 	}
+	public String getUomId() {
+		return uomId;
+	}
+	public void setUomId(String uomId) {
+		this.uomId = uomId;
+	}
+	
+	
+	
 	
 	
 }

@@ -28,6 +28,12 @@ public class BillOfMaterialServiceImpl implements BillOfMaterialService {
 		return billOfMaterialDao.getWorkOrderList();
 	}
 
+	@Override
+	public BillOfMaterialResultBean getBomNumber() throws Exception {
+		// TODO Auto-generated method stub
+		return billOfMaterialDao.getBomNumber();
+	}
+
 	
 
 

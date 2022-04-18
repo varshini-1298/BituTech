@@ -52,4 +52,9 @@ public class WorkOrderController {
    	public WorkOrderResultBean getUomList() throws Exception {
    		return workOrderService.getUomList();
    	}
+	
+	@RequestMapping(value = "/getItemList")
+   	public WorkOrderResultBean getItemList() throws Exception {
+   		return workOrderService.getItemList();
+   	}
 }

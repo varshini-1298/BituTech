@@ -19,8 +19,17 @@ public class WorkOrderResultBean extends BasicResultBean implements Serializable
 	
 	private List<DropDownList> uomList;
 	
+	private List<DropDownList> itemList;
 	
 	
+	public List<DropDownList> getItemList() {
+		return itemList;
+	}
+
+	public void setItemList(List<DropDownList> itemList) {
+		this.itemList = itemList;
+	}
+
 	public String getWorkOrderNumber() {
 		return workOrderNumber;
 	}

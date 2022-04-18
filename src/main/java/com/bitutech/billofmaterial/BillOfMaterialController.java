@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bitutech.core.util.CustomException;
+import com.bitutech.workorder.WorkOrderResultBean;
 
 @RestController
 @RequestMapping("/api/auth/app/billofmaterial")
@@ -24,6 +25,12 @@ public class BillOfMaterialController {
 		return objbean;
 		
 	}
+	
+	@RequestMapping(value = "/getBomNumber")
+   	public BillOfMaterialResultBean getBomNumber() throws Exception {
+		BillOfMaterialResultBean objResultBean = bomService.getBomNumber();
+   		return objResultBean;
+   	}
 	
 	
 	@RequestMapping(value = "/getList")
