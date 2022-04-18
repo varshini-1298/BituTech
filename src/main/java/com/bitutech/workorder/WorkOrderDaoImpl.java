@@ -11,6 +11,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.bitutech.boo.BillOfOperationQueryUtil;
 import com.bitutech.core.util.DropDownList;
 
 @Repository
@@ -126,6 +127,77 @@ public class WorkOrderDaoImpl implements WorkOrderDao {
 		}
 		return workOrderResultBean;
 	}
+
+	@Override
+	public WorkOrderResultBean edit(String bean) throws Exception {
+		// TODO Auto-generated method stub
+		WorkOrderResultBean resultBean = new WorkOrderResultBean();
+		resultBean.setSuccess(false);
+		try {
+			resultBean.setWorkOrderHdrObjBean(jdbcTemplate.queryForObject(WorkOrderQueryUtil.SELECT_WORKORDER_HDR,new Object[] { bean }, new BeanPropertyRowMapper<WorkOrderHdrObjBean>(WorkOrderHdrObjBean.class)));
+			resultBean.setWorkOrderDtlBean(jdbcTemplate.query(WorkOrderQueryUtil.SELECT_WORKORDER_DTL,new Object[] { bean }, new BeanPropertyRowMapper<WorkOrderDtlBean>(WorkOrderDtlBean.class)));
+			
+			resultBean.setSuccess(true);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			resultBean.setSuccess(false);
+		}
+		return resultBean;
+	}
+
+	@Override
+	public WorkOrderResultBean update(WorkOrderHdrObjBean Bean) throws Exception {
+		// TODO Auto-generated method stub
+		WorkOrderResultBean resultBean = new WorkOrderResultBean();
+		try {
+			jdbcTemplate.queryForObject(WorkOrderQueryUtil.UPDATE_WORKORDER_HDR,new BeanPropertyRowMapper<WorkOrderHdrObjBean>(WorkOrderHdrObjBean.class),new Object[]
+					{Bean.getWorkorderDate(),Bean.getSalesOrderNo(),Bean.getWorkorderNo()});
+			
+			if(Bean.getWorkOrderDtlObjBean().size()>0) {
+				jdbcTemplate.update(WorkOrderQueryUtil.DELETE_WORKORDER_DTL,Bean.getWorkorderNo());
+				
+				
+				for(WorkOrderDtlBean workOrderDtlBean: Bean.getWorkOrderDtlObjBean() ) {
+					Map<String, Object> dtlMap = new HashMap<>();
+					dtlMap.put("workorderNo",Bean.getWorkorderNo());
+					dtlMap.put("itemId",workOrderDtlBean.getItemId());
+					dtlMap.put("quantity",workOrderDtlBean.getQuantity());
+					dtlMap.put("uomId",workOrderDtlBean.getUomId());
+					dtlMap.put("deliveryDate",workOrderDtlBean.getDeliveryDate());
+					dtlMap.put("remarks",workOrderDtlBean.getRemarks());
+					namedParameterJdbcTemplate.update(WorkOrderQueryUtil.INSERT_WORKORDER_DTL,dtlMap);
+				}
+				
+			}
+			
+			
+			resultBean.setSuccess(true);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return resultBean;
+	}
+
+	@Override
+	public WorkOrderResultBean delete(String workorderNo) throws Exception {
+		WorkOrderResultBean resultBean = new WorkOrderResultBean();
+		try {
+			if(workorderNo!=null) {
+				jdbcTemplate.update(WorkOrderQueryUtil.DELETE_BOM_HDR,workorderNo);
+				//jdbcTemplate.update(WorkOrderQueryUtil.DELETE_BOM_DTL,workorderNo);
+				jdbcTemplate.update(WorkOrderQueryUtil.DELETE_WORKORDER_DTL,workorderNo);
+				jdbcTemplate.update(WorkOrderQueryUtil.DELETE_WORKORDER_HDR,workorderNo);
+			}
+			resultBean.setSuccess(true);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			resultBean.setSuccess(false);
+		}	
+		return resultBean;	
+		}
 
 
 }

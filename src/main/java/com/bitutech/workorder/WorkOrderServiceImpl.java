@@ -47,6 +47,24 @@ public class WorkOrderServiceImpl implements WorkOrderService {
 		return workOrderDao.getItemList();
 	}
 
+	@Override
+	public WorkOrderResultBean edit(String bean) throws Exception {
+		// TODO Auto-generated method stub
+		return workOrderDao.edit(bean);
+	}
+
+	@Override
+	public WorkOrderResultBean update(WorkOrderHdrObjBean bean) throws Exception {
+		// TODO Auto-generated method stub
+		return workOrderDao.update(bean);
+	}
+
+	@Override
+	public WorkOrderResultBean delete(String bean) throws Exception {
+		// TODO Auto-generated method stub
+		return workOrderDao.delete(bean);
+	}
+
 	
 
 

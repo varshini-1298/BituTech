@@ -17,4 +17,11 @@ public interface WorkOrderDao {
 	WorkOrderResultBean getUomList() throws Exception;
 	
 	WorkOrderResultBean getItemList() throws Exception;
+	
+	WorkOrderResultBean edit(String bean) throws Exception;
+
+	WorkOrderResultBean update(WorkOrderHdrObjBean bean) throws Exception;
+
+	WorkOrderResultBean delete(String bean) throws Exception;
+
 }

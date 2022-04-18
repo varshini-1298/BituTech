@@ -13,6 +13,10 @@ public class WorkOrderResultBean extends BasicResultBean implements Serializable
 	
 	private List<WorkOrderHdrObjBean> workOrderDetails;
 	
+	private List<WorkOrderDtlBean> WorkOrderDtlBean;
+	
+	private WorkOrderHdrObjBean workOrderHdrObjBean;
+	
 	private String workOrderNumber;
 	
 	private List<DropDownList> workOrderNoList;
@@ -68,6 +72,22 @@ public class WorkOrderResultBean extends BasicResultBean implements Serializable
 
 	public void setUomList(List<DropDownList> uomList) {
 		this.uomList = uomList;
+	}
+
+	public WorkOrderHdrObjBean getWorkOrderHdrObjBean() {
+		return workOrderHdrObjBean;
+	}
+
+	public void setWorkOrderHdrObjBean(WorkOrderHdrObjBean workOrderHdrObjBean) {
+		this.workOrderHdrObjBean = workOrderHdrObjBean;
+	}
+
+	public List<WorkOrderDtlBean> getWorkOrderDtlBean() {
+		return WorkOrderDtlBean;
+	}
+
+	public void setWorkOrderDtlBean(List<WorkOrderDtlBean> workOrderDtlBean) {
+		WorkOrderDtlBean = workOrderDtlBean;
 	}
 
 
