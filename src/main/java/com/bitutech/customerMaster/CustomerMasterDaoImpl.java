@@ -12,6 +12,9 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.bitutech.employeeMaster.EmployeeMasterQueryUtil;
+import com.bitutech.uomcategory.UomCategoryBean;
+import com.bitutech.uomcategory.UomCategoryQueryUtil;
+import com.bitutech.uomcategory.UomCategoryResultBean;
 
 @Repository
 public class CustomerMasterDaoImpl implements CustomerMasterDao {
@@ -88,6 +91,55 @@ public class CustomerMasterDaoImpl implements CustomerMasterDao {
 			e.printStackTrace();
 		}
 		return objCustomerMasterBean;
+	}
+
+	@Override
+	public CustomerMasterResultBean getCode(String code) throws Exception {
+		CustomerMasterResultBean resultBean = new CustomerMasterResultBean();
+		resultBean.setSuccess(false);
+		try {
+			resultBean.setCustomerMasterBean(jdbcTemplate.queryForObject(CustomerMasterQueryUtil.SELECT_CUSTOMER_DTL,new Object[] { code }, new BeanPropertyRowMapper<CustomerMasterBean>(CustomerMasterBean.class)));
+			resultBean.setSuccess(true);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			resultBean.setSuccess(false);
+		}
+		return resultBean;
+	}
+
+	@Override
+	public CustomerMasterResultBean delete(String code) throws Exception {
+		CustomerMasterResultBean resultBean = new CustomerMasterResultBean();
+		try {
+			if(code!=null) {
+				jdbcTemplate.update(CustomerMasterQueryUtil.DELETE_CUSTOMER,code);
+			}
+			resultBean.setSuccess(true);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			resultBean.setSuccess(false);
+		}	
+		return resultBean;
+	}
+
+	@Override
+	public CustomerMasterResultBean update(CustomerMasterBean bean) throws Exception {
+		CustomerMasterResultBean resultBean = new CustomerMasterResultBean();
+		try {
+			Map<String, Object> uomCategoryMap = new HashMap<String, Object>();
+		    
+//			uomCategoryMap.put("categoryName", bean.getCategoryName());
+//			uomCategoryMap.put("categoryDesp", bean.getCategoryDesp());
+//			uomCategoryMap.put("uomCode", bean.getUomCode());
+//			namedParameterJdbcTemplate.update(CustomerMasterQueryUtil.UPDATE_UOM_CATEGORY,uomCategoryMap);
+//		
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		return resultBean;
 	}
 
 

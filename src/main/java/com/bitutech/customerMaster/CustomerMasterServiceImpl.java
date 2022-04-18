@@ -21,6 +21,24 @@ public class CustomerMasterServiceImpl implements CustomerMasterService {
 		return customerMasterDao.getCustomerList();
 	}
 
+	@Override
+	public CustomerMasterResultBean getCode(String code) throws Exception {
+		// TODO Auto-generated method stub
+		return customerMasterDao.getCode(code);
+	}
+
+	@Override
+	public CustomerMasterResultBean delete(String code) throws Exception {
+		// TODO Auto-generated method stub
+		return customerMasterDao.delete(code);
+	}
+
+	@Override
+	public CustomerMasterResultBean update(CustomerMasterBean bean) throws Exception {
+		// TODO Auto-generated method stub
+		return customerMasterDao.update(bean);
+	}
+
 	
 
 

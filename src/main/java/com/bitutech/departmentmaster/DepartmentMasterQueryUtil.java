@@ -9,5 +9,6 @@ public class DepartmentMasterQueryUtil {
 	public static final String UPDATE_DEPARTMENT_MASTER = "update department set dept_name=:departmentName,dept_desc=:remarks where dept_code=:deptCode";
 	public static final String SELECT_DEPARTMENT_MASTER = "select dept_code as deptCode,dept_name as departmentName,dept_head_code as departmentHead,dept_desc as remarks from department where dept_code=?";
 	public static final String DELETE_DEPARTMENT_MASTER = "delete from department where dept_code=?";
+	public static final String DELETE_COMMODITY_MASTER = null;
 
 }

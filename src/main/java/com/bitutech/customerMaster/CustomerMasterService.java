@@ -8,4 +8,10 @@ public interface CustomerMasterService {
 
 	public List<CustomerMasterBean> getCustomerList() throws Exception;
 
+	CustomerMasterResultBean getCode(String code) throws Exception;
+
+	CustomerMasterResultBean delete(String code) throws Exception;
+	
+	CustomerMasterResultBean update(CustomerMasterBean bean) throws Exception;
+
 }

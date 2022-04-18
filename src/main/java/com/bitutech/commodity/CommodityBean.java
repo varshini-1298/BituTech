@@ -7,9 +7,25 @@ public class CommodityBean {
 	private String classification;
 	private String hsCode;
 	private String imdgcodePage;
+	
 	private String blClause;
 	private String unNo;
 	private String flashPoint;
+	private String commodityCode;
+	private boolean hazardous;
+	
+	public final boolean isHazardous() {
+		return hazardous;
+	}
+	public final void setHazardous(boolean hazardous) {
+		this.hazardous = hazardous;
+	}
+	public final String getCommodityCode() {
+		return commodityCode;
+	}
+	public final void setCommodityCode(String commodityCode) {
+		this.commodityCode = commodityCode;
+	}
 	public String getCommodity() {
 		return commodity;
 	}

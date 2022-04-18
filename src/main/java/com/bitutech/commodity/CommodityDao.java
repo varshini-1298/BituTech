@@ -8,4 +8,10 @@ public interface CommodityDao {
 
 	List<CommodityBean> getCommodityList() throws Exception;
 
+	CommodityResultBean edit(String commodityCode) throws Exception;
+
+	CommodityResultBean update(CommodityBean bean) throws Exception;
+
+	CommodityResultBean delete(String commodityCode) throws Exception;
+
 }
