@@ -11,9 +11,6 @@ public class BillOfOperationBean {
 	private Integer idNo;
 	public List<BooDetailBean> dataArray;
 	
-	
-
-
 	public String getDate() {
 		return date;
 	}

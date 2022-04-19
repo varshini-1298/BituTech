@@ -11,6 +11,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.bitutech.core.util.DropDownList;
+
 
 @Repository
 public class BillOfOperationDaoImpl implements BillOfOperationDao {
@@ -53,7 +55,7 @@ resultBean.setSuccess(true);
 
 	//edit
 	@Override
-	public BillOfOperationResultBean edit(Integer bean) throws Exception {
+	public BillOfOperationResultBean edit(String bean) throws Exception {
 		BillOfOperationResultBean resultBean = new BillOfOperationResultBean();
 		resultBean.setSuccess(false);
 		try {
@@ -74,7 +76,7 @@ resultBean.setSuccess(true);
 		try {
 		
 			jdbcTemplate.queryForObject(BillOfOperationQueryUtil.UPDATE_BILL_OF_OPERATION,new BeanPropertyRowMapper<BillOfOperationBean>(BillOfOperationBean.class), new Object[]
-					{Bean.getBooNo(), Bean.getBomRef(),Bean.getProductName(),Bean.getDate(),Bean.getIdNo()});
+					{Bean.getBooNo(), Bean.getBomRef(),Bean.getProductName(),Bean.getDate(),Bean.getBooNo()});
 				
 			resultBean.setSuccess(true);
 			
@@ -87,11 +89,11 @@ resultBean.setSuccess(true);
 
 	//delete
 	@Override
-	public BillOfOperationResultBean delete(Integer idNo) throws Exception {
+	public BillOfOperationResultBean delete(String booNo) throws Exception {
 		BillOfOperationResultBean resultBean = new BillOfOperationResultBean();
 		try {
-			if(idNo!=null) {
-				jdbcTemplate.update(BillOfOperationQueryUtil.DELETE_BILL_OF_OPERATION,idNo);
+			if(booNo!=null) {
+				jdbcTemplate.update(BillOfOperationQueryUtil.DELETE_BILL_OF_OPERATION,booNo);
 			}
 			resultBean.setSuccess(true);
 		}
@@ -101,6 +103,32 @@ resultBean.setSuccess(true);
 		}	
 		return resultBean;	
 		}
+
+	@Override
+	public BillOfOperationResultBean getBooNo() throws Exception {
+		// TODO Auto-generated method stub
+		BillOfOperationResultBean resultBean = new BillOfOperationResultBean();
+		String booNo = jdbcTemplate.queryForObject(BillOfOperationQueryUtil.GetBooNo,String.class);
+		resultBean.setBooNumber(booNo);
+		return resultBean;
+	}
+
+	@Override
+	public BillOfOperationResultBean getBooNoList() throws Exception {
+		// TODO Auto-generated method stub
+		List<DropDownList> booNoList = new ArrayList<>();
+		BillOfOperationResultBean resultBean = new BillOfOperationResultBean();
+		try {
+			booNoList = jdbcTemplate.query(BillOfOperationQueryUtil.getBooNoList,new BeanPropertyRowMapper<DropDownList>(DropDownList.class));
+			resultBean.setBillOfOperationList(booNoList);
+			resultBean.setSuccess(true);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			resultBean.setSuccess(false);
+		}
+		return resultBean;
+	}
 
 
 }

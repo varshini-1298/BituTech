@@ -89,11 +89,5 @@ public class WorkOrderResultBean extends BasicResultBean implements Serializable
 	public void setWorkOrderDtlBean(List<WorkOrderDtlBean> workOrderDtlBean) {
 		WorkOrderDtlBean = workOrderDtlBean;
 	}
-
-
-	
-
-
-	
 	
 }
