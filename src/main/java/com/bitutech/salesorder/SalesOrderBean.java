@@ -7,10 +7,9 @@ public class SalesOrderBean {
 	private String validTo;
 	private String currency;
 	private String deliveryDate;
-	
 	private String id;
 	private String text;
-	
+	private String countValue;
 	
 	public String getId() {
 		return id;
@@ -53,6 +52,12 @@ public class SalesOrderBean {
 	}
 	public void setDeliveryDate(String deliveryDate) {
 		this.deliveryDate = deliveryDate;
+	}
+	public String getCountValue() {
+		return countValue;
+	}
+	public void setCountValue(String countValue) {
+		this.countValue = countValue;
 	}
 	
 	

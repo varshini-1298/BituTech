@@ -5,27 +5,48 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.bitutech.salesquote.SalesQuoteBean;
+import com.bitutech.salesquote.SalesQuoteResultBean;
+
 @Service
 public class SalesOrderServiceImpl implements SalesOrderService {
 	@Autowired
-	SalesOrderDao uomDao;
+	SalesOrderDao salesOrderDao;
 
 	@Override
 	public SalesOrderResultBean save(SalesOrderBean bean) throws Exception {
-		return uomDao.save(bean);
+		return salesOrderDao.save(bean);
 	}
 
 	@Override
 	public List<SalesOrderBean> getSalesOrderList() throws Exception {
 		// TODO Auto-generated method stub
-		return uomDao.getSalesOrderList();
+		return salesOrderDao.getSalesOrderList();
+	}
+
+//	@Override
+//	public List<SalesOrderBean> getUomcateList() throws Exception {
+//		// TODO Auto-generated method stub
+//		return uomDao.getUomcateList();
+//	}
+	@Override
+	public SalesOrderResultBean edit(String token) throws Exception {
+		// TODO Auto-generated method stub
+		return  salesOrderDao.edit(token);
 	}
 
 	@Override
-	public List<SalesOrderBean> getUomcateList() throws Exception {
+	public SalesOrderResultBean update( SalesOrderBean bean) throws Exception {
 		// TODO Auto-generated method stub
-		return uomDao.getUomcateList();
+		return salesOrderDao.update(bean);
 	}
+	
+	@Override
+	public SalesOrderResultBean delete(String bean) throws Exception {
+		// TODO Auto-generated method stub
+		return salesOrderDao.delete(bean);
+	}
+
 
 	
 

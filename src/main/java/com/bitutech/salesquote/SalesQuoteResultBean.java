@@ -10,8 +10,10 @@ public class SalesQuoteResultBean extends BasicResultBean implements Serializabl
 	
 	public boolean Success;
 	
-	private List<SalesQuoteBean> uomDetails;
-	private List<SalesQuoteBean> salesQuoteList;
+	private List<SalesQuoteBean> salesQuoteDetails;
+//	private List<SalesQuoteBean> salesQuoteList;
+	
+	private SalesQuoteBean salesQuoteBean;
 	
 	public boolean isSuccess() {
 		return Success;
@@ -21,20 +23,24 @@ public class SalesQuoteResultBean extends BasicResultBean implements Serializabl
 		Success = success;
 	}
 
-	public List<SalesQuoteBean> getUomDetails() {
-		return uomDetails;
+	
+
+	
+
+	public List<SalesQuoteBean> getSalesQuoteDetails() {
+		return salesQuoteDetails;
 	}
 
-	public void setUomDetails(List<SalesQuoteBean> uomDetails) {
-		this.uomDetails = uomDetails;
+	public void setSalesQuoteDetails(List<SalesQuoteBean> salesQuoteDetails) {
+		this.salesQuoteDetails = salesQuoteDetails;
 	}
-
-	public List<SalesQuoteBean> getSalesQuoteList() {
-		return salesQuoteList;
+	
+	public SalesQuoteBean getSalesQuoteBean() {
+		return salesQuoteBean;
 	}
-
-	public void setSalesQuoteList(List<SalesQuoteBean> salesQuoteList) {
-		this.salesQuoteList = salesQuoteList;
+	
+	public void setSalesQuoteBean(SalesQuoteBean salesQuoteBean) {
+		this.salesQuoteBean = salesQuoteBean;
 	}
 
 
