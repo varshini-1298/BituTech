@@ -2,10 +2,10 @@ package com.bitutech.boo;
 
 public class BooDetailBean {
 	
-	private String seqNo;
+	private String processSeqNo;
 	private String processName;
 	private String approxTime;
-	private String remarks;
+	private String processRemarks;
 	
 	
 	public String getProcessName() {
@@ -20,17 +20,21 @@ public class BooDetailBean {
 	public void setApproxTime(String approxTime) {
 		this.approxTime = approxTime;
 	}
-	public String getSeqNo() {
-		return seqNo;
+	
+	public String getProcessRemarks() {
+		return processRemarks;
 	}
-	public void setSeqNo(String seqNo) {
-		this.seqNo = seqNo;
+	public void setProcessRemarks(String processRemarks) {
+		this.processRemarks = processRemarks;
 	}
-	public String getRemarks() {
-		return remarks;
+	public String getProcessSeqNo() {
+		return processSeqNo;
 	}
-	public void setRemarks(String remarks) {
-		this.remarks = remarks;
+	public void setProcessSeqNo(String processSeqNo) {
+		this.processSeqNo = processSeqNo;
 	}
+	
+	
+	
 
 }

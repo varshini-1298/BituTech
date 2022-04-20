@@ -4,6 +4,8 @@ public class BillOfOperationQueryUtil {
 
 	public static final String INSERT_BILL_OF_OPERATION = "INSERT INTO bill_of_operation (boo_no,bom_ref_no,product_name,opn_date)values(?,?,?,to_date(?,'dd/mm/yyyy')) Returning boo_no as booNo";
 	
+	public static final String INSERT_BILL_OF_OPERATION_DETAIL = "INSERT INTO bill_of_operation_detail (boo_no,process_seq_no,process_name,apporox_time,remarks)values(:booNo,:processSeqNo,:processName,:approxTime,:processRemarks)";
+
 	public static final String getBooList = "select boo_no as booNo,bom_ref_no as bomRef,product_name as productName,to_char(opn_date,'DD/MM/YYYY') as date,id as idNo from bill_of_operation";
 	
 	public static final String GetBooNo = "select * from fn_generate_reference_no('bill_of_operation','boo_no','BOO',4)";

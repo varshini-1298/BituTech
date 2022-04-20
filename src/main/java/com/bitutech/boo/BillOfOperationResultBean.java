@@ -13,6 +13,8 @@ public class BillOfOperationResultBean extends BasicResultBean implements Serial
 	
 	private List<BillOfOperationBean> billOfOperationDetails;
 	
+	private List<BooDetailBean> BooDetailBean;
+		
 	private List<DropDownList> billOfOperationList;
 	
 	private BillOfOperationBean billOfOperationBean;
@@ -22,7 +24,6 @@ public class BillOfOperationResultBean extends BasicResultBean implements Serial
 	public boolean isSuccess() {
 		return Success;
 	}
-
 
 	public void setSuccess(boolean success) {
 		Success = success;
@@ -62,5 +63,16 @@ public class BillOfOperationResultBean extends BasicResultBean implements Serial
 	public void setBillOfOperationList(List<DropDownList> billOfOperationList) {
 		this.billOfOperationList = billOfOperationList;
 	}
+
+	public List<BooDetailBean> getBooDetailBean() {
+		return BooDetailBean;
+	}
+
+	public void setBooDetailBean(List<BooDetailBean> booDetailBean) {
+		BooDetailBean = booDetailBean;
+	}
+
+
+	
 	
 }

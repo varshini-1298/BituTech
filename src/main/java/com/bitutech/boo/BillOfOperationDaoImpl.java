@@ -27,11 +27,26 @@ public class BillOfOperationDaoImpl implements BillOfOperationDao {
 	@Override
 	public BillOfOperationResultBean save(BillOfOperationBean Bean) throws Exception {
 		BillOfOperationResultBean resultBean = new BillOfOperationResultBean();
+		resultBean.setSuccess(false);
 		try {
 			   
-jdbcTemplate.queryForObject(BillOfOperationQueryUtil.INSERT_BILL_OF_OPERATION,new BeanPropertyRowMapper<BillOfOperationBean>(BillOfOperationBean.class), new Object[]
-		{ Bean.getBooNo(),Bean.getBomRef(),Bean.getProductName(),Bean.getDate()});
-	
+			//Integer idNo = jdbcTemplate.queryForObject(BillOfOperationQueryUtil.INSERT_BILL_OF_OPERATION,new BeanPropertyRowMapper<Integer>(Integer.class), new Object[]
+		//{ Bean.getBooNo(),Bean.getBomRef(),Bean.getProductName(),Bean.getDate()},Integer.class);
+			String booNo = jdbcTemplate.queryForObject(BillOfOperationQueryUtil.INSERT_BILL_OF_OPERATION, new Object[] { Bean.getBooNo(),Bean.getBomRef(),Bean.getProductName(),Bean.getDate()}, String.class);
+		if(!booNo.isEmpty()) {
+			if(Bean.getBooDetailBean().size()>0) {
+				for(BooDetailBean booDetailBean: Bean.getBooDetailBean() ) {
+					Map<String, Object> dtlMap = new HashMap<>();
+					dtlMap.put("booNo",booNo);
+					dtlMap.put("processSeqNo",booDetailBean.getProcessSeqNo());
+					dtlMap.put("processName",booDetailBean.getProcessName());
+					dtlMap.put("approxTime",booDetailBean.getApproxTime());
+					dtlMap.put("processRemarks",booDetailBean.getProcessRemarks());
+					namedParameterJdbcTemplate.update(BillOfOperationQueryUtil.INSERT_BILL_OF_OPERATION_DETAIL,dtlMap);
+				}
+			}
+		}
+
 resultBean.setSuccess(true);
 		}catch(Exception e) {
 			e.printStackTrace();
