@@ -1,18 +1,25 @@
 package com.bitutech.itemMaster;
 
 public class ItemMasterBean {
-	
-	private String itemType;
+	private Integer itemId;	
+	private String itemCode;
 	private String itemName;
 	private String itemDescription;
-	private String itemCode;
-	private String saleable;
-	private String purchaseable;
-	public String getItemType() {
-		return itemType;
+	private Integer itemType;
+	private Integer itemCategory;
+	private Boolean saleable;
+	private Boolean purchaseable;
+	public Integer getItemId() {
+		return itemId;
 	}
-	public void setItemType(String itemType) {
-		this.itemType = itemType;
+	public void setItemId(Integer itemId) {
+		this.itemId = itemId;
+	}
+	public String getItemCode() {
+		return itemCode;
+	}
+	public void setItemCode(String itemCode) {
+		this.itemCode = itemCode;
 	}
 	public String getItemName() {
 		return itemName;
@@ -26,24 +33,31 @@ public class ItemMasterBean {
 	public void setItemDescription(String itemDescription) {
 		this.itemDescription = itemDescription;
 	}
-	public String getItemCode() {
-		return itemCode;
+	public Integer getItemType() {
+		return itemType;
 	}
-	public void setItemCode(String itemCode) {
-		this.itemCode = itemCode;
+	public void setItemType(Integer itemType) {
+		this.itemType = itemType;
 	}
-	public String getSaleable() {
+	public Integer getItemCategory() {
+		return itemCategory;
+	}
+	public void setItemCategory(Integer itemCategory) {
+		this.itemCategory = itemCategory;
+	}
+	public Boolean getSaleable() {
 		return saleable;
 	}
-	public void setSaleable(String saleable) {
+	public void setSaleable(Boolean saleable) {
 		this.saleable = saleable;
 	}
-	public String getPurchaseable() {
+	public Boolean getPurchaseable() {
 		return purchaseable;
 	}
-	public void setPurchaseable(String purchaseable) {
+	public void setPurchaseable(Boolean purchaseable) {
 		this.purchaseable = purchaseable;
 	}
+	
 	
 	
 }

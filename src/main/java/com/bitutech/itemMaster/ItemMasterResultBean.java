@@ -5,13 +5,14 @@ import java.util.List;
 
 import com.bitutech.core.util.BasicResultBean;
 
+
 public class ItemMasterResultBean extends BasicResultBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	public boolean Success;
 	
 	private List<ItemMasterBean> itemMasterDetails;
-	
+	private ItemMasterBean itemMasterBean;
 	public boolean isSuccess() {
 		return Success;
 	}
@@ -29,7 +30,15 @@ public class ItemMasterResultBean extends BasicResultBean implements Serializabl
 		this.itemMasterDetails = itemMasterDetails;
 	}
 
-
 	
+	
+	public ItemMasterBean getItemMasterBean() {
+		return itemMasterBean;
+	}
+
+	public void setItemMasterBean(ItemMasterBean itemMasterBean) {
+		this.itemMasterBean = itemMasterBean;
+
+	}	
 	
 }

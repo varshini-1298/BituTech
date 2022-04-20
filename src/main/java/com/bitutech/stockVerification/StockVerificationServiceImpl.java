@@ -25,4 +25,24 @@ public class StockVerificationServiceImpl implements StockVerificationService {
 		return stockVerificationDao.getLocationList();
 	}
 
+	
+	
+	@Override
+	public StockVerificationResultBean delete(String bean) throws Exception {
+		// TODO Auto-generated method stub
+		return stockVerificationDao.delete(bean) ;
+	}
+
+	@Override
+	public StockVerificationResultBean edit(String bean) throws Exception {
+		// TODO Auto-generated method stub
+		return stockVerificationDao.edit(bean);
+	}
+
+	@Override
+	public StockVerificationResultBean update(StockVerificationBean bean) throws Exception {
+		// TODO Auto-generated method stub
+		return stockVerificationDao.update(bean);
+	}
+
 }

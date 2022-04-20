@@ -22,14 +22,11 @@ public class LocationMasterDaoImpl implements LocationMasterDao {
 		try {
 			Map<String, Object> locationMasterMap = new HashMap<String, Object>();
 		    
-			locationMasterMap.put("commodity", bean.getCommodity());
-			locationMasterMap.put("imdgClass", bean.getImdgClass());
-			locationMasterMap.put("classification", bean.getClassification());
-			locationMasterMap.put("hsCode", bean.getHsCode());
-			locationMasterMap.put("imdgcodePage", bean.getImdgcodePage());
-			locationMasterMap.put("blClause", bean.getBlClause());
-			locationMasterMap.put("unNo", bean.getUnNo());
-			locationMasterMap.put("flashPoint", bean.getFlashPoint());
+			locationMasterMap.put("locationId", bean.getLocationId());
+			locationMasterMap.put("locationName", bean.getLocationName());
+			locationMasterMap.put("parentLocationId", bean.getParentLocationId());
+			locationMasterMap.put("locationCategory", bean.getLocationCategory());
+			
 			
 		    
 		   jdbcTemplate.update(LocationMasterQueryUtil.INSERT_LOCATION_MASTER,locationMasterMap);

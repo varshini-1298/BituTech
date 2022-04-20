@@ -8,4 +8,10 @@ public interface ItemMasterService {
 
 	public List<ItemMasterBean> getItemList() throws Exception;
 
+	ItemMasterResultBean delete(Integer bean) throws Exception;
+
+	ItemMasterResultBean update(ItemMasterBean bean) throws Exception;
+
+	ItemMasterResultBean edit(Integer bean) throws Exception;
+
 }

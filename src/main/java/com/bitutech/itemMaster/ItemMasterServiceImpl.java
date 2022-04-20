@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
+
 @Service
 public class ItemMasterServiceImpl implements ItemMasterService {
 	@Autowired
@@ -22,6 +24,24 @@ public class ItemMasterServiceImpl implements ItemMasterService {
 	}
 
 	
+	
+	@Override
+	public ItemMasterResultBean edit(Integer bean) throws Exception {
+		// TODO Auto-generated method stub
+		return itemMasterDao.edit(bean);
+	}
+
+	@Override
+	public ItemMasterResultBean update(ItemMasterBean bean) throws Exception {
+		// TODO Auto-generated method stub
+		return itemMasterDao.update(bean);
+	}
+
+	@Override
+	public ItemMasterResultBean delete(Integer bean) throws Exception {
+		// TODO Auto-generated method stub
+		return itemMasterDao.delete(bean);
+	}
 
 
 	

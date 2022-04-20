@@ -5,13 +5,14 @@ import java.util.List;
 
 import com.bitutech.core.util.BasicResultBean;
 
+
 public class CurrencyMasterResultBean extends BasicResultBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	public boolean Success;
 	
 	private List<CurrencyMasterBean> currencyMasterDetails;
-	
+	private CurrencyMasterBean currencyMasterBean;
 	public boolean isSuccess() {
 		return Success;
 	}
@@ -28,6 +29,16 @@ public class CurrencyMasterResultBean extends BasicResultBean implements Seriali
 	public void setCurrencyMasterDetails(List<CurrencyMasterBean> currencyMasterDetails) {
 		this.currencyMasterDetails = currencyMasterDetails;
 	}
+
+	public CurrencyMasterBean getCurrencyMasterBean() {
+		return currencyMasterBean;
+	}
+
+	public void setCurrencyMasterBean(CurrencyMasterBean currencyMasterBean) {
+		this.currencyMasterBean = currencyMasterBean;
+	}
+
+	
 
 
 	

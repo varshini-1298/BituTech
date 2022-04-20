@@ -9,5 +9,12 @@ public interface StockVerificationService {
 	public List<StockVerificationBean> getStockList() throws Exception;
 	
 	public List<StockVerificationBean> getLocationList() throws Exception;
+
+
+	StockVerificationResultBean edit(String bean) throws Exception;
+
+	StockVerificationResultBean update(StockVerificationBean bean) throws Exception;
+
+	StockVerificationResultBean delete(String bean) throws Exception;
 	
 }

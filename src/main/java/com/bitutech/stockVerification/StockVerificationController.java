@@ -3,7 +3,9 @@ package com.bitutech.stockVerification;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
 
 @RestController
 @RequestMapping("/api/auth/app/stockVerification")
@@ -40,5 +42,42 @@ public class StockVerificationController {
 	}
 	
 	
+	  @RequestMapping(value="/edit") 
+	  public StockVerificationResultBean
+	  edit(@RequestParam("stockVerification") String stockVerification) {
+	  StockVerificationResultBean objResultBean = new StockVerificationResultBean();
+	  try 
+	  { objResultBean = stockVerificationService.edit(stockVerification);
+	  }
+	  catch(Exception e){ 
+		  e.printStackTrace(); } 
+	  return objResultBean;
+	  
+	  }
+	  
+	  @RequestMapping(value="/update") public StockVerificationResultBean
+	  update(@RequestBody StockVerificationBean bean) { StockVerificationResultBean
+	  objResultBean = new StockVerificationResultBean(); 
+	  try { objResultBean =
+			  stockVerificationService.update(bean); 
+	  }
+	  catch(Exception e){
+	  e.printStackTrace(); }
+	  return objResultBean;
+	  
+	  }
+	  
+	  @RequestMapping(value="/delete")
+	  public StockVerificationResultBean
+	  delete(@RequestParam("stockVerification") String stockVerification) {
+	  StockVerificationResultBean objResultBean = new StockVerificationResultBean();
+	  try { objResultBean = stockVerificationService.delete(stockVerification);
+	  }
+	  catch(Exception e){
+		  e.printStackTrace(); }
+	  return objResultBean;
+	  
+	  }
+	 
 
 }

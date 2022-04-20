@@ -21,7 +21,23 @@ public class CurrencyMasterServiceImpl implements CurrencyMasterService {
 		return currencyMasterDao.getCurrencyList();
 	}
 
-	
+	@Override
+	public CurrencyMasterResultBean edit(String bean) throws Exception {
+		// TODO Auto-generated method stub
+		return currencyMasterDao.edit(bean);
+	}
+
+	@Override
+	public CurrencyMasterResultBean update(CurrencyMasterBean bean) throws Exception {
+		// TODO Auto-generated method stub
+		return currencyMasterDao.update(bean);
+	}
+
+	@Override
+	public CurrencyMasterResultBean delete(String bean) throws Exception {
+		// TODO Auto-generated method stub
+		return currencyMasterDao.delete(bean);
+	}
 
 
 	
