@@ -12,6 +12,7 @@ public class SalesCallEntryResultBean extends BasicResultBean implements Seriali
 
 	public List<SalesCallEntryBean> salesCallEntryDetails;
 	
+	private SalesCallEntryBean salesCallEntryBean;
 	
 	public List<SalesCallEntryBean> getSalesCallEntryDetails() {
 		return salesCallEntryDetails;
@@ -27,6 +28,14 @@ public class SalesCallEntryResultBean extends BasicResultBean implements Seriali
 
 	public void setSuccess(boolean success) {
 		this.success = success;
+	}
+
+	public SalesCallEntryBean getSalesCallEntryBean() {
+		return salesCallEntryBean;
+	}
+
+	public void setSalesCallEntryBean(SalesCallEntryBean salesCallEntryBean) {
+		this.salesCallEntryBean = salesCallEntryBean;
 	}
 
 }

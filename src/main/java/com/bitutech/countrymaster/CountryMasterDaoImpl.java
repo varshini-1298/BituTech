@@ -11,6 +11,10 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.bitutech.uomcategory.UomCategoryBean;
+import com.bitutech.uomcategory.UomCategoryQueryUtil;
+import com.bitutech.uomcategory.UomCategoryResultBean;
+
 @Repository
 public class CountryMasterDaoImpl implements CountryMasterDao {
 	
@@ -77,6 +81,21 @@ public class CountryMasterDaoImpl implements CountryMasterDao {
 		} catch (Exception e) {
 			resultBean.setSuccess(false);
 			e.printStackTrace();
+		}
+		return resultBean;
+	}
+
+	@Override
+	public CountryMasterResultBean getCode(String countryCode) throws Exception {
+		CountryMasterResultBean resultBean = new CountryMasterResultBean();
+		resultBean.setSuccess(false);
+		try {
+			resultBean.setCountryMasterBean(jdbcTemplate.queryForObject(CountryMasterQueryUtil.SELECT_COUNTRY_MASTER,new Object[] { countryCode }, new BeanPropertyRowMapper<CountryMasterBean>(CountryMasterBean.class)));
+			resultBean.setSuccess(true);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			resultBean.setSuccess(false);
 		}
 		return resultBean;
 	}

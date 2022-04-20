@@ -33,6 +33,18 @@ public class UomServiceImpl implements UomService {
 		return uomDao.update(bean);
 	}
 
+	@Override
+	public UomResultBean edit(Integer bean) throws Exception {
+		// TODO Auto-generated method stub
+		return uomDao.edit(bean);
+	}
+
+	@Override
+	public UomResultBean delete(Integer bean) throws Exception {
+		// TODO Auto-generated method stub
+		return uomDao.delete(bean);
+	}
+
 	
 
 

@@ -21,8 +21,22 @@ public class DepartmentMasterServiceImpl implements DepartmentMasterService {
 		return departmentMasterDao.getDepartmentList();
 	}
 
-	
+	@Override
+	public DepartmentMasterResultBean edit(String bean) throws Exception {
+		// TODO Auto-generated method stub
+		return departmentMasterDao.edit(bean);
+	}
 
+	@Override
+	public DepartmentMasterResultBean update(DepartmentMasterBean bean) throws Exception {
+		// TODO Auto-generated method stub
+		return departmentMasterDao.update(bean);
+	}
 
-	
+	@Override
+	public DepartmentMasterResultBean delete(String bean) throws Exception {
+		// TODO Auto-generated method stub
+		return departmentMasterDao.delete(bean);
+	}
+
 }

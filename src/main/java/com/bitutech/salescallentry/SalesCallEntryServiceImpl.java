@@ -22,4 +22,22 @@ public class SalesCallEntryServiceImpl implements SalesCallEntryService {
 		return SalesCallEntryDao.getList();
 	}
 
+	@Override
+	public SalesCallEntryResultBean edit(Integer bean) throws Exception {
+		// TODO Auto-generated method stub
+		return SalesCallEntryDao.edit(bean);
+	}
+
+	@Override
+	public SalesCallEntryResultBean update(SalesCallEntryBean bean) throws Exception {
+		// TODO Auto-generated method stub
+		return SalesCallEntryDao.update(bean);
+	}
+
+	@Override
+	public SalesCallEntryResultBean delete(Integer bean) throws Exception {
+		// TODO Auto-generated method stub
+		return SalesCallEntryDao.delete(bean);
+	}
+
 }

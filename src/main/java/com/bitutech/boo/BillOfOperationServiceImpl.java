@@ -20,9 +20,21 @@ public class BillOfOperationServiceImpl implements BillOfOperationService {
 		// TODO Auto-generated method stub
 		return billOfOperationDao.getBooList();
 	}
+	
+	@Override
+	public BillOfOperationResultBean getBooNo() throws Exception {
+		// TODO Auto-generated method stub
+		return billOfOperationDao.getBooNo();
+	}
+	
+	@Override
+	public BillOfOperationResultBean getBooNoList() throws Exception {
+		// TODO Auto-generated method stub
+		return billOfOperationDao.getBooNoList();
+	}
 
 	@Override
-	public BillOfOperationResultBean edit(Integer bean) throws Exception {
+	public BillOfOperationResultBean edit(String bean) throws Exception {
 		// TODO Auto-generated method stub
 		return billOfOperationDao.edit(bean);
 	}
@@ -34,7 +46,7 @@ public class BillOfOperationServiceImpl implements BillOfOperationService {
 	}
 
 	@Override
-	public BillOfOperationResultBean delete(Integer bean) throws Exception {
+	public BillOfOperationResultBean delete(String bean) throws Exception {
 		// TODO Auto-generated method stub
 		return billOfOperationDao.delete(bean);
 	}

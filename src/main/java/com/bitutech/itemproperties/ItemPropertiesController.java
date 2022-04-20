@@ -1,11 +1,12 @@
 package com.bitutech.itemproperties;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bitutech.core.util.CustomException;
 
 @RestController
 @RequestMapping("/api/auth/app/itemProperty")
@@ -33,5 +34,44 @@ public class ItemPropertiesController {
 		objResultBean.setSuccess(true);
    		return objResultBean;
    	}
+	
+	@GetMapping(value="edit")
+	public ItemPropertiesResultBean edit(@RequestParam("itemProperties") Integer itemProperties) {
+		ItemPropertiesResultBean objResultBean = new ItemPropertiesResultBean();
+		try {
+			objResultBean = itemPropertiesService.edit(itemProperties);
+		
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		return objResultBean;
+	}
+	
+	@RequestMapping(value = "/update")
+	public ItemPropertiesResultBean update(@RequestBody ItemPropertiesBean bean) {
+		ItemPropertiesResultBean objResultBean = new ItemPropertiesResultBean();
+		try {
+			objResultBean = itemPropertiesService.update(bean);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return objResultBean;
+	}
+	
+	@RequestMapping(value = "/delete")
+	public ItemPropertiesResultBean delete(@RequestParam("itemProperties") Integer itemProperties) {
+		ItemPropertiesResultBean objResultBean = new ItemPropertiesResultBean();
+		try {
+			objResultBean = itemPropertiesService.delete(itemProperties);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		return objResultBean;
+	}
+	
+	
 
 }

@@ -36,8 +36,21 @@ public class BillOfOperationController {
    		return objResultBean;
    	}
 	
+	@RequestMapping(value = "/getBooNo")
+	public BillOfOperationResultBean getBooNo() throws Exception{
+		BillOfOperationResultBean objResultBean = new BillOfOperationResultBean();
+		objResultBean = billOfOperationService.getBooNo();
+		objResultBean.setSuccess(true);
+		return objResultBean;
+	}
+	
+	@RequestMapping(value = "/getBooNoList")
+	public BillOfOperationResultBean getBooNoList() throws Exception {
+		return billOfOperationService.getBooNoList();
+	}
+	
 	@GetMapping(value="edit")
-	public BillOfOperationResultBean edit(@RequestParam("billOfOperation") Integer billOfOperation) {
+	public BillOfOperationResultBean edit(@RequestParam("billOfOperation") String billOfOperation) {
 		BillOfOperationResultBean objResultBean = new BillOfOperationResultBean();
 		try {
 			objResultBean = billOfOperationService.edit(billOfOperation);
@@ -62,7 +75,7 @@ public class BillOfOperationController {
 	}
 	
 	@RequestMapping(value = "/delete")
-	public BillOfOperationResultBean delete(@RequestParam("billOfOperation") Integer billOfOperation) {
+	public BillOfOperationResultBean delete(@RequestParam("billOfOperation") String billOfOperation) {
 		BillOfOperationResultBean objResultBean = new BillOfOperationResultBean();
 		try {
 			objResultBean = billOfOperationService.delete(billOfOperation);

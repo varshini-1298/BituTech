@@ -26,6 +26,7 @@ public class SalesCallEntryBean {
 	private String visitDate;
 	private String modeOfContact;
 	private String designation;
+	private Integer salesCallHdrId;
 	
 	private String customer;
 	private String salesCallNumber;
@@ -181,6 +182,12 @@ public class SalesCallEntryBean {
 	}
 	public void setExpectedOn(String expectedOn) {
 		this.expectedOn = expectedOn;
+	}
+	public Integer getSalesCallHdrId() {
+		return salesCallHdrId;
+	}
+	public void setSalesCallHdrId(Integer salesCallHdrId) {
+		this.salesCallHdrId = salesCallHdrId;
 	}
 	
 

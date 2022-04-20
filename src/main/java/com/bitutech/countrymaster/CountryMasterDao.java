@@ -12,4 +12,6 @@ public interface CountryMasterDao {
 
 	CountryMasterResultBean deleteCountryDtl(String countryCode) throws Exception;
 
+	CountryMasterResultBean getCode(String countryMaster) throws Exception;
+
 }

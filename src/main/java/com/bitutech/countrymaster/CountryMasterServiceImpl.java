@@ -33,6 +33,12 @@ public class CountryMasterServiceImpl implements CountryMasterService {
 		return customerMasterDao.deleteCountryDtl(countryCode);
 	}
 
+	@Override
+	public CountryMasterResultBean getCode(String countryCode) throws Exception {
+		// TODO Auto-generated method stub
+		return customerMasterDao.getCode(countryCode);
+	}
+
 	
 
 
