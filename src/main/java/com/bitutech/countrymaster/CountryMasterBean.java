@@ -6,11 +6,19 @@ public class CountryMasterBean {
 	private String countryName;
 	private String currency;
 	private String clientType;
+	private Boolean isActive;
 	
 	private String id;
 	private String text;
 	
 	
+	
+	public Boolean getIsActive() {
+		return isActive;
+	}
+	public void setIsActive(Boolean isActive) {
+		this.isActive = isActive;
+	}
 	public String getId() {
 		return id;
 	}

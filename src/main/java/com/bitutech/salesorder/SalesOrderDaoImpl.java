@@ -13,6 +13,9 @@ import org.springframework.stereotype.Repository;
 
 import com.bitutech.countrymaster.CountryMasterBean;
 import com.bitutech.countrymaster.CountryMasterQueryUtil;
+import com.bitutech.salesquote.SalesQuoteBean;
+import com.bitutech.salesquote.SalesQuoteQueryUtil;
+import com.bitutech.salesquote.SalesQuoteResultBean;
 
 @Repository
 public class SalesOrderDaoImpl implements SalesOrderDao {
@@ -32,13 +35,20 @@ public class SalesOrderDaoImpl implements SalesOrderDao {
 			salesOrderMap.put("customer", bean.getCustomer());
 			salesOrderMap.put("validFrom", bean.getValidFrom());
 			salesOrderMap.put("validTo", bean.getValidTo());
+			salesOrderMap.put("currency", bean.getCurrency());
+			salesOrderMap.put("deliveryDate", bean.getDeliveryDate());
+			salesOrderMap.put("id", bean.getId());
+			salesOrderMap.put("text", bean.getText());
+			salesOrderMap.put("modifiedBy","E0001");
+			String countValue =  jdbcTemplate.queryForObject(SalesOrderQueryUtil.GETCOUNT, String.class);
+			salesOrderMap.put("countValue", countValue);
 			
-			namedParameterJdbcTemplate.update(SalesOrderQueryUtil.INSERT_SALES_ORDER,salesOrderMap);
+			namedParameterJdbcTemplate.update(SalesOrderQueryUtil.INSERT_SALES_ORDER_HDR,salesOrderMap);
 		   resultBean.setSuccess(true);
-		}catch(Exception e) {
-			e.printStackTrace();
-			resultBean.setSuccess(false);
-		}
+		      }catch(Exception e) {
+			      e.printStackTrace();
+			       resultBean.setSuccess(false);
+		      }
 		
 		return resultBean;
 	}
@@ -55,16 +65,66 @@ public class SalesOrderDaoImpl implements SalesOrderDao {
 		return salesOrderBean;
 	}
 
+//	@Override
+//	public List<SalesOrderBean> getUomcateList() throws Exception {
+//		List<SalesOrderBean> salesOrderBean = new ArrayList<SalesOrderBean>();
+//		try {
+//			salesOrderBean = jdbcTemplate.query(SalesOrderQueryUtil.getUomcategoryList, new BeanPropertyRowMapper<SalesOrderBean>(SalesOrderBean.class));
+//			
+//		}catch(Exception e){
+//			e.printStackTrace();
+//		}
+//		return salesOrderBean;
+//	}
+	//edit
 	@Override
-	public List<SalesOrderBean> getUomcateList() throws Exception {
-		List<SalesOrderBean> salesOrderBean = new ArrayList<SalesOrderBean>();
+	public SalesOrderResultBean edit(String bean) throws Exception {
+		SalesOrderResultBean resultBean = new SalesOrderResultBean();
+		resultBean.setSuccess(false);
 		try {
-			salesOrderBean = jdbcTemplate.query(SalesOrderQueryUtil.getUomcategoryList, new BeanPropertyRowMapper<SalesOrderBean>(SalesOrderBean.class));
+			resultBean.setSalesOrderBean(jdbcTemplate.queryForObject(SalesOrderQueryUtil.SELECT_SALES_ORDER_HDR,new Object[] { bean }, new BeanPropertyRowMapper<SalesOrderBean>(SalesOrderBean.class)));
+			resultBean.setSuccess(true);
+		}
+		catch(Exception e) {          
+			e.printStackTrace();
+			resultBean.setSuccess(false);
+		}
+		return resultBean;
+	}
+	
+	//update
+	@Override
+	public SalesOrderResultBean update(SalesOrderBean Bean) throws Exception {
+		SalesOrderResultBean resultBean = new SalesOrderResultBean();
+		try {
+//			
+//		
+			jdbcTemplate.queryForObject(SalesOrderQueryUtil.UPDATE_SALES_ORDER_HDR,new BeanPropertyRowMapper<SalesOrderBean>(SalesOrderBean.class), new Object[]
+					{ Bean.getCustomer(),Bean.getText(),Bean.getCurrency(),Bean.getDeliveryDate(),Bean.getCountValue()});
+				
+			resultBean.setSuccess(true);
 			
-		}catch(Exception e){
+		}
+		catch(Exception e){
 			e.printStackTrace();
 		}
-		return salesOrderBean;
+		return resultBean;
+	}
+	
+	@Override
+	public SalesOrderResultBean delete(String countValue) throws Exception {
+		SalesOrderResultBean resultBean = new SalesOrderResultBean();
+		try {
+			if(countValue!=null) {
+				jdbcTemplate.update(SalesOrderQueryUtil.DELETE_SALES_ORDER_HDR,countValue);
+			}
+			resultBean.setSuccess(true);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			resultBean.setSuccess(false);
+		}	
+		return resultBean;
 	}
 
 

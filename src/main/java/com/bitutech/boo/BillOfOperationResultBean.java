@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import com.bitutech.core.util.BasicResultBean;
+import com.bitutech.core.util.DropDownList;
 
 public class BillOfOperationResultBean extends BasicResultBean implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -12,7 +13,13 @@ public class BillOfOperationResultBean extends BasicResultBean implements Serial
 	
 	private List<BillOfOperationBean> billOfOperationDetails;
 	
+	private List<BooDetailBean> BooDetailBean;
+		
+	private List<DropDownList> billOfOperationList;
+	
 	private BillOfOperationBean billOfOperationBean;
+	
+	private String booNumber;
 	
 	public boolean isSuccess() {
 		return Success;
@@ -39,7 +46,31 @@ public class BillOfOperationResultBean extends BasicResultBean implements Serial
 		this.billOfOperationBean = billOfOperationBean;
 	}
 
-	
+	public String getBooNumber() {
+		return booNumber;
+	}
+
+	public void setBooNumber(String booNumber) {
+		this.booNumber = booNumber;
+	}
+
+
+	public List<DropDownList> getBillOfOperationList() {
+		return billOfOperationList;
+	}
+
+
+	public void setBillOfOperationList(List<DropDownList> billOfOperationList) {
+		this.billOfOperationList = billOfOperationList;
+	}
+
+	public List<BooDetailBean> getBooDetailBean() {
+		return BooDetailBean;
+	}
+
+	public void setBooDetailBean(List<BooDetailBean> booDetailBean) {
+		BooDetailBean = booDetailBean;
+	}
 
 
 	

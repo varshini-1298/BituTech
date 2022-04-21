@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import com.bitutech.core.util.BasicResultBean;
+import com.bitutech.uomcategory.UomCategoryBean;
 
 public class CountryMasterResultBean extends BasicResultBean implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -12,7 +13,17 @@ public class CountryMasterResultBean extends BasicResultBean implements Serializ
 	
 	private List<CountryMasterBean> countryMasterDetails;
 	private List<CountryMasterBean> currencyList;
+	private CountryMasterBean countryMasterBean;
 	
+	
+	public CountryMasterBean getCountryMasterBean() {
+		return countryMasterBean;
+	}
+
+	public void setCountryMasterBean(CountryMasterBean countryMasterBean) {
+		this.countryMasterBean = countryMasterBean;
+	}
+
 	public boolean isSuccess() {
 		return Success;
 	}

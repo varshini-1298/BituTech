@@ -11,8 +11,9 @@ public class PurchaseRequestResultBean extends BasicResultBean implements Serial
 	public boolean Success;
 	
 	private List<PurchaseRequestBean> purchaseRequestDetails;
-	private List<PurchaseRequestBean> uomCategoryList;
+//	private List<PurchaseRequestBean> uomCategoryList;
 	
+	private PurchaseRequestBean purchaseRequestBean;
 	public boolean isSuccess() {
 		return Success;
 	}
@@ -30,12 +31,20 @@ public class PurchaseRequestResultBean extends BasicResultBean implements Serial
 		this.purchaseRequestDetails = purchaseRequestDetails;
 	}
 
-	public List<PurchaseRequestBean> getUomCategoryList() {
-		return uomCategoryList;
+//	public List<PurchaseRequestBean> getUomCategoryList() {
+//		return uomCategoryList;
+//	}
+//
+//	public void setUomCategoryList(List<PurchaseRequestBean> uomCategoryList) {
+//		this.uomCategoryList = uomCategoryList;
+//	}
+	
+	public PurchaseRequestBean getPurchaseRequestBean() {
+		return purchaseRequestBean;
 	}
 
-	public void setUomCategoryList(List<PurchaseRequestBean> uomCategoryList) {
-		this.uomCategoryList = uomCategoryList;
+	public void setPurchaseRequestBean(PurchaseRequestBean purchaseRequestBean) {
+		this.purchaseRequestBean = purchaseRequestBean;
 	}
 
 	

@@ -10,9 +10,10 @@ public class SalesOrderResultBean extends BasicResultBean implements Serializabl
 	
 	public boolean Success;
 	
-	private List<SalesOrderBean> uomDetails;
-	private List<SalesOrderBean> salesOrderList;
+	private List<SalesOrderBean> salesOrderDetails;
+//	private List<SalesOrderBean> salesOrderList;
 	
+	private SalesOrderBean salesOrderBean;
 	public boolean isSuccess() {
 		return Success;
 	}
@@ -21,20 +22,28 @@ public class SalesOrderResultBean extends BasicResultBean implements Serializabl
 		Success = success;
 	}
 
-	public List<SalesOrderBean> getUomDetails() {
-		return uomDetails;
+	public List<SalesOrderBean> getSalesOrderDetails() {
+		return salesOrderDetails;
 	}
 
-	public void setUomDetails(List<SalesOrderBean> uomDetails) {
-		this.uomDetails = uomDetails;
+	public void setSalesOrderDetails(List<SalesOrderBean> salesOrderDetails) {
+		this.salesOrderDetails = salesOrderDetails;
 	}
 
-	public List<SalesOrderBean> getSalesOrderList() {
-		return salesOrderList;
+//	public List<SalesOrderBean> getSalesOrderList() {
+//		return salesOrderList;
+//	}
+//
+//	public void setSalesOrderList(List<SalesOrderBean> salesOrderList) {
+//		this.salesOrderList = salesOrderList;
+//	}
+
+	public SalesOrderBean getSalesOrderBean() {
+		return salesOrderBean;
 	}
 
-	public void setSalesOrderList(List<SalesOrderBean> salesOrderList) {
-		this.salesOrderList = salesOrderList;
+	public void setSalesOrderBean(SalesOrderBean salesOrderBean) {
+		this.salesOrderBean = salesOrderBean;
 	}
 
 

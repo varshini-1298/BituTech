@@ -1,12 +1,15 @@
 package com.bitutech.salesorder;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bitutech.core.util.CustomException;
-import com.bitutech.countrymaster.CountryMasterResultBean;
+
+
+
 
 @RestController
 @RequestMapping("/api/auth/app/saleOrder")
@@ -30,17 +33,58 @@ public class SalesOrderController {
 	@RequestMapping(value = "/getList")
    	public SalesOrderResultBean getSalesOrderList() throws Exception {
 		SalesOrderResultBean objResultBean = new SalesOrderResultBean();
-		objResultBean.setSalesOrderList(salesOrderService.getSalesOrderList());
+		objResultBean.setSalesOrderDetails(salesOrderService.getSalesOrderList());
 		objResultBean.setSuccess(true);
    		return objResultBean;
    	}
 
 	//drop down method
-	@RequestMapping(value = "/getUomCategory")
-   	public SalesOrderResultBean getUomcateList() throws Exception {
+//	@RequestMapping(value = "/getUomCategory")
+//   	public SalesOrderResultBean getUomcateList() throws Exception {
+//		SalesOrderResultBean objResultBean = new SalesOrderResultBean();
+//		objResultBean.setSalesOrderList(salesOrderService.getUomcateList());
+//		objResultBean.setSuccess(true);
+//   		return objResultBean;
+//   	}
+	@GetMapping(value="/edit")
+	public SalesOrderResultBean edit(@RequestParam("salesOrder") String salesOrder) {
+		
+//		Integer value= Integer.parseInt(salesQuote);
+		
 		SalesOrderResultBean objResultBean = new SalesOrderResultBean();
-		objResultBean.setSalesOrderList(salesOrderService.getUomcateList());
-		objResultBean.setSuccess(true);
-   		return objResultBean;
-   	}
+		try {
+			objResultBean = salesOrderService.edit(salesOrder);
+			
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			
+		}
+		return objResultBean;
+	}
+	
+	@RequestMapping(value = "/update")
+	public SalesOrderResultBean update(@RequestBody SalesOrderBean bean) {
+		SalesOrderResultBean objResultBean = new SalesOrderResultBean();
+		try {
+			objResultBean = salesOrderService.update(bean);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return objResultBean;
+
+	
+	}
+	@RequestMapping(value = "/delete")
+	public SalesOrderResultBean delete(@RequestParam("salesOrder") String salesOrder) {
+		SalesOrderResultBean objResultBean = new SalesOrderResultBean();
+		try {
+			objResultBean = salesOrderService.delete(salesOrder);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return objResultBean;
+	}
 }

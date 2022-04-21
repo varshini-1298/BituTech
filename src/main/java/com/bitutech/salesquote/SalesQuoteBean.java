@@ -6,8 +6,11 @@ public class SalesQuoteBean {
 	private String validFrom;
 	private String validTo;
 	private String termCondition;
+	private String currency;
+	private String expectedDate;
 	private String id;
 	private String text;
+	private String countValue;
 	
 	
 	public String getId() {
@@ -46,6 +49,25 @@ public class SalesQuoteBean {
 	public void setTermCondition(String termCondition) {
 		this.termCondition = termCondition;
 	}
+	public String getCurrency() {
+		return currency;
+	}
+	public void setCurrency(String currency) {
+		this.currency = currency;
+	}
+	public String getExpectedDate() {
+		return expectedDate;
+	}
+	public void setExpectedDate(String expectedDate) {
+		this.expectedDate = expectedDate;
+	}
+	public String getCountValue() {
+		return countValue;
+	}
+	public void setCountValue(String countValue) {
+		this.countValue = countValue;
+	}
+
 	
 	
 	

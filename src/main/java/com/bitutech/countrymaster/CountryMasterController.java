@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bitutech.uomcategory.UomCategoryResultBean;
+
 @RestController
 @RequestMapping("/api/auth/app/countryMaster")
 public class CountryMasterController {
@@ -53,5 +55,20 @@ public class CountryMasterController {
 		return countryMasterResultBean;
 
 	}
+	
+	// Edit
+		@GetMapping(value = "/getCode")
+		public CountryMasterResultBean getCode(@RequestParam("countryCode") String countryCode) {
+			CountryMasterResultBean objResultBean = new CountryMasterResultBean();
+			try {
+				objResultBean = countryMasterService.getCode(countryCode);
+				
+				
+			}
+			catch(Exception e){
+				e.printStackTrace();
+			}
+			return objResultBean;
+		}
 
 }

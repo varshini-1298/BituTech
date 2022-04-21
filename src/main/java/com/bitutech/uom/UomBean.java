@@ -5,16 +5,12 @@ public class UomBean {
 	private String unitMeasure;
 	private String uomCategory;
 	private String description;
+	private Integer uomID;
 	private String id;
 	private String text;
 	
 	
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
+
 	public String getText() {
 		return text;
 	}
@@ -38,6 +34,18 @@ public class UomBean {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public Integer getUomID() {
+		return uomID;
+	}
+	public void setUomID(Integer uomID) {
+		this.uomID = uomID;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
 	}
 	
 	
