@@ -60,14 +60,14 @@ public class CurrencyMasterController {
 	
 	
 	@RequestMapping(value="/delete")
-	public CurrencyMasterResultBean delete(@RequestParam("currencyMaster") String currencyMaster) {
-		CurrencyMasterResultBean objResultBean = new CurrencyMasterResultBean();
+	public CurrencyMasterResultBean delete(@RequestParam("currencyCode") String currencyCode) {
+		CurrencyMasterResultBean objbean = new CurrencyMasterResultBean();
 		try {
-			objResultBean = currencyMasterService.delete(currencyMaster);
+			objbean = currencyMasterService.delete(currencyCode);
 		}catch(Exception e){
 			e.printStackTrace();	
 		}
-		return objResultBean;
+		return objbean;
 		
 	}
 
