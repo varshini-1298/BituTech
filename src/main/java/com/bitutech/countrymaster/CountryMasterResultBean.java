@@ -6,13 +6,18 @@ import java.util.List;
 import com.bitutech.core.util.BasicResultBean;
 import com.bitutech.uomcategory.UomCategoryBean;
 
+
 public class CountryMasterResultBean extends BasicResultBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	public boolean Success;
 	
 	private List<CountryMasterBean> countryMasterDetails;
+<<<<<<< Updated upstream
 	private List<CountryMasterBean> currencyList;
+=======
+	private List<CountryMasterBean> currencyList;	
+>>>>>>> Stashed changes
 	private CountryMasterBean countryMasterBean;
 	
 	
@@ -46,6 +51,18 @@ public class CountryMasterResultBean extends BasicResultBean implements Serializ
 
 	public void setCurrencyList(List<CountryMasterBean> currencyList) {
 		this.currencyList = currencyList;
+		
+	}
+	public void setCurrencyMasterDetails(List<CountryMasterBean> countryMasterDetails) {
+		this.countryMasterDetails = countryMasterDetails;
+	}
+
+	public CountryMasterBean getCountryMasterBean() {
+		return countryMasterBean;
+	}
+
+	public void setCountryMasterBean(CountryMasterBean countryMasterBean) {
+		this.countryMasterBean = countryMasterBean;
 	}
 	
 

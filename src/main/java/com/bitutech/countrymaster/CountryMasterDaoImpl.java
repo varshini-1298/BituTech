@@ -11,9 +11,13 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+<<<<<<< Updated upstream
 import com.bitutech.uomcategory.UomCategoryBean;
 import com.bitutech.uomcategory.UomCategoryQueryUtil;
 import com.bitutech.uomcategory.UomCategoryResultBean;
+=======
+
+>>>>>>> Stashed changes
 
 @Repository
 public class CountryMasterDaoImpl implements CountryMasterDao {
@@ -67,6 +71,39 @@ public class CountryMasterDaoImpl implements CountryMasterDao {
 			e.printStackTrace();
 		}
 		return objCountryMasterBean;
+	}
+	@Override
+	public CountryMasterResultBean edit(String bean) throws Exception {
+		CountryMasterResultBean resultBean = new CountryMasterResultBean();
+		resultBean.setSuccess(false);
+		try {
+			resultBean.setCountryMasterBean(jdbcTemplate.queryForObject(CountryMasterQueryUtil.SELECT_CUSTOMER_MASTER,new Object[] { bean }, new BeanPropertyRowMapper<CountryMasterBean>(CountryMasterBean.class)));
+			resultBean.setSuccess(true);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		return resultBean; 
+	}
+
+	@Override
+	public CountryMasterResultBean update(CountryMasterBean bean) throws Exception {
+		CountryMasterResultBean resultBean = new CountryMasterResultBean();
+		try {
+            Map<String, Object> countryMasterMap = new HashMap<String, Object>();
+			
+            countryMasterMap.put("countryCode", bean.getCountryCode());
+            countryMasterMap.put("countryName", bean.getCountryName());
+            countryMasterMap.put("currency", bean.getCurrency());
+			countryMasterMap.put("clientType", bean.getClientType());
+			 
+			namedParameterJdbcTemplate.update(CountryMasterQueryUtil.UPDATE_CUSTOMER_MASTER,countryMasterMap);
+
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return resultBean;
 	}
 
 	@Override
