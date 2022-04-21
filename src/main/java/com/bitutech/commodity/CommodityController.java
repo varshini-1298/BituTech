@@ -6,9 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bitutech.core.util.CustomException;
-import com.bitutech.departmentmaster.DepartmentMasterBean;
-import com.bitutech.departmentmaster.DepartmentMasterResultBean;
+
 
 @RestController
 @RequestMapping("/api/auth/app/commodity")
@@ -38,7 +36,7 @@ public class CommodityController {
    	}
 	
 	@RequestMapping(value="/edit")
-	public CommodityResultBean edit(@RequestParam("commodityCode") String commodityCode) {
+	public CommodityResultBean edit(@RequestParam("commodity") String commodityCode) {
 		CommodityResultBean objResultBean = new CommodityResultBean();
 		try {
 			objResultBean = commodityService.edit(commodityCode);

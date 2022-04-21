@@ -6,8 +6,7 @@ public class CommodityBean {
 	private String imdgClass;
 	private String classification;
 	private String hsCode;
-	private String imdgcodePage;
-	
+	private String imdgcodePage;	
 	private String blClause;
 	private String unNo;
 	private String flashPoint;

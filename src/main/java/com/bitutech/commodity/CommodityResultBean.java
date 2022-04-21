@@ -13,14 +13,14 @@ public class CommodityResultBean extends BasicResultBean implements Serializable
 	public boolean Success;
 	
 	private List<CommodityBean> commodityListDetails;
-	private CommodityBean CommodityMasterBean;
+	private CommodityBean commodityBean;
 	
-	public final CommodityBean getCommodityMasterBean() {
-		return CommodityMasterBean;
+	public final CommodityBean getCommodityBean() {
+		return commodityBean;
 	}
 
-	public final void setCommodityMasterBean(CommodityBean commodityMasterBean) {
-		CommodityMasterBean = commodityMasterBean;
+	public final void setCommodityBean(CommodityBean commodityBean) {
+		this.commodityBean = commodityBean;
 	}
 	
 	public boolean isSuccess() {
