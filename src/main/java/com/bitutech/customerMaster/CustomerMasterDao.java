@@ -8,9 +8,9 @@ public interface CustomerMasterDao {
 
 	List<CustomerMasterBean> getCustomerList() throws Exception;
 
-	CustomerMasterResultBean getCode(String code) throws Exception;
+	CustomerMasterResultBean edit(String bean) throws Exception;
 
-	CustomerMasterResultBean delete(String code) throws Exception;
+	CustomerMasterResultBean delete(String bean) throws Exception;
 
 	CustomerMasterResultBean update(CustomerMasterBean bean) throws Exception;
 

@@ -94,7 +94,7 @@ public class CustomerMasterDaoImpl implements CustomerMasterDao {
 	}
 
 	@Override
-	public CustomerMasterResultBean getCode(String code) throws Exception {
+	public CustomerMasterResultBean edit(String code) throws Exception {
 		CustomerMasterResultBean resultBean = new CustomerMasterResultBean();
 		resultBean.setSuccess(false);
 		try {
@@ -109,11 +109,11 @@ public class CustomerMasterDaoImpl implements CustomerMasterDao {
 	}
 
 	@Override
-	public CustomerMasterResultBean delete(String code) throws Exception {
+	public CustomerMasterResultBean delete(String cusCode) throws Exception {
 		CustomerMasterResultBean resultBean = new CustomerMasterResultBean();
 		try {
-			if(code!=null) {
-				jdbcTemplate.update(CustomerMasterQueryUtil.DELETE_CUSTOMER,code);
+			if(cusCode!=null) {
+				jdbcTemplate.update(CustomerMasterQueryUtil.DELETE_CUSTOMER,cusCode);
 			}
 			resultBean.setSuccess(true);
 		}
@@ -128,8 +128,51 @@ public class CustomerMasterDaoImpl implements CustomerMasterDao {
 	public CustomerMasterResultBean update(CustomerMasterBean bean) throws Exception {
 		CustomerMasterResultBean resultBean = new CustomerMasterResultBean();
 		try {
-			Map<String, Object> uomCategoryMap = new HashMap<String, Object>();
+			Map<String, Object> customerMasterMap = new HashMap<String, Object>();
 		    
+			 customerMasterMap.put("country", bean.getCountry());
+			    customerMasterMap.put("city", bean.getCity());
+			    customerMasterMap.put("territory", bean.getTerritory());
+			    customerMasterMap.put("salesPerson", bean.getSalesPerson());
+			    customerMasterMap.put("addressOfCus", bean.getAddressOfCus());
+			    customerMasterMap.put("business", bean.getBusiness());
+			    customerMasterMap.put("stp", bean.getStp());
+			    customerMasterMap.put("organisationName", bean.getOrganisationName());
+			    customerMasterMap.put("zipCode", bean.getZipCode());
+			    customerMasterMap.put("shortName", bean.getShortName());
+			    customerMasterMap.put("cusWebsite", bean.getCusWebsite());
+			    customerMasterMap.put("companyRegn", bean.getCompanyRegn());
+			    customerMasterMap.put("keyName", bean.getKeyName());
+			    
+			    customerMasterMap.put("keyNumber", bean.getKeyNumber());
+			    customerMasterMap.put("transactionGST", bean.getTransactionGST());
+			    customerMasterMap.put("vatNumber", bean.getVatNumber());
+			    customerMasterMap.put("panNumber", bean.getPanNumber());
+			    
+			    customerMasterMap.put("paymentCenter", bean.getPaymentCenter());
+			    customerMasterMap.put("creditLimit", bean.getCreditLimit());
+			    customerMasterMap.put("creditUsd", bean.getCreditUsd());
+			    customerMasterMap.put("creditDays", bean.getCreditDays());
+			    customerMasterMap.put("keymail", bean.getKeymail());
+			    
+			    customerMasterMap.put("notificationMail", bean.getNotificationMail());
+			    customerMasterMap.put("invoiceMail", bean.getInvoiceMail());
+			    customerMasterMap.put("creditAgreement", bean.getCreditAgreement());
+			    customerMasterMap.put("kycDoc", bean.getKycDoc());
+			    customerMasterMap.put("exemptionDoc", bean.getExemptionDoc());
+			    customerMasterMap.put("nonGstDoc", bean.getNonGstDoc());
+			    customerMasterMap.put("name", bean.getName());
+			    customerMasterMap.put("designation", bean.getDesignation());
+			    customerMasterMap.put("department", bean.getDepartment());
+			    
+			    customerMasterMap.put("phoneno", bean.getPhoneno());
+			    customerMasterMap.put("landline", bean.getLandline());
+			    customerMasterMap.put("email", bean.getEmail());
+				customerMasterMap.put("cusCode", bean.getCusCode());
+			    
+				namedParameterJdbcTemplate.update(CustomerMasterQueryUtil.UPDATE_CUSTOMER_MASTER,customerMasterMap);
+			   resultBean.setSuccess(true);
+			
 //			uomCategoryMap.put("categoryName", bean.getCategoryName());
 //			uomCategoryMap.put("categoryDesp", bean.getCategoryDesp());
 //			uomCategoryMap.put("uomCode", bean.getUomCode());

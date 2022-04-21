@@ -22,21 +22,21 @@ public class CustomerMasterServiceImpl implements CustomerMasterService {
 	}
 
 	@Override
-	public CustomerMasterResultBean getCode(String code) throws Exception {
+	public CustomerMasterResultBean delete(String bean) throws Exception {
 		// TODO Auto-generated method stub
-		return customerMasterDao.getCode(code);
-	}
-
-	@Override
-	public CustomerMasterResultBean delete(String code) throws Exception {
-		// TODO Auto-generated method stub
-		return customerMasterDao.delete(code);
+		return customerMasterDao.delete(bean);
 	}
 
 	@Override
 	public CustomerMasterResultBean update(CustomerMasterBean bean) throws Exception {
 		// TODO Auto-generated method stub
 		return customerMasterDao.update(bean);
+	}
+
+	@Override
+	public CustomerMasterResultBean edit(String bean) throws Exception {
+		// TODO Auto-generated method stub
+		return customerMasterDao.edit(bean);
 	}
 
 	

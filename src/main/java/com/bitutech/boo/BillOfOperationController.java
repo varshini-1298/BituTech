@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
-
 @RestController
 @RequestMapping("/api/auth/app/billOfOperation")
 public class BillOfOperationController {
@@ -49,7 +48,7 @@ public class BillOfOperationController {
 		return billOfOperationService.getBooNoList();
 	}
 	
-	@GetMapping(value="edit")
+	@GetMapping(value="/edit")
 	public BillOfOperationResultBean edit(@RequestParam("billOfOperation") String billOfOperation) {
 		BillOfOperationResultBean objResultBean = new BillOfOperationResultBean();
 		try {
