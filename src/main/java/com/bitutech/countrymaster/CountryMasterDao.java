@@ -9,6 +9,9 @@ public interface CountryMasterDao {
 	List<CountryMasterBean> getCountryList() throws Exception;
 
 	List<CountryMasterBean> getCurrencyList()  throws Exception;
+	CountryMasterResultBean edit(String bean) throws Exception;
+
+	CountryMasterResultBean update(CountryMasterBean bean) throws Exception;
 
 	CountryMasterResultBean deleteCountryDtl(String countryCode) throws Exception;
 

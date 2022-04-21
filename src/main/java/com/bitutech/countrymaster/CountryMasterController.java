@@ -43,7 +43,29 @@ public class CountryMasterController {
 		objResultBean.setSuccess(true);
    		return objResultBean;
    	}
-	
+	@RequestMapping(value="/edit")
+	public CountryMasterResultBean edit(@RequestParam("countryMaster") String bean) {
+		CountryMasterResultBean objbean = new CountryMasterResultBean();
+		try {
+			objbean = countryMasterService.edit(bean);
+		}catch(Exception e){
+			e.printStackTrace();	
+		}
+		return objbean;
+		
+	}
+
+	@RequestMapping(value="/update")
+	public CountryMasterResultBean update(@RequestBody CountryMasterBean bean) {
+		CountryMasterResultBean objbean = new CountryMasterResultBean();
+		try {
+			objbean = countryMasterService.update(bean);
+		}catch(Exception e){
+			e.printStackTrace();	
+		}
+		return objbean;
+		
+	}
 	@GetMapping(value = "/delete")
 	public CountryMasterResultBean deleteCountryDtl(@RequestParam String countryCode) {
 		CountryMasterResultBean countryMasterResultBean = new CountryMasterResultBean();
