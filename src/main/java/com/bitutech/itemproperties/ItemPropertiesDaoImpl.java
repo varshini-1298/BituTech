@@ -11,6 +11,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.bitutech.countrymaster.CountryMasterBean;
+import com.bitutech.countrymaster.CountryMasterQueryUtil;
+
 
 @Repository
 public class ItemPropertiesDaoImpl implements ItemPropertiesDao {
@@ -33,6 +36,7 @@ public class ItemPropertiesDaoImpl implements ItemPropertiesDao {
 			itemPropertiesMap.put("length", bean.getLength());
 			itemPropertiesMap.put("value",bean.getValue());
 			itemPropertiesMap.put("defaultValue", bean.getDefaultValue());
+			itemPropertiesMap.put("active", bean.getActive());
 			
 			namedParameterJdbcTemplate.update(ItemPropertiesQueryUtil.INSERT_DYNAMIC_ATTRIBUTE,itemPropertiesMap);
 		   resultBean.setSuccess(true);
@@ -82,7 +86,9 @@ public class ItemPropertiesDaoImpl implements ItemPropertiesDao {
 			itemPropertiesMap.put("propertyName", bean.getPropertyName());
 			itemPropertiesMap.put("length", bean.getLength());
 			itemPropertiesMap.put("value",bean.getValue());
+			itemPropertiesMap.put("active",bean.getActive());
 			itemPropertiesMap.put("defaultValue", bean.getDefaultValue());
+			itemPropertiesMap.put("itemPropertyId", bean.getItemPropertyId());
 			namedParameterJdbcTemplate.update(ItemPropertiesQueryUtil.UPDATE_DYNAMIC_ATTRIBUTE,itemPropertiesMap);
 		
 		}
@@ -93,11 +99,11 @@ public class ItemPropertiesDaoImpl implements ItemPropertiesDao {
 	}
 
 	@Override
-	public ItemPropertiesResultBean delete(Integer propertyType) throws Exception {
+	public ItemPropertiesResultBean delete(Integer itemPropertyId) throws Exception {
 		ItemPropertiesResultBean resultBean = new ItemPropertiesResultBean();
 		try {
-			if(propertyType!=null) {
-				jdbcTemplate.update(ItemPropertiesQueryUtil.DELETE_DYNAMIC_ATTRIBUTE,propertyType);
+			if(itemPropertyId!=null) {
+				jdbcTemplate.update(ItemPropertiesQueryUtil.DELETE_DYNAMIC_ATTRIBUTE,itemPropertyId);
 			}
 			resultBean.setSuccess(true);
 		}
@@ -106,6 +112,30 @@ public class ItemPropertiesDaoImpl implements ItemPropertiesDao {
 			resultBean.setSuccess(false);
 		}	
 		return resultBean;
+	}
+
+	@Override
+	public List<ItemPropertiesBean> getpropertyList() throws Exception {
+		List<ItemPropertiesBean> objBean = new ArrayList<ItemPropertiesBean>();
+		try {
+			objBean = jdbcTemplate.query(ItemPropertiesQueryUtil.getPropertyList, new BeanPropertyRowMapper<ItemPropertiesBean>(ItemPropertiesBean.class));
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return objBean;
+	}
+
+	@Override
+	public List<ItemPropertiesBean> getTypeList() throws Exception {
+		List<ItemPropertiesBean> objBean = new ArrayList<ItemPropertiesBean>();
+		try {
+			objBean = jdbcTemplate.query(ItemPropertiesQueryUtil.getTypeList, new BeanPropertyRowMapper<ItemPropertiesBean>(ItemPropertiesBean.class));
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return objBean;
 	}
 
 

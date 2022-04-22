@@ -14,4 +14,8 @@ public interface ItemPropertiesDao {
 
 	List<ItemPropertiesBean> getItemprotyList() throws Exception;
 
+	List<ItemPropertiesBean> getpropertyList() throws Exception;
+
+	List<ItemPropertiesBean> getTypeList() throws Exception;
+
 }

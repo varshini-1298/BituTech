@@ -10,8 +10,27 @@ public class ItemPropertiesResultBean extends BasicResultBean implements Seriali
 	
 	public boolean Success;
 	
-	private List<ItemPropertiesBean> itemPropertyDetails;
+	private List<ItemPropertiesBean> itemPropertiesDetails;
+	private List<ItemPropertiesBean> propertyTypeList;
+	private List<ItemPropertiesBean> dataTypeList;
 	
+	
+	public final List<ItemPropertiesBean> getPropertyTypeList() {
+		return propertyTypeList;
+	}
+
+	public final void setPropertyTypeList(List<ItemPropertiesBean> propertyTypeList) {
+		this.propertyTypeList = propertyTypeList;
+	}
+
+	public final List<ItemPropertiesBean> getDataTypeList() {
+		return dataTypeList;
+	}
+
+	public final void setDataTypeList(List<ItemPropertiesBean> dataTypeList) {
+		this.dataTypeList = dataTypeList;
+	}
+
 	private ItemPropertiesBean itemPropertiesBean;
 	
 	public boolean isSuccess() {
@@ -22,12 +41,14 @@ public class ItemPropertiesResultBean extends BasicResultBean implements Seriali
 		Success = success;
 	}
 
-	public List<ItemPropertiesBean> getItemPropertyDetails() {
-		return itemPropertyDetails;
+	
+
+	public List<ItemPropertiesBean> getItemPropertiesDetails() {
+		return itemPropertiesDetails;
 	}
 
-	public void setItemPropertyDetails(List<ItemPropertiesBean> itemPropertyDetails) {
-		this.itemPropertyDetails = itemPropertyDetails;
+	public void setItemPropertiesDetails(List<ItemPropertiesBean> itemPropertiesDetails) {
+		this.itemPropertiesDetails = itemPropertiesDetails;
 	}
 
 	public ItemPropertiesBean getItemPropertiesBean() {

@@ -9,9 +9,58 @@ public class ItemPropertiesBean {
 	private Integer length;
 	private Integer value;
 	private String defaultValue;
-	private boolean active;
+	private Boolean active;
+	private String text;
+	private Integer id;
+	private Integer typeId;
+	private String typeName;
+	private String propertyTypeId;
+	private Integer itemPropertyId;
 	
 	
+	public Integer getItemPropertyId() {
+		return itemPropertyId;
+	}
+	public void setItemPropertyId(Integer itemPropertyId) {
+		this.itemPropertyId = itemPropertyId;
+	}
+	public String getPropertyTypeId() {
+		return propertyTypeId;
+	}
+	public void setPropertyTypeId(String propertyTypeId) {
+		this.propertyTypeId = propertyTypeId;
+	}
+	public Integer getTypeId() {
+		return typeId;
+	}
+	public void setTypeId(Integer typeId) {
+		this.typeId = typeId;
+	}
+	public String getTypeName() {
+		return typeName;
+	}
+	public void setTypeName(String typeName) {
+		this.typeName = typeName;
+	}
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public Boolean getActive() {
+		return active;
+	}
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
+	
+	public final String getText() {
+		return text;
+	}
+	public final void setText(String text) {
+		this.text = text;
+	}
 	public Integer getPropertyType() {
 		return propertyType;
 	}
@@ -48,12 +97,7 @@ public class ItemPropertiesBean {
 	public void setDefaultValue(String defaultValue) {
 		this.defaultValue = defaultValue;
 	}
-	public boolean isActive() {
-		return active;
-	}
-	public void setActive(boolean active) {
-		this.active = active;
-	}
+	
 	
 	
 	

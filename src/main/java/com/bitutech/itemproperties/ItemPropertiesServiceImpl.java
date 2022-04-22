@@ -38,5 +38,17 @@ public class ItemPropertiesServiceImpl implements ItemPropertiesService {
 		// TODO Auto-generated method stub
 		return itemPropertiesDao.delete(bean);
 	}
+
+	@Override
+	public List<ItemPropertiesBean> getpropertyList() throws Exception {
+		// TODO Auto-generated method stub
+		return itemPropertiesDao.getpropertyList();
+	}
+
+	@Override
+	public List<ItemPropertiesBean> getTypeList() throws Exception {
+		// TODO Auto-generated method stub
+		return itemPropertiesDao.getTypeList();
+	}
 	
 }

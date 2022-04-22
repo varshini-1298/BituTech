@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bitutech.countrymaster.CountryMasterResultBean;
+
 
 @RestController
 @RequestMapping("/api/auth/app/itemProperty")
@@ -30,7 +32,7 @@ public class ItemPropertiesController {
 	@RequestMapping(value = "/getList")
    	public ItemPropertiesResultBean getItemprotyList() throws Exception {
 		ItemPropertiesResultBean objResultBean = new ItemPropertiesResultBean();
-		objResultBean.setItemPropertyDetails(itemPropertiesService.getItemprotyList());
+		objResultBean.setItemPropertiesDetails(itemPropertiesService.getItemprotyList());
 		objResultBean.setSuccess(true);
    		return objResultBean;
    	}
@@ -61,16 +63,33 @@ public class ItemPropertiesController {
 	}
 	
 	@RequestMapping(value = "/delete")
-	public ItemPropertiesResultBean delete(@RequestParam("itemProperties") Integer itemProperties) {
+	public ItemPropertiesResultBean delete(@RequestParam("itemProperties") Integer itemPropertyId) {
 		ItemPropertiesResultBean objResultBean = new ItemPropertiesResultBean();
 		try {
-			objResultBean = itemPropertiesService.delete(itemProperties);
+			objResultBean = itemPropertiesService.delete(itemPropertyId);
 		}
 		catch(Exception e){
 			e.printStackTrace();
 		}
 		return objResultBean;
 	}
+	
+	@RequestMapping(value = "/propertyList")
+   	public ItemPropertiesResultBean getpropertyList() throws Exception {
+		ItemPropertiesResultBean objResultBean = new ItemPropertiesResultBean();
+		objResultBean.setPropertyTypeList(itemPropertiesService.getpropertyList());
+		objResultBean.setSuccess(true);
+   		return objResultBean;
+   	}
+	
+	
+	@RequestMapping(value = "/typeList")
+   	public ItemPropertiesResultBean getTypeList() throws Exception {
+		ItemPropertiesResultBean objResultBean = new ItemPropertiesResultBean();
+		objResultBean.setDataTypeList(itemPropertiesService.getTypeList());
+		objResultBean.setSuccess(true);
+   		return objResultBean;
+   	}
 	
 	
 
