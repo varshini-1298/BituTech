@@ -11,8 +11,15 @@ public class BillOfMaterialQueryUtil {
 	
 	public static final String getWorkOrderList = "select workorder_no as id,workorder_no as text from workorder_hdr ";
 	
-	public static final String Insert_Bom_Dtl = "INSERT INTO bom_dtl (bom_no,item_id,uom,quantity,created_by,created_on) "
-			+ " values (:bomNo,:itemId,:uom,:quantity,:createdBy,now()) ";
+	public static final String Insert_Bom_Dtl = "INSERT INTO bom_dtl (bom_no,availability,item_id,uom,quantity,created_by,created_on) "
+			+ " values (:bomNo,:availability,:itemId,:uomId,:quantity,:createdBy,now()) ";
+
+	public static final String Update_Bom_Hdr = "update bom_hdr set bom_no=:bomNo,workorder_no=:workorderNo where bom_no=:bomNo Returning bom_no as bomNo";
+
+	public static final String DELETE_BOM_HDR = "delete from bom_hdr where bom_no=?";
+
+	public static final String SELECT_Bom_Hdr = "select bom_no as bomNo,workorder_no as workorderNo from bom_hdr where bom_no=?";
+
 	
 
 }

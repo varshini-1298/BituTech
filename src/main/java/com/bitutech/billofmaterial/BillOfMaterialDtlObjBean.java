@@ -4,8 +4,9 @@ public class BillOfMaterialDtlObjBean {
 	
 	private String bomNo;
 	private String itemId;
-	private String uomId;
+	private Integer uomId;
 	private Integer quantity;
+	private String availability;
 	
 	private String createdBy;
 	private String createdDate;
@@ -48,12 +49,19 @@ public class BillOfMaterialDtlObjBean {
 	public void setModifiedBy(String modifiedBy) {
 		this.modifiedBy = modifiedBy;
 	}
-	public String getUomId() {
+	public Integer getUomId() {
 		return uomId;
 	}
-	public void setUomId(String uomId) {
+	public void setUomId(Integer uomId) {
 		this.uomId = uomId;
 	}
+	public String getAvailability() {
+		return availability;
+	}
+	public void setAvailability(String availability) {
+		this.availability = availability;
+	}
+	
 	
 	
 	

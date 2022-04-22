@@ -47,7 +47,7 @@ public class BillOfOperationDaoImpl implements BillOfOperationDao {
 			}
 		}
 
-resultBean.setSuccess(true);
+		resultBean.setSuccess(true);
 		}catch(Exception e) {
 			e.printStackTrace();
 			resultBean.setSuccess(false);

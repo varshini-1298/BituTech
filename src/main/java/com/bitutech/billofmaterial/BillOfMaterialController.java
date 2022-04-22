@@ -3,6 +3,7 @@ package com.bitutech.billofmaterial;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bitutech.core.util.CustomException;
@@ -47,4 +48,40 @@ public class BillOfMaterialController {
 		objResultBean = bomService.getWorkOrderList();
    		return objResultBean;
    	}
+	
+	@RequestMapping(value="/edit")
+	public BillOfMaterialResultBean edit(@RequestParam("billOfMaterial") String billOfMaterial) throws Exception {
+		BillOfMaterialResultBean objResultBean = new BillOfMaterialResultBean();
+		try {
+			objResultBean = bomService.edit(billOfMaterial);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return objResultBean;
+	}
+	
+	@RequestMapping(value="/update")
+	public BillOfMaterialResultBean update(@RequestBody BillOfMaterialHdrObjBean bean) throws Exception {
+		BillOfMaterialResultBean objResultBean = new BillOfMaterialResultBean();
+		try {
+			objResultBean = bomService.update(bean);
+		}
+		catch(Exception e) {
+			e.printStackTrace();	
+		}
+		return objResultBean;
+	}
+	
+	@RequestMapping(value="/delete")
+	public BillOfMaterialResultBean delete(@RequestParam("billOfMaterial") String billOfMaterial) throws Exception {
+		BillOfMaterialResultBean objResultBean = new BillOfMaterialResultBean();
+		try {
+			objResultBean = bomService.delete(billOfMaterial);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return objResultBean;
+	}
 }

@@ -17,7 +17,7 @@ public class BillOfMaterialResultBean extends BasicResultBean implements Seriali
 	
 	private List<DropDownList> workOrderNoList;
 	
-	
+	private BillOfMaterialHdrObjBean billOfMaterialHdrObjBean;
 
 	public boolean isSuccess() {
 		return Success;
@@ -49,6 +49,14 @@ public class BillOfMaterialResultBean extends BasicResultBean implements Seriali
 
 	public void setBomNumber(String bomNumber) {
 		this.bomNumber = bomNumber;
+	}
+
+	public BillOfMaterialHdrObjBean getBillOfMaterialHdrObjBean() {
+		return billOfMaterialHdrObjBean;
+	}
+
+	public void setBillOfMaterialHdrObjBean(BillOfMaterialHdrObjBean billOfMaterialHdrObjBean) {
+		this.billOfMaterialHdrObjBean = billOfMaterialHdrObjBean;
 	}
 
 

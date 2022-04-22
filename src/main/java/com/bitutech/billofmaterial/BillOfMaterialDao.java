@@ -1,8 +1,5 @@
 package com.bitutech.billofmaterial;
 
-import java.util.List;
-
-import com.bitutech.core.util.DropDownList;
 
 public interface BillOfMaterialDao {
 
@@ -10,6 +7,12 @@ public interface BillOfMaterialDao {
 
 	BillOfMaterialResultBean getList() throws Exception;
 	
+	BillOfMaterialResultBean edit(String bean) throws Exception;
+	
+	BillOfMaterialResultBean update(BillOfMaterialHdrObjBean bean)throws Exception;
+	
+	BillOfMaterialResultBean delete(String Bean) throws Exception;
+	 
 	BillOfMaterialResultBean getWorkOrderList() throws Exception;
 	
 	BillOfMaterialResultBean getBomNumber() throws Exception;

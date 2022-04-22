@@ -1,11 +1,9 @@
 package com.bitutech.billofmaterial;
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.bitutech.core.util.DropDownList;
 
 @Service
 public class BillOfMaterialServiceImpl implements BillOfMaterialService {
@@ -32,6 +30,24 @@ public class BillOfMaterialServiceImpl implements BillOfMaterialService {
 	public BillOfMaterialResultBean getBomNumber() throws Exception {
 		// TODO Auto-generated method stub
 		return billOfMaterialDao.getBomNumber();
+	}
+
+	@Override
+	public BillOfMaterialResultBean edit(String bean) throws Exception {
+		// TODO Auto-generated method stub
+		return billOfMaterialDao.edit(bean);
+	}
+
+	@Override
+	public BillOfMaterialResultBean update(BillOfMaterialHdrObjBean bean) throws Exception {
+		// TODO Auto-generated method stub
+		return billOfMaterialDao.update(bean);
+	}
+
+	@Override
+	public BillOfMaterialResultBean delete(String bean) throws Exception {
+		// TODO Auto-generated method stub
+		return billOfMaterialDao.delete(bean);
 	}
 
 	

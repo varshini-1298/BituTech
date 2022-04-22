@@ -12,7 +12,6 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.bitutech.core.util.DropDownList;
-import com.bitutech.workorder.WorkOrderQueryUtil;
 
 @Repository
 public class BillOfMaterialDaoImpl implements BillOfMaterialDao {
@@ -38,8 +37,9 @@ public class BillOfMaterialDaoImpl implements BillOfMaterialDao {
 						Map<String, Object> dtlMap = new HashMap<>();
 						dtlMap.put("bomNo",bomNo);
 						dtlMap.put("itemId",billOfMaterialDtlObjBean.getItemId());
-						dtlMap.put("uom",billOfMaterialDtlObjBean.getUomId());
+						dtlMap.put("uomId",billOfMaterialDtlObjBean.getUomId());
 						dtlMap.put("quantity",billOfMaterialDtlObjBean.getQuantity());
+						dtlMap.put("availability",billOfMaterialDtlObjBean.getAvailability());
 						dtlMap.put("createdBy","E0001");
 						namedParameterJdbcTemplate.update(BillOfMaterialQueryUtil.Insert_Bom_Dtl,dtlMap);
 						
@@ -102,6 +102,56 @@ public class BillOfMaterialDaoImpl implements BillOfMaterialDao {
 			bomResultBean.setSuccess(false);
 		}
 		return bomResultBean;
+	}
+
+	@Override
+	public BillOfMaterialResultBean edit(String bean) throws Exception {
+		// TODO Auto-generated method stub
+		BillOfMaterialResultBean resultBean = new BillOfMaterialResultBean();
+		resultBean.setSuccess(false);
+		try {
+			resultBean.setBillOfMaterialHdrObjBean(jdbcTemplate.queryForObject(BillOfMaterialQueryUtil.SELECT_Bom_Hdr,new Object[] { bean }, new BeanPropertyRowMapper<BillOfMaterialHdrObjBean>(BillOfMaterialHdrObjBean.class)));
+			resultBean.setSuccess(true);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			resultBean.setSuccess(false);
+		}
+		return resultBean;
+	}
+
+	@Override
+	public BillOfMaterialResultBean update(BillOfMaterialHdrObjBean bean) throws Exception {
+		// TODO Auto-generated method stub
+		BillOfMaterialResultBean resultBean = new BillOfMaterialResultBean();
+		try {
+			Map<String, Object> bomMap = new HashMap<>();
+			bomMap.put("bomNo",bean.getBomNo());
+			bomMap.put("workorderNo",bean.getWorkorderNo());
+			bomMap.put("bomNo",bean.getBomNo());
+			namedParameterJdbcTemplate.queryForObject(BillOfMaterialQueryUtil.Update_Bom_Hdr,bomMap,String.class);
+			resultBean.setSuccess(true);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return resultBean;
+	}
+
+	@Override
+	public BillOfMaterialResultBean delete(String bomNo) throws Exception {
+		// TODO Auto-generated method stub
+		BillOfMaterialResultBean resultBean = new BillOfMaterialResultBean();
+		try {
+			if(bomNo!=null) {
+				jdbcTemplate.update(BillOfMaterialQueryUtil.DELETE_BOM_HDR,bomNo);
+			}
+			resultBean.setSuccess(true);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return resultBean;
 	}
 
 
