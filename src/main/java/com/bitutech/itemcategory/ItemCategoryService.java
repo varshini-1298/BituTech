@@ -10,4 +10,6 @@ public interface ItemCategoryService {
 
 	public List<ItemCategoryBean> getUomcateList() throws Exception;
 
+	ItemCategoryResultBean getPropValue(Integer propertyId) throws Exception;
+
 }

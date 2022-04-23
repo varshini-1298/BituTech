@@ -8,23 +8,29 @@ import org.springframework.stereotype.Service;
 @Service
 public class ItemCategoryServiceImpl implements ItemCategoryService {
 	@Autowired
-	ItemCategoryDao uomDao;
+	ItemCategoryDao itemCategoryDao;
 
 	@Override
 	public ItemCategoryResultBean save(ItemCategoryBean bean) throws Exception {
-		return uomDao.save(bean);
+		return itemCategoryDao.save(bean);
 	}
 
 	@Override
 	public List<ItemCategoryBean> getItemCategoryList() throws Exception {
 		// TODO Auto-generated method stub
-		return uomDao.getItemCategoryList();
+		return itemCategoryDao.getItemCategoryList();
 	}
 
 	@Override
 	public List<ItemCategoryBean> getUomcateList() throws Exception {
 		// TODO Auto-generated method stub
-		return uomDao.getUomcateList();
+		return itemCategoryDao.getUomcateList();
+	}
+
+	@Override
+	public ItemCategoryResultBean getPropValue(Integer propertyId) throws Exception {
+		// TODO Auto-generated method stub
+		return itemCategoryDao.getPropValue(propertyId);
 	}
 
 	

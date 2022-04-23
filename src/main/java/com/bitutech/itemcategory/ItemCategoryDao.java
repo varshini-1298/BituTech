@@ -10,4 +10,6 @@ public interface ItemCategoryDao {
 
 	List<ItemCategoryBean> getUomcateList() throws Exception;
 
+	ItemCategoryResultBean getPropValue(Integer propertyId) throws Exception;
+
 }

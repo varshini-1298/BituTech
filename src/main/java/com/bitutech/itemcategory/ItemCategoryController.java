@@ -1,12 +1,15 @@
 package com.bitutech.itemcategory;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bitutech.core.util.CustomException;
 import com.bitutech.countrymaster.CountryMasterResultBean;
+import com.bitutech.uomcategory.UomCategoryResultBean;
 
 @RestController
 @RequestMapping("/api/auth/app/itemCategory")
@@ -34,6 +37,19 @@ public class ItemCategoryController {
 		objResultBean.setSuccess(true);
    		return objResultBean;
    	}
+	
+		@GetMapping(value = "/getproperValue")
+		public ItemCategoryResultBean getPropValue(@RequestParam("propertyId") Integer propertyId) {
+			ItemCategoryResultBean objResultBean = new ItemCategoryResultBean();
+			try {
+				objResultBean = itemCategoryService.getPropValue(propertyId);
+								
+			}
+			catch(Exception e){
+				e.printStackTrace();
+			}
+			return objResultBean;
+		}
 
 	@RequestMapping(value = "/getUomCategory")
    	public ItemCategoryResultBean getUomcateList() throws Exception {

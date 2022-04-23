@@ -13,6 +13,18 @@ public class ItemCategoryResultBean extends BasicResultBean implements Serializa
 	private List<ItemCategoryBean> itemCategoryDetails;
 	private List<ItemCategoryBean> uomCategoryList;
 	
+	private ItemCategoryBean itemCategoryBean;
+	
+	
+	
+	public final ItemCategoryBean getItemCategoryBean() {
+		return itemCategoryBean;
+	}
+
+	public final void setItemCategoryBean(ItemCategoryBean itemCategoryBean) {
+		this.itemCategoryBean = itemCategoryBean;
+	}
+
 	public boolean isSuccess() {
 		return Success;
 	}
