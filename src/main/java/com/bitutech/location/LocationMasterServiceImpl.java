@@ -21,6 +21,24 @@ public class LocationMasterServiceImpl implements LocationMasterService {
 		return locationMasterDao.getLocationList();
 	}
 
+	@Override
+	public LocationMasterResultBean delete(Integer cslLocationCode) throws Exception{
+		// TODO Auto-generated method stub
+		return locationMasterDao.delete(cslLocationCode);
+	}
+
+	@Override
+	public LocationMasterResultBean update(LocationMasterBean bean) throws Exception {
+		// TODO Auto-generated method stub
+		return locationMasterDao.update(bean);
+	}
+
+	@Override
+	public LocationMasterResultBean edit(Integer cslLocationCode) throws Exception {
+		// TODO Auto-generated method stub
+		return locationMasterDao.edit(cslLocationCode);
+	}
+
 	
 
 

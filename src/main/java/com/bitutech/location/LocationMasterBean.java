@@ -1,28 +1,64 @@
 package com.bitutech.location;
 
 public class LocationMasterBean {
-	private int locationId;
+	private Integer locationId;
+	private String email;
+	private String region;
+	private Integer cslLocationCode;
+	private String country;
+	private Integer locationType;
+	private String portAgentName;
 	private String locationName;
-	private int parentLocationId;
-	private int locationCategory;
-	private int addressId;
-	private int locationType;
-	private String locationIncharge;
-	private String locationActivity;
-	private String isScrapLocation;
-	private boolean isActive;
-	private String isStockLocation;
-	private String type;
-	private String isParentAddress;
-	private int departmentId;
-	private String createdDate;
-	private String modifiedBy;
-	private String modifiedDate;
-	public int getLocationId() {
+	private String depotVendorName;
+	private Integer portCode;
+	private Integer demDet;
+	private Boolean active;
+	private String controllingBatch;
+	private Boolean rrrBlock;
+	private String transhipmentHub;
+	private String blFreeDays;
+	private String dischargeDwellTimeDry;
+	private String loadDwellTimeDry;
+	private String dischargeDwellTimeRfr;
+	private String loadDwellTime;
+	private String customTransportMode;
+	private String carrierName;
+	private Integer carrierCode;
+	public Integer getLocationId() {
 		return locationId;
 	}
-	public void setLocationId(int locationId) {
+	public void setLocationId(Integer locationId) {
 		this.locationId = locationId;
+	}
+	public String getRegion() {
+		return region;
+	}
+	public void setRegion(String region) {
+		this.region = region;
+	}
+	public Integer getCslLocationCode() {
+		return cslLocationCode;
+	}
+	public void setCslLocationCode(Integer cslLocationCode) {
+		this.cslLocationCode = cslLocationCode;
+	}
+	public String getCountry() {
+		return country;
+	}
+	public void setCountry(String country) {
+		this.country = country;
+	}
+	public Integer getLocationType() {
+		return locationType;
+	}
+	public void setLocationType(Integer locationType) {
+		this.locationType = locationType;
+	}
+	public String getPortAgentName() {
+		return portAgentName;
+	}
+	public void setPortAgentName(String portAgentName) {
+		this.portAgentName = portAgentName;
 	}
 	public String getLocationName() {
 		return locationName;
@@ -30,95 +66,107 @@ public class LocationMasterBean {
 	public void setLocationName(String locationName) {
 		this.locationName = locationName;
 	}
-	public int getParentLocationId() {
-		return parentLocationId;
+	
+	public String getDepotVendorName() {
+		return depotVendorName;
 	}
-	public void setParentLocationId(int parentLocationId) {
-		this.parentLocationId = parentLocationId;
+	public void setDepotVendorName(String depotVendorName) {
+		this.depotVendorName = depotVendorName;
 	}
-	public int getLocationCategory() {
-		return locationCategory;
+	public Integer getPortCode() {
+		return portCode;
 	}
-	public void setLocationCategory(int locationCategory) {
-		this.locationCategory = locationCategory;
+	public void setPortCode(Integer portCode) {
+		this.portCode = portCode;
 	}
-	public int getAddressId() {
-		return addressId;
+	public Integer getDemDet() {
+		return demDet;
 	}
-	public void setAddressId(int addressId) {
-		this.addressId = addressId;
+	public void setDemDet(Integer demDet) {
+		this.demDet = demDet;
 	}
-	public int getLocationType() {
-		return locationType;
+	
+	public String getEmail() {
+		return email;
 	}
-	public void setLocationType(int locationType) {
-		this.locationType = locationType;
+	public void setEmail(String email) {
+		this.email = email;
 	}
-	public String getLocationIncharge() {
-		return locationIncharge;
+	public Boolean getActive() {
+		return active;
 	}
-	public void setLocationIncharge(String locationIncharge) {
-		this.locationIncharge = locationIncharge;
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
-	public String getLocationActivity() {
-		return locationActivity;
+	public Boolean getRrrBlock() {
+		return rrrBlock;
 	}
-	public void setLocationActivity(String locationActivity) {
-		this.locationActivity = locationActivity;
+	public void setRrrBlock(Boolean rrrBlock) {
+		this.rrrBlock = rrrBlock;
 	}
-	public String getIsScrapLocation() {
-		return isScrapLocation;
+	
+	public String getControllingBatch() {
+		return controllingBatch;
 	}
-	public void setIsScrapLocation(String isScrapLocation) {
-		this.isScrapLocation = isScrapLocation;
+	public void setControllingBatch(String controllingBatch) {
+		this.controllingBatch = controllingBatch;
 	}
-	public boolean isActive() {
-		return isActive;
+	public String getTranshipmentHub() {
+		return transhipmentHub;
 	}
-	public void setActive(boolean isActive) {
-		this.isActive = isActive;
+	public void setTranshipmentHub(String transhipmentHub) {
+		this.transhipmentHub = transhipmentHub;
 	}
-	public String getIsStockLocation() {
-		return isStockLocation;
+	public String getBlFreeDays() {
+		return blFreeDays;
 	}
-	public void setIsStockLocation(String isStockLocation) {
-		this.isStockLocation = isStockLocation;
+	public void setBlFreeDays(String blFreeDays) {
+		this.blFreeDays = blFreeDays;
 	}
-	public String getType() {
-		return type;
+	public String getDischargeDwellTimeDry() {
+		return dischargeDwellTimeDry;
 	}
-	public void setType(String type) {
-		this.type = type;
+	public void setDischargeDwellTimeDry(String dischargeDwellTimeDry) {
+		this.dischargeDwellTimeDry = dischargeDwellTimeDry;
 	}
-	public String getIsParentAddress() {
-		return isParentAddress;
+	public String getLoadDwellTimeDry() {
+		return loadDwellTimeDry;
 	}
-	public void setIsParentAddress(String isParentAddress) {
-		this.isParentAddress = isParentAddress;
+	public void setLoadDwellTimeDry(String loadDwellTimeDry) {
+		this.loadDwellTimeDry = loadDwellTimeDry;
 	}
-	public int getDepartmentId() {
-		return departmentId;
+	public String getDischargeDwellTimeRfr() {
+		return dischargeDwellTimeRfr;
 	}
-	public void setDepartmentId(int departmentId) {
-		this.departmentId = departmentId;
+	public void setDischargeDwellTimeRfr(String dischargeDwellTimeRfr) {
+		this.dischargeDwellTimeRfr = dischargeDwellTimeRfr;
 	}
-	public String getCreatedDate() {
-		return createdDate;
+	public String getLoadDwellTime() {
+		return loadDwellTime;
 	}
-	public void setCreatedDate(String createdDate) {
-		this.createdDate = createdDate;
+	public void setLoadDwellTime(String loadDwellTime) {
+		this.loadDwellTime = loadDwellTime;
 	}
-	public String getModifiedBy() {
-		return modifiedBy;
+	public String getCustomTransportMode() {
+		return customTransportMode;
 	}
-	public void setModifiedBy(String modifiedBy) {
-		this.modifiedBy = modifiedBy;
+	public void setCustomTransportMode(String customTransportMode) {
+		this.customTransportMode = customTransportMode;
 	}
-	public String getModifiedDate() {
-		return modifiedDate;
+	public String getCarrierName() {
+		return carrierName;
 	}
-	public void setModifiedDate(String modifiedDate) {
-		this.modifiedDate = modifiedDate;
+	public void setCarrierName(String carrierName) {
+		this.carrierName = carrierName;
 	}
+	public Integer getCarrierCode() {
+		return carrierCode;
+	}
+	public void setCarrierCode(Integer carrierCode) {
+		this.carrierCode = carrierCode;
+	}
+	
+	
+	
 	
 }
