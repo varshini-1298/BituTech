@@ -8,4 +8,10 @@ public interface LocationMasterService {
 
 	public List<LocationMasterBean> getLocationList() throws Exception;
 
+	LocationMasterResultBean delete(Integer cslLocationCode) throws Exception;
+
+	LocationMasterResultBean update(LocationMasterBean bean) throws Exception;
+
+	LocationMasterResultBean edit(Integer cslLocationCode) throws Exception;
+
 }
