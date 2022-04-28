@@ -7,7 +7,7 @@ public class WorkOrderHdrObjBean {
 	private String workorderNo;
 	private String workorderDate;
 	private String salesOrderNo;
-	private List<WorkOrderDtlBean> workOrderDtlObjBean;
+	private List<WorkOrderDtlBean> workOrderDtlData;
 	
 	
 	public String getWorkorderDate() {
@@ -30,11 +30,11 @@ public class WorkOrderHdrObjBean {
 	public void setWorkorderNo(String workorderNo) {
 		this.workorderNo = workorderNo;
 	}
-	public List<WorkOrderDtlBean> getWorkOrderDtlObjBean() {
-		return workOrderDtlObjBean;
+	public List<WorkOrderDtlBean> getWorkOrderDtlData() {
+		return workOrderDtlData;
 	}
-	public void setWorkOrderDtlObjBean(List<WorkOrderDtlBean> workOrderDtlObjBean) {
-		this.workOrderDtlObjBean = workOrderDtlObjBean;
+	public void setWorkOrderDtlData(List<WorkOrderDtlBean> workOrderDtlData) {
+		this.workOrderDtlData = workOrderDtlData;
 	}
 	
 	

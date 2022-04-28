@@ -37,8 +37,8 @@ public class WorkOrderDaoImpl implements WorkOrderDao {
 			String workorderNo = namedParameterJdbcTemplate.queryForObject(WorkOrderQueryUtil.INSERT_WORKORDER_HDR,workOrderMap,String.class);
 			
 			if(!workorderNo.isEmpty()) {
-				if(bean.getWorkOrderDtlObjBean().size()>0) {
-					for(WorkOrderDtlBean workOrderDtlBean: bean.getWorkOrderDtlObjBean() ) {
+				if(bean.getWorkOrderDtlData().size()>0) {
+					for(WorkOrderDtlBean workOrderDtlBean: bean.getWorkOrderDtlData() ) {
 						Map<String, Object> dtlMap = new HashMap<>();
 						dtlMap.put("workorderNo",workorderNo);
 						dtlMap.put("itemId",workOrderDtlBean.getItemId());
@@ -154,11 +154,11 @@ public class WorkOrderDaoImpl implements WorkOrderDao {
 			jdbcTemplate.queryForObject(WorkOrderQueryUtil.UPDATE_WORKORDER_HDR,new BeanPropertyRowMapper<WorkOrderHdrObjBean>(WorkOrderHdrObjBean.class),new Object[]
 					{Bean.getWorkorderDate(),Bean.getSalesOrderNo(),Bean.getWorkorderNo()});
 			
-			if(Bean.getWorkOrderDtlObjBean().size()>0) {
+			if(Bean.getWorkOrderDtlData().size()>0) {
 				jdbcTemplate.update(WorkOrderQueryUtil.DELETE_WORKORDER_DTL,Bean.getWorkorderNo());
 				
 				
-				for(WorkOrderDtlBean workOrderDtlBean: Bean.getWorkOrderDtlObjBean() ) {
+				for(WorkOrderDtlBean workOrderDtlBean: Bean.getWorkOrderDtlData() ) {
 					Map<String, Object> dtlMap = new HashMap<>();
 					dtlMap.put("workorderNo",Bean.getWorkorderNo());
 					dtlMap.put("itemId",workOrderDtlBean.getItemId());
