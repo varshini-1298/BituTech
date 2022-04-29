@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import com.bitutech.countrymaster.CountryMasterBean;
 import com.bitutech.countrymaster.CountryMasterQueryUtil;
+import com.bitutech.itemproperties.ItemPropertiesQueryUtil;
 import com.bitutech.uomcategory.UomCategoryBean;
 import com.bitutech.uomcategory.UomCategoryQueryUtil;
 import com.bitutech.uomcategory.UomCategoryResultBean;
@@ -39,53 +40,38 @@ public class ItemCategoryDaoImpl implements ItemCategoryDao {
 			itemCategoryMap.put("categoryType", bean.getCategoryType());
 			itemCategoryMap.put("incomingQty", bean.getIncomingQty());
 			
-//			itemCategoryMap.put("propertyType", bean.getPropertyType());
-//			itemCategoryMap.put("length", bean.getLength());
-//			itemCategoryMap.put("isMandantory", bean.getIsMandantory());
-//			itemCategoryMap.put("batchNO", bean.getBatchNO());
-//			itemCategoryMap.put("expiryDate", bean.getExpiryDate());
-//			itemCategoryMap.put("mrp", bean.getMrp());
-//			itemCategoryMap.put("manufactureDetails", bean.getManufactureDetails());
 			
-			String catagoryId = namedParameterJdbcTemplate.queryForObject(ItemCategoryQueryUtil.INSERT_ITEM_CATEGORY_hdr,itemCategoryMap,String.class);
+			Integer catagoryId = namedParameterJdbcTemplate.queryForObject(ItemCategoryQueryUtil.INSERT_ITEM_CATEGORY_hdr,itemCategoryMap,Integer.class);
 		   
-			if(!catagoryId.isEmpty()) {
-			if(bean.getItemCategoryAcc().size()>0) {
-					for(itemCategoryAcc itemAccount: bean.getItemCategoryAcc() ) {
+			if(catagoryId != null) {
 					Map<String, Object> AccountDtl = new HashMap<>();
 					AccountDtl.put("catagoryId",catagoryId);
-					AccountDtl.put("salesTaxes", itemAccount.getSalesTaxes());
-					AccountDtl.put("purchaseTaxes", itemAccount.getPurchaseTaxes());
-					AccountDtl.put("assetAccount", itemAccount.getAssetAccount());
-					AccountDtl.put("deptAccount", itemAccount.getDeptAccount());
-					AccountDtl.put("AccuDept", itemAccount.getAccuDept());
+					AccountDtl.put("salesTaxes", bean.getSalesTaxes());
+					AccountDtl.put("purchaseTaxes", bean.getPurchaseTaxes());
+					AccountDtl.put("assetAccount", bean.getAssetAccount());
+					AccountDtl.put("deptAccount", bean.getDeptAccount());
+					AccountDtl.put("AccuDept", bean.getAccuDept());
 						namedParameterJdbcTemplate.update(ItemCategoryQueryUtil.INSERT_CATAGORY_ACC,AccountDtl);
-					}
-				}
-			if(bean.getItemCategoryProperty().size()>0) {
-				for(itemCategoryProperty catagoryProperty: bean.getItemCategoryProperty() ) {
+						
+					//hardcoded value
+				Integer dynamicId = 11;
 					Map<String, Object> propertyDtl = new HashMap<>();
 					propertyDtl.put("catagoryId",catagoryId);
-					propertyDtl.put("propertyType", catagoryProperty.getPropertyType());
-					propertyDtl.put("propertyType", catagoryProperty.getPropertyType());
-					propertyDtl.put("length", catagoryProperty.getLength());
-					propertyDtl.put("isMandantory", catagoryProperty.getIsMandantory());
+ 					propertyDtl.put("propertyType", dynamicId);
 						namedParameterJdbcTemplate.update(ItemCategoryQueryUtil.INSERT_CATAGORY_PROP,propertyDtl);
-					}
+					
 				
-			}
-			if(bean.getItemCategoryGRN().size()>0) {
-				for(itemCategoryGRN itemCategoryGRN: bean.getItemCategoryGRN() ) {
+			
 					Map<String, Object> grnDtl = new HashMap<>();
 					grnDtl.put("catagoryId",catagoryId);
-					grnDtl.put("batchNO", itemCategoryGRN.getBatchNO());
-					grnDtl.put("expiryDate", itemCategoryGRN.getExpiryDate());
-					grnDtl.put("mrp", itemCategoryGRN.getMrp());
-					grnDtl.put("manufactureDetails", itemCategoryGRN.getManufactureDetails());
+					grnDtl.put("batchNO", bean.getBatchNO());
+					grnDtl.put("expiryDate", bean.getExpiryDate());
+					grnDtl.put("mrp", bean.getMrp());
+					grnDtl.put("manufactureDetails", bean.getManufactureDetails());
 						namedParameterJdbcTemplate.update(ItemCategoryQueryUtil.INSERT_CATAGORY_GRN,grnDtl);
-					}
+					
 				
-			}
+			
 		}
 			resultBean.setSuccess(true);
 		}catch(Exception e) {
@@ -109,15 +95,15 @@ public class ItemCategoryDaoImpl implements ItemCategoryDao {
 	}
 
 	@Override
-	public List<ItemCategoryBean> getUomcateList() throws Exception {
-		List<ItemCategoryBean> objUomMasterBean = new ArrayList<ItemCategoryBean>();
+	public List<ItemCategoryBean> getCategoryType() throws Exception {
+		List<ItemCategoryBean> resultBean = new ArrayList<ItemCategoryBean>();
 		try {
-			objUomMasterBean = jdbcTemplate.query(ItemCategoryQueryUtil.getUomcategoryList, new BeanPropertyRowMapper<ItemCategoryBean>(ItemCategoryBean.class));
+			resultBean = jdbcTemplate.query(ItemCategoryQueryUtil.CATEGORY_TYPE_LIST, new BeanPropertyRowMapper<ItemCategoryBean>(ItemCategoryBean.class));
 			
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		return objUomMasterBean;
+		return resultBean;
 	}
 
 	@Override
@@ -134,6 +120,95 @@ public class ItemCategoryDaoImpl implements ItemCategoryDao {
 		}
 		return resultBean;
 	}
+
+	@Override
+	public ItemCategoryResultBean deleteItemCategory(Integer itemCategoryId) throws Exception {
+
+		ItemCategoryResultBean resultBean = new ItemCategoryResultBean();
+		int value = 0, accountValue = 0, propertyValue = 0;
+		try {
+
+			accountValue = jdbcTemplate.update(ItemCategoryQueryUtil.sDeleteItemCategoryAccount, itemCategoryId);
+			propertyValue = jdbcTemplate.update(ItemCategoryQueryUtil.sDeleteItemCategoryProperty, itemCategoryId);
+			jdbcTemplate.update(ItemCategoryQueryUtil.sDeletegrnAttribute, itemCategoryId);
+			value = jdbcTemplate.update(ItemCategoryQueryUtil.sDeleteItemCategory, itemCategoryId);
+
+			if (value != 0) {
+				resultBean.setSuccess(true);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			resultBean.setSuccess(false);
+ 		}
+		return resultBean;
+	}
+
+	@Override
+	public ItemCategoryResultBean edit(Integer itemCategoryId) throws Exception {
+		ItemCategoryResultBean resultBean = new ItemCategoryResultBean();
+		resultBean.setSuccess(false);
+		try {
+			resultBean.setItemCategoryBean(jdbcTemplate.queryForObject(ItemCategoryQueryUtil.SELECT_CATEGORY_EDIT,new Object[] { itemCategoryId }, new BeanPropertyRowMapper<ItemCategoryBean>(ItemCategoryBean.class)));
+			resultBean.setSuccess(true);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			resultBean.setSuccess(false);
+		}
+		return resultBean;
+	}
+
+	@Override
+	public ItemCategoryResultBean update(ItemCategoryBean bean) throws Exception {
+		ItemCategoryResultBean resultBean = new ItemCategoryResultBean();
+ 		try {
+			Map<String, Object> itemCategoryMap = new HashMap<String, Object>();
+		    
+			itemCategoryMap.put("categoryName", bean.getCategoryName());
+			itemCategoryMap.put("parentCategory", bean.getParentCategory());
+			itemCategoryMap.put("categoryType", bean.getCategoryType());
+			itemCategoryMap.put("incomingQty", bean.getIncomingQty());
+			itemCategoryMap.put("itemCategoryId", bean.getItemCategoryId());
+			 
+ 			namedParameterJdbcTemplate.update(ItemCategoryQueryUtil.UPDATE_ITEM_CATEGORY_hdr,itemCategoryMap);
+ 			
+ 					Map<String, Object> AccountDtl = new HashMap<>();
+					AccountDtl.put("itemCategoryId", bean.getItemCategoryId());
+					AccountDtl.put("salesTaxes", bean.getSalesTaxes());
+					AccountDtl.put("purchaseTaxes", bean.getPurchaseTaxes());
+					AccountDtl.put("assetAccount", bean.getAssetAccount());
+					AccountDtl.put("deptAccount", bean.getDeptAccount());
+					AccountDtl.put("AccuDept", bean.getAccuDept());
+						namedParameterJdbcTemplate.update(ItemCategoryQueryUtil.UPDATE_CATAGORY_ACC,AccountDtl);
+						
+					//hardcoded value
+				Integer dynamicId = 11;
+					Map<String, Object> propertyDtl = new HashMap<>();
+					propertyDtl.put("itemCategoryId", bean.getItemCategoryId());
+ 					propertyDtl.put("propertyType", dynamicId);
+						namedParameterJdbcTemplate.update(ItemCategoryQueryUtil.UPDATE_CATAGORY_PROP,propertyDtl);
+					
+				
+			
+					Map<String, Object> grnDtl = new HashMap<>();
+					grnDtl.put("itemCategoryId", bean.getItemCategoryId());
+					grnDtl.put("batchNO", bean.getBatchNO());
+					grnDtl.put("expiryDate", bean.getExpiryDate());
+					grnDtl.put("mrp", bean.getMrp());
+					grnDtl.put("manufactureDetails", bean.getManufactureDetails());
+						namedParameterJdbcTemplate.update(ItemCategoryQueryUtil.UPDATE_CATAGORY_GRN,grnDtl);
+					
+		 
+			resultBean.setSuccess(true);
+		}catch(Exception e) {
+			e.printStackTrace();
+			resultBean.setSuccess(false);
+		}
+		
+		return resultBean;
+	}
+
+	 
 
 	
 

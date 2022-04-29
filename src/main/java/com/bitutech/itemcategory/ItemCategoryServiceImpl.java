@@ -22,9 +22,9 @@ public class ItemCategoryServiceImpl implements ItemCategoryService {
 	}
 
 	@Override
-	public List<ItemCategoryBean> getUomcateList() throws Exception {
+	public List<ItemCategoryBean> getCategoryType() throws Exception {
 		// TODO Auto-generated method stub
-		return itemCategoryDao.getUomcateList();
+		return itemCategoryDao.getCategoryType();
 	}
 
 	@Override
@@ -32,6 +32,26 @@ public class ItemCategoryServiceImpl implements ItemCategoryService {
 		// TODO Auto-generated method stub
 		return itemCategoryDao.getPropValue(propertyId);
 	}
+
+	@Override
+	public ItemCategoryResultBean deleteItemCategory(Integer itemCategoryId) throws Exception {
+		// TODO Auto-generated method stub
+		return itemCategoryDao.deleteItemCategory(itemCategoryId);
+	}
+
+	@Override
+	public ItemCategoryResultBean edit(Integer itemCategoryId) throws Exception {
+		// TODO Auto-generated method stub
+		return itemCategoryDao.edit(itemCategoryId);
+	}
+
+	@Override
+	public ItemCategoryResultBean update(ItemCategoryBean bean) throws Exception {
+		// TODO Auto-generated method stub
+		return itemCategoryDao.update(bean);
+	}
+
+ 
 
 	
 

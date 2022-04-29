@@ -5,10 +5,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bitutech.core.util.CustomException;
 import com.bitutech.countrymaster.CountryMasterResultBean;
+import com.bitutech.itemproperties.ItemPropertiesResultBean;
 import com.bitutech.uomcategory.UomCategoryResultBean;
 
 @RestController
@@ -22,6 +24,19 @@ public class ItemCategoryController {
 		ItemCategoryResultBean objbean = new ItemCategoryResultBean();
 		try {
 			objbean = itemCategoryService.save(bean);
+		}catch(Exception e){
+			e.printStackTrace();	
+		}
+		return objbean;
+		
+	}
+	
+	
+	@RequestMapping(value="/update")
+	public ItemCategoryResultBean update(@RequestBody ItemCategoryBean bean) {
+		ItemCategoryResultBean objbean = new ItemCategoryResultBean();
+		try {
+			objbean = itemCategoryService.update(bean);
 		}catch(Exception e){
 			e.printStackTrace();	
 		}
@@ -51,11 +66,36 @@ public class ItemCategoryController {
 			return objResultBean;
 		}
 
-	@RequestMapping(value = "/getUomCategory")
-   	public ItemCategoryResultBean getUomcateList() throws Exception {
+	@RequestMapping(value = "/getCategoryType")
+   	public ItemCategoryResultBean getCategoryType() throws Exception {
 		ItemCategoryResultBean objResultBean = new ItemCategoryResultBean();
-		objResultBean.setUomCategoryList(itemCategoryService.getUomcateList());
+		objResultBean.setCategoryTypeList(itemCategoryService.getCategoryType());
 		objResultBean.setSuccess(true);
    		return objResultBean;
    	}
+	
+	@RequestMapping("/delete")
+	public ItemCategoryResultBean deleteItemCategory(@RequestParam("itemCategory") Integer itemCategoryId) throws Exception {
+		ItemCategoryResultBean objResultBean = new ItemCategoryResultBean();
+		try {
+			objResultBean = itemCategoryService.deleteItemCategory(itemCategoryId);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		return objResultBean;
+	}
+	
+	@GetMapping(value="edit")
+	public ItemCategoryResultBean edit(@RequestParam("itemCategory") Integer itemCategoryId) {
+		ItemCategoryResultBean objResultBean = new ItemCategoryResultBean();
+		try {
+			objResultBean = itemCategoryService.edit(itemCategoryId);
+		
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		return objResultBean;
+	}
 }

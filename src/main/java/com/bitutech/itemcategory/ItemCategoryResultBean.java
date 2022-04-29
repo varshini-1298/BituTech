@@ -11,7 +11,7 @@ public class ItemCategoryResultBean extends BasicResultBean implements Serializa
 	public boolean Success;
 	
 	private List<ItemCategoryBean> itemCategoryDetails;
-	private List<ItemCategoryBean> uomCategoryList;
+	private List<ItemCategoryBean> categoryTypeList;
 	
 	private ItemCategoryBean itemCategoryBean;
 	
@@ -41,13 +41,14 @@ public class ItemCategoryResultBean extends BasicResultBean implements Serializa
 		this.itemCategoryDetails = itemCategoryDetails;
 	}
 
-	public List<ItemCategoryBean> getUomCategoryList() {
-		return uomCategoryList;
+	public List<ItemCategoryBean> getCategoryTypeList() {
+		return categoryTypeList;
 	}
 
-	public void setUomCategoryList(List<ItemCategoryBean> uomCategoryList) {
-		this.uomCategoryList = uomCategoryList;
+	public void setCategoryTypeList(List<ItemCategoryBean> categoryTypeList) {
+		this.categoryTypeList = categoryTypeList;
 	}
+
 
 	
 

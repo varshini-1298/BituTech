@@ -12,13 +12,13 @@ public class ItemCategoryBean {
 	private Boolean incomingQty;
 	private String id;
 	private String text;
-	private String catagoryId;
-	private String batchNO;
-	private String expiryDate;
-	private String mrp;
-	private String manufactureDetails;
-	private String salesTaxes;
-	private String purchaseTaxes;
+	private Integer catagoryId;
+	private Boolean batchNO;
+	private Boolean expiryDate;
+	private Boolean mrp;
+	private Boolean manufactureDetails;
+	private Integer salesTaxes;
+	private Integer purchaseTaxes;
 	private String assetAccount;
 	private String deptAccount;
 	private String AccuDept;
@@ -26,47 +26,81 @@ public class ItemCategoryBean {
 	private String propertyType;
 	private String length;
 	private String isMandantory;
+	private String parentTypeName;
+	private String categoryTypeName;
+	private Integer categoryTypeId;
+	private Integer itemCategoryId;
+	private Integer itemCategoryAccountId;
   	private List<itemCategoryAcc> itemCategoryAcc;
 	private List<itemCategoryProperty> itemCategoryProperty;
 	private List<itemCategoryGRN> itemCategoryGRN;
 
-	
-	
-	
-	public String getBatchNO() {
+	 
+	 
+	public Integer getItemCategoryAccountId() {
+		return itemCategoryAccountId;
+	}
+	public void setItemCategoryAccountId(Integer itemCategoryAccountId) {
+		this.itemCategoryAccountId = itemCategoryAccountId;
+	}
+	public Integer getItemCategoryId() {
+		return itemCategoryId;
+	}
+	public void setItemCategoryId(Integer itemCategoryId) {
+		this.itemCategoryId = itemCategoryId;
+	}
+	public Integer getCategoryTypeId() {
+		return categoryTypeId;
+	}
+	public void setCategoryTypeId(Integer categoryTypeId) {
+		this.categoryTypeId = categoryTypeId;
+	}
+	public String getParentTypeName() {
+		return parentTypeName;
+	}
+	public void setParentTypeName(String parentTypeName) {
+		this.parentTypeName = parentTypeName;
+	}
+	public String getCategoryTypeName() {
+		return categoryTypeName;
+	}
+	public void setCategoryTypeName(String categoryTypeName) {
+		this.categoryTypeName = categoryTypeName;
+	}
+	public Boolean getBatchNO() {
 		return batchNO;
 	}
-	public void setBatchNO(String batchNO) {
+	public void setBatchNO(Boolean batchNO) {
 		this.batchNO = batchNO;
 	}
-	public String getExpiryDate() {
+	public Boolean getExpiryDate() {
 		return expiryDate;
 	}
-	public void setExpiryDate(String expiryDate) {
+	public void setExpiryDate(Boolean expiryDate) {
 		this.expiryDate = expiryDate;
 	}
-	public String getMrp() {
+	public Boolean getMrp() {
 		return mrp;
 	}
-	public void setMrp(String mrp) {
+	public void setMrp(Boolean mrp) {
 		this.mrp = mrp;
 	}
-	public String getManufactureDetails() {
+	public Boolean getManufactureDetails() {
 		return manufactureDetails;
 	}
-	public void setManufactureDetails(String manufactureDetails) {
+	public void setManufactureDetails(Boolean manufactureDetails) {
 		this.manufactureDetails = manufactureDetails;
 	}
-	public String getSalesTaxes() {
+	public Integer getSalesTaxes() {
 		return salesTaxes;
 	}
-	public void setSalesTaxes(String salesTaxes) {
+	public void setSalesTaxes(Integer salesTaxes) {
 		this.salesTaxes = salesTaxes;
 	}
-	public String getPurchaseTaxes() {
+	public Integer getPurchaseTaxes() {
 		return purchaseTaxes;
 	}
-	public void setPurchaseTaxes(String purchaseTaxes) {
+	public void setPurchaseTaxes(Integer purchaseTaxes) {
 		this.purchaseTaxes = purchaseTaxes;
 	}
 	public String getAssetAccount() {
@@ -135,10 +169,10 @@ public class ItemCategoryBean {
 	public final void setItemCategoryAcc(List<itemCategoryAcc> itemCategoryAcc) {
 		this.itemCategoryAcc = itemCategoryAcc;
 	}
-	public final String getCatagoryId() {
+	public final Integer getCatagoryId() {
 		return catagoryId;
 	}
-	public final void setCatagoryId(String catagoryId) {
+	public final void setCatagoryId(Integer catagoryId) {
 		this.catagoryId = catagoryId;
 	}
 	public final Boolean getIncomingQty() {
