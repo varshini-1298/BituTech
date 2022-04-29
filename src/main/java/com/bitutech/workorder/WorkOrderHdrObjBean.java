@@ -1,21 +1,17 @@
 package com.bitutech.workorder;
 
+import java.util.Date;
 import java.util.List;
 
 public class WorkOrderHdrObjBean {
 	
 	private String workorderNo;
-	private String workorderDate;
+	private Date workorderDate;
 	private String salesOrderNo;
 	private List<WorkOrderDtlBean> workOrderDtlData;
 	
 	
-	public String getWorkorderDate() {
-		return workorderDate;
-	}
-	public void setWorkorderDate(String workorderDate) {
-		this.workorderDate = workorderDate;
-	}
+	
 	public String getSalesOrderNo() {
 		return salesOrderNo;
 	}
@@ -35,6 +31,12 @@ public class WorkOrderHdrObjBean {
 	}
 	public void setWorkOrderDtlData(List<WorkOrderDtlBean> workOrderDtlData) {
 		this.workOrderDtlData = workOrderDtlData;
+	}
+	public Date getWorkorderDate() {
+		return workorderDate;
+	}
+	public void setWorkorderDate(Date workorderDate) {
+		this.workorderDate = workorderDate;
 	}
 	
 	
