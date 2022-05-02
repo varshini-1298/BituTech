@@ -6,7 +6,7 @@ import java.util.List;
 public class WorkOrderHdrObjBean {
 	
 	private String workorderNo;
-	private Date workorderDate;
+	private String workorderDate;
 	private String salesOrderNo;
 	private List<WorkOrderDtlBean> workOrderDtlData;
 	
@@ -32,12 +32,11 @@ public class WorkOrderHdrObjBean {
 	public void setWorkOrderDtlData(List<WorkOrderDtlBean> workOrderDtlData) {
 		this.workOrderDtlData = workOrderDtlData;
 	}
-	public Date getWorkorderDate() {
+	public String getWorkorderDate() {
 		return workorderDate;
 	}
-	public void setWorkorderDate(Date workorderDate) {
+	public void setWorkorderDate(String workorderDate) {
 		this.workorderDate = workorderDate;
 	}
-	
 	
 }
