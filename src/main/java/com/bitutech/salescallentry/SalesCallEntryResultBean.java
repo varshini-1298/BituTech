@@ -5,13 +5,15 @@ import java.util.List;
 
 import com.bitutech.core.util.BasicResultBean;
 
+
 public class SalesCallEntryResultBean extends BasicResultBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	public boolean success;
 
 	public List<SalesCallEntryBean> salesCallEntryDetails;
-	
+	private List<SalescallEntryDetailBean> SalescallEntryDetailBean;
+
 	private SalesCallEntryBean salesCallEntryBean;
 	
 	public List<SalesCallEntryBean> getSalesCallEntryDetails() {
@@ -36,6 +38,13 @@ public class SalesCallEntryResultBean extends BasicResultBean implements Seriali
 
 	public void setSalesCallEntryBean(SalesCallEntryBean salesCallEntryBean) {
 		this.salesCallEntryBean = salesCallEntryBean;
+	}
+	public List<SalescallEntryDetailBean> getSalescallEntryDetailBean() {
+		return SalescallEntryDetailBean;
+	}
+
+	public void setSalescallEntryDetailBean(List<SalescallEntryDetailBean> salescallEntryDetailBean) {
+		SalescallEntryDetailBean = salescallEntryDetailBean;
 	}
 
 }

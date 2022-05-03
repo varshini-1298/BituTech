@@ -1,5 +1,9 @@
 package com.bitutech.salescallentry;
 
+import java.util.List;
+
+
+
 public class SalesCallEntryBean {
 
 	private String objective;
@@ -31,7 +35,14 @@ public class SalesCallEntryBean {
 	private String customer;
 	private String salesCallNumber;
 	
-	
+	public List<SalescallEntryDetailBean> dataArray;
+	private List<SalescallEntryDetailBean> salescallEntryDetailBean;
+	public List<SalescallEntryDetailBean> getDataArray() {
+		return dataArray;
+	}
+	public void setDataArray(List<SalescallEntryDetailBean> dataArray) {
+		this.dataArray = dataArray;
+	}
 	
 	public String getCustomer() {
 		return customer;
@@ -190,5 +201,12 @@ public class SalesCallEntryBean {
 		this.salesCallHdrId = salesCallHdrId;
 	}
 	
+	
+	public List<SalescallEntryDetailBean> getSalescallEntryDetailBean() {
+		return salescallEntryDetailBean;
+	}
+	public void setSalescallEntryDetailBean(List<SalescallEntryDetailBean> salescallEntryDetailBean) {
+		this.salescallEntryDetailBean = salescallEntryDetailBean;
+	}
 
 }

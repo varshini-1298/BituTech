@@ -11,6 +11,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+
 @Repository
 public class SalesCallEntryDaoImpl implements SalesCallEntryDao {
 	
@@ -47,8 +48,34 @@ public class SalesCallEntryDaoImpl implements SalesCallEntryDao {
 			salesCallEntryMap.put("designation", bean.getDesignation());
 //			String salesCallHdrId =  jdbcTemplate.queryForObject(SalesEntryMasterQueryUtil.GETSALESCALLHDRID, String.class);
 //			salesCallEntryMap.put("salesCallHdrId", salesCallHdrId);
+			  
+			Integer salesCallHdrId = namedParameterJdbcTemplate.queryForObject(SalesEntryMasterQueryUtil.INSERT_SALESENTRY_HDR,salesCallEntryMap,Integer.class);
 
-			namedParameterJdbcTemplate.update(SalesEntryMasterQueryUtil.INSERT_SALESENTRY_HDR,salesCallEntryMap);
+			  if(salesCallHdrId != null) {
+					 
+				     if(bean.getSalescallEntryDetailBean().size()>0) {
+				             
+				    	 for(SalescallEntryDetailBean SalescallEntryDetailBean: bean.getSalescallEntryDetailBean() )
+		    {
+				    		 Map<String, Object> salesCallEntryDtlMap = new HashMap<String, Object>();
+			salesCallEntryDtlMap.put("salesCallHdrId", salesCallHdrId);
+			salesCallEntryDtlMap.put("objective", SalescallEntryDetailBean.getObjective());
+			salesCallEntryDtlMap.put("commodity", SalescallEntryDetailBean.getCommodity());
+			salesCallEntryDtlMap.put("date", SalescallEntryDetailBean.getDate());
+			salesCallEntryDtlMap.put("nextCallDate", SalescallEntryDetailBean.getNextCallDate());
+			salesCallEntryDtlMap.put("status", SalescallEntryDetailBean.getStatus());
+			salesCallEntryDtlMap.put("conditionSupport", SalescallEntryDetailBean.getConditionSupport());
+			salesCallEntryDtlMap.put("reasonSupport", SalescallEntryDetailBean.getReasonSupport());
+			salesCallEntryDtlMap.put("reasonNotSupport", SalescallEntryDetailBean.getReasonNotSupport());
+			salesCallEntryDtlMap.put("remarks", SalescallEntryDetailBean.getRemarks());
+
+			  namedParameterJdbcTemplate.update(SalesEntryMasterQueryUtil.INSERT_SALESENTRY_DTL,salesCallEntryDtlMap);
+			  
+			         }
+			      }
+			     }
+			
+			
 			resultBean.setSuccess(true);
 		}catch(Exception e){
 			e.printStackTrace();
@@ -56,6 +83,7 @@ public class SalesCallEntryDaoImpl implements SalesCallEntryDao {
 		}
 		
 		return resultBean;
+		
 	}
 
 	@Override
@@ -70,14 +98,17 @@ public class SalesCallEntryDaoImpl implements SalesCallEntryDao {
 		}
 		return salesCallEntryBeanList;
 	}
-
+//edit
 	@Override
 	public SalesCallEntryResultBean edit(Integer bean) throws Exception {
 		SalesCallEntryResultBean resultBean = new SalesCallEntryResultBean();
 		resultBean.setSuccess(false);
 		try {
 			resultBean.setSalesCallEntryBean(jdbcTemplate.queryForObject(SalesEntryMasterQueryUtil.SELECT_SALESENTRY_HDR,new Object[] { bean }, new BeanPropertyRowMapper<SalesCallEntryBean>(SalesCallEntryBean.class)));
-			resultBean.setSuccess(true);
+			
+			List<SalescallEntryDetailBean> salescallEntryDetailBean = jdbcTemplate.query(SalesEntryMasterQueryUtil.SELECT_SALESENTRY_DTL,new Object[] { bean },new BeanPropertyRowMapper<SalescallEntryDetailBean>(SalescallEntryDetailBean.class));	
+			  resultBean.setSalescallEntryDetailBean(salescallEntryDetailBean);		
+			  resultBean.setSuccess(true);
 		}
 		catch(Exception e) {
 			e.printStackTrace();
@@ -85,7 +116,7 @@ public class SalesCallEntryDaoImpl implements SalesCallEntryDao {
 		}
 		return resultBean;
 	}
-
+//update
 	@Override
 	public SalesCallEntryResultBean update(SalesCallEntryBean bean) throws Exception {
 		SalesCallEntryResultBean resultBean = new SalesCallEntryResultBean();
@@ -104,6 +135,32 @@ public class SalesCallEntryDaoImpl implements SalesCallEntryDao {
 			salesCallEntryMap.put("salesCallHdrId",bean.getSalesCallHdrId());
 
 			namedParameterJdbcTemplate.update(SalesEntryMasterQueryUtil.UPDATE_SALESENTRY_HDR,salesCallEntryMap);
+			
+			if(bean.getSalescallEntryDetailBean().size()>0) {
+					 
+				  jdbcTemplate.update(SalesEntryMasterQueryUtil.DELETE_SALESENTRY_DTL,bean.getSalesCallHdrId());
+				
+
+					
+			             
+			    	for(SalescallEntryDetailBean SalescallEntryDetailBean: bean.getSalescallEntryDetailBean() ){
+			    	
+				    		 Map<String, Object> salesCallEntryDtlMap = new HashMap<String, Object>();
+				 			salesCallEntryDtlMap.put("salesCallHdrId", SalescallEntryDetailBean.getSalesCallHdrId());
+				 			salesCallEntryDtlMap.put("objective", SalescallEntryDetailBean.getObjective());
+				 			salesCallEntryDtlMap.put("commodity", SalescallEntryDetailBean.getCommodity());
+				 			salesCallEntryDtlMap.put("date", SalescallEntryDetailBean.getDate());
+				 			salesCallEntryDtlMap.put("nextCallDate", SalescallEntryDetailBean.getNextCallDate());
+				 			salesCallEntryDtlMap.put("status", SalescallEntryDetailBean.getStatus());
+				 			salesCallEntryDtlMap.put("conditionSupport", SalescallEntryDetailBean.getConditionSupport());
+				 			salesCallEntryDtlMap.put("reasonSupport", SalescallEntryDetailBean.getReasonSupport());
+				 			salesCallEntryDtlMap.put("reasonNotSupport", SalescallEntryDetailBean.getReasonNotSupport());
+				 			salesCallEntryDtlMap.put("remarks", SalescallEntryDetailBean.getRemarks());
+				  
+							  namedParameterJdbcTemplate.update(SalesEntryMasterQueryUtil.INSERT_SALESENTRY_DTL,salesCallEntryDtlMap);
+			    } 
+			    
+			    }
 			resultBean.setSuccess(true);
 		}catch(Exception e){
 			e.printStackTrace();
@@ -120,6 +177,7 @@ public class SalesCallEntryDaoImpl implements SalesCallEntryDao {
 		try {
 			if(salesCallHdrId!=null) {
 				jdbcTemplate.update(SalesEntryMasterQueryUtil.DELETE_SALESENTRY_HDR,salesCallHdrId);
+				jdbcTemplate.update(SalesEntryMasterQueryUtil.DELETE_SALESENTRY_DTL,salesCallHdrId);
 			}
 			resultBean.setSuccess(true);
 		}
