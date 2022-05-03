@@ -11,14 +11,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.bitutech.countrymaster.CountryMasterBean;
-import com.bitutech.countrymaster.CountryMasterQueryUtil;
-import com.bitutech.purchaserequest.PurchaseRequestBean;
-import com.bitutech.purchaserequest.PurchaseRequestQueryUtil;
-import com.bitutech.purchaserequest.PurchaseRequestResultBean;
-import com.bitutech.uomcategory.UomCategoryQueryUtil;
-import com.bitutech.uomcategory.UomCategoryResultBean;
-
 @Repository
 public class SalesQuoteDaoImpl implements SalesQuoteDao {
 	
@@ -48,10 +40,32 @@ public class SalesQuoteDaoImpl implements SalesQuoteDao {
 			salesQuoteMap.put("text", bean.getText());
 			salesQuoteMap.put("modifiedBy","E0001");
 			String countValue =  jdbcTemplate.queryForObject(SalesQuoteQueryUtil.GETCOUNT, String.class);
+			
 			salesQuoteMap.put("countValue", countValue);
 			
 			
-			namedParameterJdbcTemplate.update(SalesQuoteQueryUtil.INSERT_SALES_QUOTE_HDR,salesQuoteMap);
+			String countValue1 = namedParameterJdbcTemplate.queryForObject(SalesQuoteQueryUtil.INSERT_SALES_QUOTE_HDR,salesQuoteMap,String.class);
+
+			  if(countValue1 != null) {
+					 
+				     if(bean.getSalesQuoteDetailBean().size()>0) {
+				             
+				    	 for(SalesQuoteDetailBean SalesQuoteDetailBean: bean.getSalesQuoteDetailBean() )
+		    {
+				    		 Map<String, Object> salesQuoteDtlMap = new HashMap<String, Object>();
+			
+				    		 salesQuoteDtlMap.put("countValue", countValue1);
+				    		 salesQuoteDtlMap.put("item", SalesQuoteDetailBean.getItem());
+				    		 salesQuoteDtlMap.put("qty", SalesQuoteDetailBean.getQty());
+				    		 salesQuoteDtlMap.put("price", SalesQuoteDetailBean.getPrice());
+			
+
+			  namedParameterJdbcTemplate.update(SalesQuoteQueryUtil.INSERT_SALES_QUOTE_DTL,salesQuoteDtlMap);
+			  
+			         }
+			      }
+			     }
+			
 		   resultBean.setSuccess(true);
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -84,6 +98,7 @@ public class SalesQuoteDaoImpl implements SalesQuoteDao {
 //		}
 //		return salesOrderBean;
 //	}
+	
 	//edit
 			@Override
 			public SalesQuoteResultBean edit(String bean) throws Exception {
@@ -91,6 +106,8 @@ public class SalesQuoteDaoImpl implements SalesQuoteDao {
 				resultBean.setSuccess(false);
 				try {
 					resultBean.setSalesQuoteBean(jdbcTemplate.queryForObject(SalesQuoteQueryUtil.SELECT_SALES_QUOTE_HDR,new Object[] { bean }, new BeanPropertyRowMapper<SalesQuoteBean>(SalesQuoteBean.class)));
+					List<SalesQuoteDetailBean> salesQuoteDetailBean = jdbcTemplate.query(SalesQuoteQueryUtil.SELECT_SALES_QUOTE_DTL,new Object[] { bean },new BeanPropertyRowMapper<SalesQuoteDetailBean>(SalesQuoteDetailBean.class));	
+					resultBean.setSalesQuoteDetailBean(salesQuoteDetailBean);		
 					resultBean.setSuccess(true);
 				}
 				catch(Exception e) {          
@@ -109,7 +126,28 @@ public class SalesQuoteDaoImpl implements SalesQuoteDao {
 //				
 					jdbcTemplate.queryForObject(SalesQuoteQueryUtil.UPDATE_SALES_QUOTE_HDR,new BeanPropertyRowMapper<SalesQuoteBean>(SalesQuoteBean.class), new Object[]
 							{ Bean.getCustomer(),Bean.getValidFrom(),Bean.getValidTo(),Bean.getTermCondition(),Bean.getCurrency(),Bean.getExpectedDate(),Bean.getCountValue()});
-						
+					
+					
+						 
+					     if(Bean.getSalesQuoteDetailBean().size()>0) {
+					    	 
+					    	 jdbcTemplate.update(SalesQuoteQueryUtil.DELETE_SALES_QUOTE_DTL,Bean.getCountValue());
+								    
+					    	 for(SalesQuoteDetailBean SalesQuoteDetailBean: Bean.getSalesQuoteDetailBean() )
+			    {
+					    		 Map<String, Object> salesQuoteDtlMap = new HashMap<String, Object>();
+				
+					    		 salesQuoteDtlMap.put("countValue",SalesQuoteDetailBean. getCountValue());
+					    		 salesQuoteDtlMap.put("item", SalesQuoteDetailBean.getItem());
+					    		 salesQuoteDtlMap.put("qty", SalesQuoteDetailBean.getQty());
+					    		 salesQuoteDtlMap.put("price", SalesQuoteDetailBean.getPrice());
+				
+
+				  namedParameterJdbcTemplate.update(SalesQuoteQueryUtil.INSERT_SALES_QUOTE_DTL,salesQuoteDtlMap);
+				  
+				         }
+				      }
+				     
 					resultBean.setSuccess(true);
 					
 				}
@@ -125,6 +163,8 @@ public class SalesQuoteDaoImpl implements SalesQuoteDao {
 				try {
 					if(countValue!=null) {
 						jdbcTemplate.update(SalesQuoteQueryUtil.DELETE_SALES_QUOTE_HDR,countValue);
+						jdbcTemplate.update(SalesQuoteQueryUtil.DELETE_SALES_ORDER_HDR,countValue);
+						jdbcTemplate.update(SalesQuoteQueryUtil.DELETE_SALES_QUOTE_DTL,countValue);
 					}
 					resultBean.setSuccess(true);
 				}

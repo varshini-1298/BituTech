@@ -5,9 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.bitutech.purchaserequest.PurchaseRequestBean;
-import com.bitutech.purchaserequest.PurchaseRequestResultBean;
-import com.bitutech.uomcategory.UomCategoryResultBean;
+
 
 @Service
 public class SalesQuoteServiceImpl implements SalesQuoteService {

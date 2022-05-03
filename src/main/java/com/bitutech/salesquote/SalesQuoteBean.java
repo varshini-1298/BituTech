@@ -1,5 +1,7 @@
 package com.bitutech.salesquote;
 
+import java.util.List;
+
 public class SalesQuoteBean {
 	
 	private String customer;
@@ -11,8 +13,15 @@ public class SalesQuoteBean {
 	private String id;
 	private String text;
 	private String countValue;
-	
-	
+	private String salesQuoteNo;
+	private List<SalesQuoteDetailBean> salesQuoteDetailBean;
+	public List<SalesQuoteDetailBean> dataArray;
+	public String getSalesQuoteNo() {
+		return salesQuoteNo;
+	}
+	public void setSalesQuoteNo(String salesQuoteNo) {
+		this.salesQuoteNo = salesQuoteNo;
+	}
 	public String getId() {
 		return id;
 	}
@@ -67,7 +76,14 @@ public class SalesQuoteBean {
 	public void setCountValue(String countValue) {
 		this.countValue = countValue;
 	}
+	
 
+	public List<SalesQuoteDetailBean> getSalesQuoteDetailBean() {
+		return salesQuoteDetailBean;
+	}
+	public void setSalesQuoteDetailBean(List<SalesQuoteDetailBean> salesQuoteDetailBean) {
+		this.salesQuoteDetailBean = salesQuoteDetailBean;
+	}
 	
 	
 	
