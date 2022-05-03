@@ -1,5 +1,9 @@
 package com.bitutech.salesorder;
 
+import java.util.List;
+
+import com.bitutech.billofmaterial.BillOfMaterialDtlObjBean;
+
 public class SalesOrderBean {
 	
 	private String customer;
@@ -10,7 +14,23 @@ public class SalesOrderBean {
 	private String id;
 	private String text;
 	private String countValue;
+	private String salesOrderNo;
+	private List<SalesOrderdtlBean> salesOrderdtlBean;
 	
+	
+
+	public String getSalesOrderNo() {
+		return salesOrderNo;
+	}
+	public void setSalesOrderNo(String salesOrderNo) {
+		this.salesOrderNo = salesOrderNo;
+	}
+	public List<SalesOrderdtlBean> getSalesOrderdtlBean() {
+		return salesOrderdtlBean;
+	}
+	public void setSalesOrderdtlBean(List<SalesOrderdtlBean> salesOrderdtlBean) {
+		this.salesOrderdtlBean = salesOrderdtlBean;
+	}
 	public String getId() {
 		return id;
 	}

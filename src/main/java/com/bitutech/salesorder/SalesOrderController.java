@@ -39,13 +39,13 @@ public class SalesOrderController {
    	}
 
 	//drop down method
-//	@RequestMapping(value = "/getUomCategory")
-//   	public SalesOrderResultBean getUomcateList() throws Exception {
-//		SalesOrderResultBean objResultBean = new SalesOrderResultBean();
-//		objResultBean.setSalesOrderList(salesOrderService.getUomcateList());
-//		objResultBean.setSuccess(true);
-//   		return objResultBean;
-//   	}
+	@RequestMapping(value = "/itemNameList")
+   	public SalesOrderResultBean getItemNameList() throws Exception {
+		SalesOrderResultBean objResultBean = new SalesOrderResultBean();
+		objResultBean.setItemList(salesOrderService.getItemNameList());
+		objResultBean.setSuccess(true);
+   		return objResultBean;
+   	}
 	@GetMapping(value="/edit")
 	public SalesOrderResultBean edit(@RequestParam("salesOrder") String salesOrder) {
 		

@@ -24,11 +24,11 @@ public class SalesOrderServiceImpl implements SalesOrderService {
 		return salesOrderDao.getSalesOrderList();
 	}
 
-//	@Override
-//	public List<SalesOrderBean> getUomcateList() throws Exception {
-//		// TODO Auto-generated method stub
-//		return uomDao.getUomcateList();
-//	}
+	@Override
+	public List<SalesOrderBean> getItemNameList() throws Exception {
+		// TODO Auto-generated method stub
+		return salesOrderDao.getItemNameList();
+	}
 	@Override
 	public SalesOrderResultBean edit(String token) throws Exception {
 		// TODO Auto-generated method stub

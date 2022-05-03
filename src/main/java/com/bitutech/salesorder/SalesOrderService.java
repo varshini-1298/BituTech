@@ -16,6 +16,6 @@ public interface SalesOrderService {
 
 	public List<SalesOrderBean> getSalesOrderList() throws Exception;
 
-//	public List<SalesOrderBean> getUomcateList() throws Exception;
+    public List<SalesOrderBean> getItemNameList() throws Exception;
 
 }

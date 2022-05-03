@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 
 import com.bitutech.core.util.BasicResultBean;
+import com.bitutech.workorder.WorkOrderDtlBean;
+import com.bitutech.workorder.WorkOrderHdrObjBean;
 
 public class SalesOrderResultBean extends BasicResultBean implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -11,8 +13,27 @@ public class SalesOrderResultBean extends BasicResultBean implements Serializabl
 	public boolean Success;
 	
 	private List<SalesOrderBean> salesOrderDetails;
-//	private List<SalesOrderBean> salesOrderList;
+    private List<SalesOrderBean> itemList;
 	
+	private List<SalesOrderdtlBean> salesOrderdtlBean;
+	
+  
+	 public List<SalesOrderdtlBean> getSalesOrderdtlBean() {
+		return salesOrderdtlBean;
+	}
+
+	public void setSalesOrderdtlBean(List<SalesOrderdtlBean> salesOrderdtlBean) {
+		this.salesOrderdtlBean = salesOrderdtlBean;
+	}
+
+	public List<SalesOrderBean> getItemList() {
+		return itemList;
+	}
+
+	public void setItemList(List<SalesOrderBean> itemList) {
+		this.itemList = itemList;
+	}
+
 	private SalesOrderBean salesOrderBean;
 	public boolean isSuccess() {
 		return Success;

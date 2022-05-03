@@ -2,7 +2,7 @@ package com.bitutech.billofmaterial;
 
 public class BillOfMaterialQueryUtil {
 
-	public static final String getList = " select workorder_no as workorderNo,to_char(created_date,'DD/MM/YYYY') as date,bom_no as bomNo from bom_hdr";
+	public static final String getList = " select workorder_no as workorderNo,to_char(created_date,'DD/MM/YYYY') as date,bom_no as bomNo from bom_hdr order by workorder_no desc";
 	
 	public static final String Insert_Bom_Hdr = "INSERT INTO bom_hdr (bom_no,workorder_no,created_by,created_date) "
 			+ " values (:bomNo,:workorderNo,'E0001',now()) returning bom_no as bomNo ";
@@ -20,6 +20,9 @@ public class BillOfMaterialQueryUtil {
 
 	public static final String SELECT_Bom_Hdr = "select bom_no as bomNo,workorder_no as workorderNo from bom_hdr where bom_no=?";
 
+	public static final String SELECT_Bom_dtl = "select bd.item_id::Integer as id,it.item_name as text,bd.quantity as quantity,bd.availability as availability from bom_dtl bd left join item it on it.item_id = bd.item_id::Integer where bom_no=?";
+
 	
+	public static final String DELETE_BOM_DTL = "delete from bom_dtl  where bom_no=?";
 
 }

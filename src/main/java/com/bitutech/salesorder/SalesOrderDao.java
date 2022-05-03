@@ -16,6 +16,6 @@ public interface SalesOrderDao {
 
 	List<SalesOrderBean> getSalesOrderList() throws Exception;
 
-//	List<SalesOrderBean> getUomcateList() throws Exception;
+	List<SalesOrderBean> getItemNameList() throws Exception;
 
 }

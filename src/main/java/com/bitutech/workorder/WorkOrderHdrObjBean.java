@@ -8,6 +8,21 @@ public class WorkOrderHdrObjBean {
 	private String workorderNo;
 	private String workorderDate;
 	private String salesOrderNo;
+	private String uom;
+	private String remarks;
+	
+	public String getUom() {
+		return uom;
+	}
+	public void setUom(String uom) {
+		this.uom = uom;
+	}
+	public String getRemarks() {
+		return remarks;
+	}
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
+	}
 	private List<WorkOrderDtlBean> workOrderDtlData;
 	
 	

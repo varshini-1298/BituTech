@@ -17,7 +17,19 @@ public class BillOfMaterialResultBean extends BasicResultBean implements Seriali
 	
 	private List<DropDownList> workOrderNoList;
 	
+	private List<BillOfMaterialDtlObjBean> billOfMaterialDtlObjBean;
+	
 	private BillOfMaterialHdrObjBean billOfMaterialHdrObjBean;
+
+	
+	
+	public List<BillOfMaterialDtlObjBean> getBillOfMaterialDtlObjBean() {
+		return billOfMaterialDtlObjBean;
+	}
+
+	public void setBillOfMaterialDtlObjBean(List<BillOfMaterialDtlObjBean> billOfMaterialDtlObjBean) {
+		this.billOfMaterialDtlObjBean = billOfMaterialDtlObjBean;
+	}
 
 	public boolean isSuccess() {
 		return Success;

@@ -12,6 +12,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.bitutech.core.util.DropDownList;
+import com.bitutech.salesorder.SalesOrderQueryUtil;
 
 @Repository
 public class BillOfMaterialDaoImpl implements BillOfMaterialDao {
@@ -111,6 +112,7 @@ public class BillOfMaterialDaoImpl implements BillOfMaterialDao {
 		resultBean.setSuccess(false);
 		try {
 			resultBean.setBillOfMaterialHdrObjBean(jdbcTemplate.queryForObject(BillOfMaterialQueryUtil.SELECT_Bom_Hdr,new Object[] { bean }, new BeanPropertyRowMapper<BillOfMaterialHdrObjBean>(BillOfMaterialHdrObjBean.class)));
+			resultBean.setBillOfMaterialDtlObjBean(jdbcTemplate.query(BillOfMaterialQueryUtil.SELECT_Bom_dtl,new Object[] { bean }, new BeanPropertyRowMapper<BillOfMaterialDtlObjBean>(BillOfMaterialDtlObjBean.class)));
 			resultBean.setSuccess(true);
 		}
 		catch(Exception e) {
@@ -126,10 +128,29 @@ public class BillOfMaterialDaoImpl implements BillOfMaterialDao {
 		BillOfMaterialResultBean resultBean = new BillOfMaterialResultBean();
 		try {
 			Map<String, Object> bomMap = new HashMap<>();
-			bomMap.put("bomNo",bean.getBomNo());
+ 			bomMap.put("bomNo",bean.getBomNo());
 			bomMap.put("workorderNo",bean.getWorkorderNo());
 			bomMap.put("bomNo",bean.getBomNo());
+			String bomNo = bean.getBomNo();
 			namedParameterJdbcTemplate.queryForObject(BillOfMaterialQueryUtil.Update_Bom_Hdr,bomMap,String.class);
+			
+ 				if(bean.getBillOfMaterialDtlObjBean().size()>0) {
+ 					
+					jdbcTemplate.update(BillOfMaterialQueryUtil.DELETE_BOM_DTL,bomNo);
+					
+					for(BillOfMaterialDtlObjBean billOfMaterialDtlObjBean:bean.getBillOfMaterialDtlObjBean()) {
+						Map<String, Object> dtlMap = new HashMap<>();
+						dtlMap.put("bomNo",bomNo);
+						dtlMap.put("itemId",billOfMaterialDtlObjBean.getItemId());
+						dtlMap.put("uomId",billOfMaterialDtlObjBean.getUomId());
+						dtlMap.put("quantity",billOfMaterialDtlObjBean.getQuantity());
+						dtlMap.put("availability",billOfMaterialDtlObjBean.getAvailability());
+						dtlMap.put("createdBy","E0001");
+						namedParameterJdbcTemplate.update(BillOfMaterialQueryUtil.Insert_Bom_Dtl,dtlMap);
+						
+					}
+				}
+			  
 			resultBean.setSuccess(true);
 		}
 		catch(Exception e) {
