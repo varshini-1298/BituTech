@@ -14,4 +14,6 @@ public interface ItemMasterService {
 
 	ItemMasterResultBean edit(Integer bean) throws Exception;
 
+	ItemMasterResultBean getItemIdList() throws Exception;
+
 }

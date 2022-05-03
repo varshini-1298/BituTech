@@ -14,4 +14,6 @@ public interface ItemMasterDao {
 
 	ItemMasterResultBean delete(Integer bean) throws Exception;
 
+	ItemMasterResultBean getItemIdList() throws Exception;
+
 }

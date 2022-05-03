@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 
 
+
 @Service
 public class ItemMasterServiceImpl implements ItemMasterService {
 	@Autowired
@@ -43,6 +44,10 @@ public class ItemMasterServiceImpl implements ItemMasterService {
 		return itemMasterDao.delete(bean);
 	}
 
-
+	@Override
+	public ItemMasterResultBean getItemIdList() throws Exception {
+		// TODO Auto-generated method stub
+		return itemMasterDao.getItemIdList();
+	}
 	
 }

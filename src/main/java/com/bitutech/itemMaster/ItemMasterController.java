@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
+
+
 @RestController
 @RequestMapping("/api/auth/app/itemMaster")
 public class ItemMasterController {
@@ -34,6 +36,10 @@ public class ItemMasterController {
 		objbean.setSuccess(true);
    		return objbean;
    	}
+	@RequestMapping(value = "/getItemIdList")
+	public ItemMasterResultBean getItemIdList() throws Exception {
+		return itemMasterService.getItemIdList();
+	}
 	@RequestMapping(value="/edit")
 	public ItemMasterResultBean edit(@RequestParam("itemMaster") Integer itemMaster) {
 		ItemMasterResultBean objbean = new ItemMasterResultBean();
@@ -69,5 +75,6 @@ public class ItemMasterController {
 		return objbean;
 		
 	}
+	
 
 }
