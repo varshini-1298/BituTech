@@ -11,6 +11,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.bitutech.billofmaterial.BillOfMaterialQueryUtil;
 import com.bitutech.core.util.DropDownList;
 
 
@@ -75,6 +76,7 @@ public class BillOfOperationDaoImpl implements BillOfOperationDao {
 		resultBean.setSuccess(false);
 		try {
 			resultBean.setBillOfOperationBean(jdbcTemplate.queryForObject(BillOfOperationQueryUtil.SELECT_BILL_OF_OPERATION,new Object[] { bean }, new BeanPropertyRowMapper<BillOfOperationBean>(BillOfOperationBean.class)));
+			resultBean.setBooDetailBean(jdbcTemplate.query(BillOfOperationQueryUtil.SELECT_BILL_OF_OPERATION_DTL,new Object[] { bean }, new BeanPropertyRowMapper<BooDetailBean>(BooDetailBean.class)));
 			resultBean.setSuccess(true);
 		}
 		catch(Exception e) {
@@ -92,7 +94,23 @@ public class BillOfOperationDaoImpl implements BillOfOperationDao {
 		
 			jdbcTemplate.queryForObject(BillOfOperationQueryUtil.UPDATE_BILL_OF_OPERATION,new BeanPropertyRowMapper<BillOfOperationBean>(BillOfOperationBean.class), new Object[]
 					{Bean.getBooNo(), Bean.getBomRef(),Bean.getProductName(),Bean.getDate(),Bean.getBooNo()});
+			String booNo = 	Bean.getBooNo();
+			if(Bean.getBooDetailBean().size()>0) { 
 				
+				jdbcTemplate.update(BillOfOperationQueryUtil.DELETE_BOO_DTL,booNo);
+				
+				for(BooDetailBean booDetailBean: Bean.getBooDetailBean() ) {
+					Map<String, Object> dtlMap = new HashMap<>();
+					dtlMap.put("booNo",booNo);
+					dtlMap.put("processSeqNo",booDetailBean.getProcessSeqNo());
+					dtlMap.put("processName",booDetailBean.getProcessName());
+					dtlMap.put("approxTime",booDetailBean.getApproxTime());
+					dtlMap.put("processRemarks",booDetailBean.getProcessRemarks());
+					namedParameterJdbcTemplate.update(BillOfOperationQueryUtil.INSERT_BILL_OF_OPERATION_DETAIL,dtlMap);
+				}
+			}
+			
+			
 			resultBean.setSuccess(true);
 			
 		}
