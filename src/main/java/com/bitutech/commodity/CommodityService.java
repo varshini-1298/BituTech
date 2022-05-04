@@ -2,7 +2,6 @@ package com.bitutech.commodity;
 
 import java.util.List;
 
-import com.bitutech.departmentmaster.DepartmentMasterBean;
 
 public interface CommodityService {
 
@@ -15,5 +14,6 @@ public interface CommodityService {
 	CommodityResultBean update(CommodityBean bean) throws Exception;
 
 	CommodityResultBean delete(String commodityCode) throws Exception;
+	public List<CommodityBean> getClassificationNameList() throws Exception;
 
 }
