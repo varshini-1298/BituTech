@@ -79,6 +79,7 @@ public class DesignationMasterDaoImpl implements DesignationMasterDao {
 			designationMasterMap.put("designationName", bean.getDesignationName());
 			designationMasterMap.put("remarks", bean.getRemarks());
 			designationMasterMap.put("desgnCode",bean.getDesgnCode());
+			designationMasterMap.put("active", bean.isActive());
 			namedParameterJdbcTemplate.update(DesignationMasterQueryUtil.UPDATE_DESIGNATION_MASTER,designationMasterMap);
 		}
 		catch(Exception e) {
