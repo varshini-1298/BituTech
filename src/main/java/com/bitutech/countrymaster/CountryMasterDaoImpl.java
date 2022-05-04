@@ -30,8 +30,8 @@ public class CountryMasterDaoImpl implements CountryMasterDao {
 			countryMasterMap.put("countryName", bean.getCountryName());
 			countryMasterMap.put("currency", bean.getCurrency());
 			countryMasterMap.put("clientType", bean.getClientType());
-			 
-			namedParameterJdbcTemplate.update(CountryMasterQueryUtil.INSERT_CUSTOMER_MASTER,countryMasterMap);
+			countryMasterMap.put("isActive", bean.getIsActive());
+			namedParameterJdbcTemplate.update(CountryMasterQueryUtil.INSERT_COUNTRY_MASTER,countryMasterMap);
 		   resultBean.setSuccess(true);
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -45,7 +45,7 @@ public class CountryMasterDaoImpl implements CountryMasterDao {
 	public List<CountryMasterBean> getCountryList() throws Exception {
 		List<CountryMasterBean> objCountryMasterBean = new ArrayList<CountryMasterBean>();
 		try {
-			objCountryMasterBean = jdbcTemplate.query(CountryMasterQueryUtil.getCustomerList, new BeanPropertyRowMapper<CountryMasterBean>(CountryMasterBean.class));
+			objCountryMasterBean = jdbcTemplate.query(CountryMasterQueryUtil.getCountryList, new BeanPropertyRowMapper<CountryMasterBean>(CountryMasterBean.class));
 			
 		}catch(Exception e){
 			e.printStackTrace();
@@ -69,7 +69,7 @@ public class CountryMasterDaoImpl implements CountryMasterDao {
 		CountryMasterResultBean resultBean = new CountryMasterResultBean();
 		resultBean.setSuccess(false);
 		try {
-			resultBean.setCountryMasterBean(jdbcTemplate.queryForObject(CountryMasterQueryUtil.SELECT_CUSTOMER_MASTER,new Object[] { bean }, new BeanPropertyRowMapper<CountryMasterBean>(CountryMasterBean.class)));
+			resultBean.setCountryMasterBean(jdbcTemplate.queryForObject(CountryMasterQueryUtil.SELECT_COUNTRY_MASTER,new Object[] { bean }, new BeanPropertyRowMapper<CountryMasterBean>(CountryMasterBean.class)));
 			resultBean.setSuccess(true);
 		}
 		catch(Exception e){
@@ -88,8 +88,8 @@ public class CountryMasterDaoImpl implements CountryMasterDao {
             countryMasterMap.put("countryName", bean.getCountryName());
             countryMasterMap.put("currency", bean.getCurrency());
 			countryMasterMap.put("clientType", bean.getClientType());
-			 
-			namedParameterJdbcTemplate.update(CountryMasterQueryUtil.UPDATE_CUSTOMER_MASTER,countryMasterMap);
+			countryMasterMap.put("isActive", bean.getIsActive());
+			namedParameterJdbcTemplate.update(CountryMasterQueryUtil.UPDATE_COUNTRY_MASTER,countryMasterMap);
 
 		}
 		catch(Exception e) {
@@ -103,7 +103,7 @@ public class CountryMasterDaoImpl implements CountryMasterDao {
 		CountryMasterResultBean resultBean = new CountryMasterResultBean();
 		try {
 			if (countryCode != null){
-				jdbcTemplate.update(CountryMasterQueryUtil.DELETE_COUNTRY_DTL, countryCode);
+				jdbcTemplate.update(CountryMasterQueryUtil.DELETE_COUNTRY, countryCode);
 				resultBean.setSuccess(true);
 			}
 			

@@ -1,18 +1,39 @@
 package com.bitutech.commodity;
 
 public class CommodityBean {
-	
+	private String id;
+	private String text;
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getText() {
+		return text;
+	}
+	public void setText(String text) {
+		this.text = text;
+	}
 	private String commodity;
-	private String imdgClass;
+	private String unNo;
+	private String flashPoint;
 	private String classification;
+	private boolean hazardous;
 	private String hsCode;
 	private String imdgcodePage;	
 	private String blClause;
-	private String unNo;
-	private String flashPoint;
+	private String imdgClass;
+	private boolean active;
 	private String commodityCode;
-	private boolean hazardous;
 	
+	
+	public boolean isActive() {
+		return active;
+	}
+	public void setActive(boolean active) {
+		this.active = active;
+	}
 	public final boolean isHazardous() {
 		return hazardous;
 	}

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class CommodityServiceImpl implements CommodityService {
 	@Autowired
@@ -20,7 +21,11 @@ public class CommodityServiceImpl implements CommodityService {
 		// TODO Auto-generated method stub
 		return commodityDao.getCommodityList();
 	}
-
+	@Override
+	public List<CommodityBean> getClassificationNameList() throws Exception {
+		// TODO Auto-generated method stub
+		return commodityDao.getClassificationNameList();
+	}
 	@Override
 	public CommodityResultBean edit(String commodityCode) throws Exception {
 		// TODO Auto-generated method stub

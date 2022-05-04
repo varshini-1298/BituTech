@@ -2,6 +2,8 @@ package com.bitutech.commodity;
 
 import java.util.List;
 
+
+
 public interface CommodityDao {
 
 	CommodityResultBean save(CommodityBean bean) throws Exception;
@@ -13,5 +15,5 @@ public interface CommodityDao {
 	CommodityResultBean update(CommodityBean bean) throws Exception;
 
 	CommodityResultBean delete(String commodityCode) throws Exception;
-
+	List<CommodityBean> getClassificationNameList() throws Exception;
 }

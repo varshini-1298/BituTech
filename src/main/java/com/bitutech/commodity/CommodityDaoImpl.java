@@ -12,7 +12,6 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 
-
 @Repository
 public class CommodityDaoImpl implements CommodityDao {
 	
@@ -21,7 +20,7 @@ public class CommodityDaoImpl implements CommodityDao {
 	
 	@Autowired
 	NamedParameterJdbcTemplate namedParameterJdbcTemplate;
-
+//SAVE
 	@Override
 	public CommodityResultBean save(CommodityBean bean) throws Exception {
 		CommodityResultBean resultBean = new CommodityResultBean();
@@ -29,13 +28,15 @@ public class CommodityDaoImpl implements CommodityDao {
 			Map<String, Object> commodityMap = new HashMap<String, Object>();
 		    
 			commodityMap.put("commodity", bean.getCommodity());
-			commodityMap.put("imdgClass", bean.getImdgClass());
 			commodityMap.put("classification", bean.getClassification());
-			commodityMap.put("hsCode", bean.getHsCode());
-			commodityMap.put("imdgcodePage", bean.getImdgcodePage());
-			commodityMap.put("blClause", bean.getBlClause());
+			commodityMap.put("hazardous", bean.isHazardous());
 			commodityMap.put("unNo", bean.getUnNo());
 			commodityMap.put("flashPoint", bean.getFlashPoint());
+			commodityMap.put("imdgcodePage", bean.getImdgcodePage());
+			commodityMap.put("hsCode", bean.getHsCode());
+			commodityMap.put("blClause", bean.getBlClause());
+			commodityMap.put("imdgClass", bean.getImdgClass());
+			commodityMap.put("active", bean.isActive());
 			String commodityCode =  jdbcTemplate.queryForObject(CommodityQueryUtil.save_Commodity, String.class);
 			commodityMap.put("commodityCode", commodityCode);
 			
@@ -50,7 +51,8 @@ public class CommodityDaoImpl implements CommodityDao {
 		return resultBean;
 	}
 	
-
+//ALL LIST
+	
 	@Override
 	public List<CommodityBean> getCommodityList() throws Exception {
 		List<CommodityBean> uomCategoryBean = new ArrayList<CommodityBean>();
@@ -62,7 +64,23 @@ public class CommodityDaoImpl implements CommodityDao {
 		}
 		return uomCategoryBean;
 	}
-
+	
+	//CLASSIFICATION DROP DOWN
+	
+	@Override
+	public List<CommodityBean> getClassificationNameList() throws Exception {
+		List<CommodityBean> resultBean = new ArrayList<CommodityBean>();
+		try {
+			resultBean = jdbcTemplate.query(CommodityQueryUtil.GET_CLASSIFICATION_NAME_LIST, new BeanPropertyRowMapper<CommodityBean>(CommodityBean.class));
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return resultBean;
+	}
+	
+	//EDIT
+	
 	@Override
 	public CommodityResultBean edit(String commodityCode) throws Exception {
 		CommodityResultBean resultBean = new CommodityResultBean();
@@ -77,7 +95,9 @@ public class CommodityDaoImpl implements CommodityDao {
 		}
 		return resultBean; 
 	}
-
+	
+//UPDATE
+	
 	@Override
 	public CommodityResultBean update(CommodityBean bean) throws Exception {
 		CommodityResultBean resultBean = new CommodityResultBean();
@@ -85,13 +105,15 @@ public class CommodityDaoImpl implements CommodityDao {
 			
 			  Map<String, Object> commodityMap = new HashMap<String, Object>();
 			  commodityMap.put("commodity", bean.getCommodity());
-				commodityMap.put("imdgClass", bean.getImdgClass());
 				commodityMap.put("classification", bean.getClassification());
-				commodityMap.put("hsCode", bean.getHsCode());
-				commodityMap.put("imdgcodePage", bean.getImdgcodePage());
-				commodityMap.put("blClause", bean.getBlClause());
+				commodityMap.put("hazardous", bean.isHazardous());
 				commodityMap.put("unNo", bean.getUnNo());
 				commodityMap.put("flashPoint", bean.getFlashPoint());
+				commodityMap.put("imdgcodePage", bean.getImdgcodePage());
+				commodityMap.put("hsCode", bean.getHsCode());
+				commodityMap.put("blClause", bean.getBlClause());
+				commodityMap.put("imdgClass", bean.getImdgClass());
+				commodityMap.put("active", bean.isActive());
 				commodityMap.put("commodityCode", bean.getCommodityCode());
 				
 			  namedParameterJdbcTemplate.update(CommodityQueryUtil.
@@ -103,7 +125,9 @@ public class CommodityDaoImpl implements CommodityDao {
 		}
 		return resultBean;
 	}
-
+	
+//DELETE
+	
 	@Override
 	public CommodityResultBean delete(String commodityCode) throws Exception {
 		CommodityResultBean resultBean = new CommodityResultBean();
