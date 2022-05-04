@@ -18,4 +18,6 @@ public interface SalesOrderService {
 
     public List<SalesOrderBean> getItemNameList() throws Exception;
 
+	List<SalesOrderBean> getCustomerList()throws Exception;
+
 }

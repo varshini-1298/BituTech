@@ -46,6 +46,16 @@ public class SalesOrderController {
 		objResultBean.setSuccess(true);
    		return objResultBean;
    	}
+	
+	//customer down method
+		@RequestMapping(value = "/getCustomerList")
+	   	public SalesOrderResultBean getCustomerList() throws Exception {
+			SalesOrderResultBean objResultBean = new SalesOrderResultBean();
+			objResultBean.setCustomerList(salesOrderService.getCustomerList());
+			objResultBean.setSuccess(true);
+	   		return objResultBean;
+	   	}
+	
 	@GetMapping(value="/edit")
 	public SalesOrderResultBean edit(@RequestParam("salesOrder") String salesOrder) {
 		

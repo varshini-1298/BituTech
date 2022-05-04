@@ -47,6 +47,12 @@ public class SalesOrderServiceImpl implements SalesOrderService {
 		return salesOrderDao.delete(bean);
 	}
 
+	@Override
+	public List<SalesOrderBean> getCustomerList() throws Exception {
+		// TODO Auto-generated method stub
+		return salesOrderDao.getCustomerList();
+	}
+
 
 	
 

@@ -177,5 +177,17 @@ public class SalesOrderDaoImpl implements SalesOrderDao {
 		return resultBean;
 	}
 
+	@Override
+	public List<SalesOrderBean> getCustomerList() throws Exception {
+		List<SalesOrderBean> salesOrderBean = new ArrayList<SalesOrderBean>();
+		try {
+			salesOrderBean = jdbcTemplate.query(SalesOrderQueryUtil.GET_COSTOMER_LIST, new BeanPropertyRowMapper<SalesOrderBean>(SalesOrderBean.class));
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return salesOrderBean;
+	}
+
 
 }

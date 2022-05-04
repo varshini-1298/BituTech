@@ -12,8 +12,9 @@ public class SalesOrderQueryUtil {
 	public static final String Insert_salesOder_Dtl = "INSERT INTO sales_order_dtl (sales_order_no,item_id,qty,quot_price,created_by,created_dt) values "
 			+ "(:salesOrderNo,:item,:qty,:price,:createdBy,now())";
 	public static final String GET_ITEM_NAME_LIST = "select item_id as id ,item_name as text from item";
-	public static final String SELECT_SALES_ORDER_DTL = "select qty as qty,quot_price as price, sd.item_id as id, it.item_name as text from sales_order_dtl sd left join item it on it.item_id = sd.item_id where sales_order_no = ? ";
+	public static final String SELECT_SALES_ORDER_DTL = "select qty as qty,quot_price as price,item_id as item from sales_order_dtl where sales_order_no = ? ";
  	public static final String DELETE_workorder_hdr = "delete from workorder_hdr where sales_order_no = ? ";
 	public static final String DELETE_SALESORDER_DTL = "delete from sales_order_dtl where sales_order_no = ?";
+	public static final String GET_COSTOMER_LIST = "select customer_code as id ,customer_name as text from customer ";
 
 }
