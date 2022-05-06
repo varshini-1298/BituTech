@@ -27,7 +27,7 @@ public class LpoController {
 	@RequestMapping(value = "/getList")
    	public LpoResultBean getList() throws Exception {
 		LpoResultBean objResultBean = new LpoResultBean();
-		objResultBean.setSalesCallEntryDetails(lpoService.getList());
+		objResultBean.setLpoDetails(lpoService.getList());
 		objResultBean.setSuccess(true);
    		return objResultBean;
    	}

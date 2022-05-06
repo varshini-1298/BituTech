@@ -2,161 +2,117 @@ package com.bitutech.purchase.LPO;
 
 import java.util.List;
 
-
-
 public class LpoBean {
-
-	private String objective;
-	private String commodity;
-	private String date;
-	private String nextCallDate;
-	private String status;
-	private String conditionSupport;
-	private String reasonSupport;
-	private String reasonNotSupport;
+	private Integer purchaseReqNo;
+	private String organizationName;
+	private Integer poNumber;
+	private String requestType;
+	private String poDate;
+	private String woType;
+	private String purchaseType;
+	private String purchaseFor;
+	private String Vendor;
+	private String destinationLocation;
+	private String Advance;
+	private String currency;
+	private String costCenter;
+	private String termsConditions;
 	private String remarks;
-	private String pol;
-	private String pod;
-	private String containerType;
-	private String boxes;
-	private String expectedOn;
+	private String paymentTerms;
+	private String vendorAddress;
+	private String vendorCity;
+	private String  vendorState;
+     private Integer vendorZip;
+     private String vendorCountry;
+     private String  destinationAddress;
+     private String destinationCity;
+     private String destinationState;
+     private Integer  destinationZip;
+     private String destinationCountry;
 	
-	private String country;
-	private String customerType;
-	private String typeOfCall;
-	private String emailId;
-	private String personMet;
-	private String assignTo;
-	private String visitDate;
-	private String modeOfContact;
-	private String designation;
-	private Integer salesCallHdrId;
-	
-	private String customer;
-	private String salesCallNumber;
-	
-	public List<LpoDetailBean> dataArray;
-	private List<LpoDetailBean> salescallEntryDetailBean;
-	public List<LpoDetailBean> getDataArray() {
-		return dataArray;
+	public Integer getPurchaseReqNo() {
+		return purchaseReqNo;
 	}
-	public void setDataArray(List<LpoDetailBean> dataArray) {
-		this.dataArray = dataArray;
+	public void setPurchaseReqNo(Integer purchaseReqNo) {
+		this.purchaseReqNo = purchaseReqNo;
 	}
-	
-	public String getCustomer() {
-		return customer;
+	public String getOrganizationName() {
+		return organizationName;
 	}
-	public void setCustomer(String customer) {
-		this.customer = customer;
+	public void setOrganizationName(String organizationName) {
+		this.organizationName = organizationName;
 	}
-	public String getSalesCallNumber() {
-		return salesCallNumber;
+	public Integer getPoNumber() {
+		return poNumber;
 	}
-	public void setSalesCallNumber(String salesCallNumber) {
-		this.salesCallNumber = salesCallNumber;
+	public void setPoNumber(Integer poNumber) {
+		this.poNumber = poNumber;
 	}
-	public String getCountry() {
-		return country;
+	public String getRequestType() {
+		return requestType;
 	}
-	public void setCountry(String country) {
-		this.country = country;
+	public void setRequestType(String requestType) {
+		this.requestType = requestType;
 	}
-	public String getCustomerType() {
-		return customerType;
+	public String getPoDate() {
+		return poDate;
 	}
-	public void setCustomerType(String customerType) {
-		this.customerType = customerType;
+	public void setPoDate(String poDate) {
+		this.poDate = poDate;
 	}
-	public String getTypeOfCall() {
-		return typeOfCall;
+	public String getWoType() {
+		return woType;
 	}
-	public void setTypeOfCall(String typeOfCall) {
-		this.typeOfCall = typeOfCall;
+	public void setWoType(String woType) {
+		this.woType = woType;
 	}
-	public String getEmailId() {
-		return emailId;
+	public String getPurchaseType() {
+		return purchaseType;
 	}
-	public void setEmailId(String emailId) {
-		this.emailId = emailId;
+	public void setPurchaseType(String purchaseType) {
+		this.purchaseType = purchaseType;
 	}
-	public String getPersonMet() {
-		return personMet;
+	public String getPurchaseFor() {
+		return purchaseFor;
 	}
-	public void setPersonMet(String personMet) {
-		this.personMet = personMet;
+	public void setPurchaseFor(String purchaseFor) {
+		this.purchaseFor = purchaseFor;
 	}
-	public String getAssignTo() {
-		return assignTo;
+	public String getVendor() {
+		return Vendor;
 	}
-	public void setAssignTo(String assignTo) {
-		this.assignTo = assignTo;
+	public void setVendor(String vendor) {
+		Vendor = vendor;
 	}
-	public String getVisitDate() {
-		return visitDate;
+	public String getDestinationLocation() {
+		return destinationLocation;
 	}
-	public void setVisitDate(String visitDate) {
-		this.visitDate = visitDate;
+	public void setDestinationLocation(String destinationLocation) {
+		this.destinationLocation = destinationLocation;
 	}
-	public String getModeOfContact() {
-		return modeOfContact;
+	public String getAdvance() {
+		return Advance;
 	}
-	public void setModeOfContact(String modeOfContact) {
-		this.modeOfContact = modeOfContact;
+	public void setAdvance(String advance) {
+		Advance = advance;
 	}
-	public String getDesignation() {
-		return designation;
+	public String getCurrency() {
+		return currency;
 	}
-	public void setDesignation(String designation) {
-		this.designation = designation;
+	public void setCurrency(String currency) {
+		this.currency = currency;
 	}
-	public String getObjective() {
-		return objective;
+	public String getCostCenter() {
+		return costCenter;
 	}
-	public void setObjective(String objective) {
-		this.objective = objective;
+	public void setCostCenter(String costCenter) {
+		this.costCenter = costCenter;
 	}
-	public String getCommodity() {
-		return commodity;
+	public String getTermsConditions() {
+		return termsConditions;
 	}
-	public void setCommodity(String commodity) {
-		this.commodity = commodity;
-	}
-	public String getDate() {
-		return date;
-	}
-	public void setDate(String date) {
-		this.date = date;
-	}
-	public String getNextCallDate() {
-		return nextCallDate;
-	}
-	public void setNextCallDate(String nextCallDate) {
-		this.nextCallDate = nextCallDate;
-	}
-	public String getStatus() {
-		return status;
-	}
-	public void setStatus(String status) {
-		this.status = status;
-	}
-	public String getConditionSupport() {
-		return conditionSupport;
-	}
-	public void setConditionSupport(String conditionSupport) {
-		this.conditionSupport = conditionSupport;
-	}
-	public String getReasonSupport() {
-		return reasonSupport;
-	}
-	public void setReasonSupport(String reasonSupport) {
-		this.reasonSupport = reasonSupport;
-	}
-	public String getReasonNotSupport() {
-		return reasonNotSupport;
-	}
-	public void setReasonNotSupport(String reasonNotSupport) {
-		this.reasonNotSupport = reasonNotSupport;
+	public void setTermsConditions(String termsConditions) {
+		this.termsConditions = termsConditions;
 	}
 	public String getRemarks() {
 		return remarks;
@@ -164,49 +120,101 @@ public class LpoBean {
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
 	}
-	public String getPol() {
-		return pol;
+	public String getPaymentTerms() {
+		return paymentTerms;
 	}
-	public void setPol(String pol) {
-		this.pol = pol;
+	public void setPaymentTerms(String paymentTerms) {
+		this.paymentTerms = paymentTerms;
 	}
-	public String getPod() {
-		return pod;
+	public String getVendorAddress() {
+		return vendorAddress;
 	}
-	public void setPod(String pod) {
-		this.pod = pod;
+	public void setVendorAddress(String vendorAddress) {
+		this.vendorAddress = vendorAddress;
 	}
-	public String getContainerType() {
-		return containerType;
+	public String getVendorCity() {
+		return vendorCity;
 	}
-	public void setContainerType(String containerType) {
-		this.containerType = containerType;
+	public void setVendorCity(String vendorCity) {
+		this.vendorCity = vendorCity;
 	}
-	public String getBoxes() {
-		return boxes;
+	public String getVendorState() {
+		return vendorState;
 	}
-	public void setBoxes(String boxes) {
-		this.boxes = boxes;
+	public void setVendorState(String vendorState) {
+		this.vendorState = vendorState;
 	}
-	public String getExpectedOn() {
-		return expectedOn;
+	public Integer getVendorZip() {
+		return vendorZip;
 	}
-	public void setExpectedOn(String expectedOn) {
-		this.expectedOn = expectedOn;
+	public void setVendorZip(Integer vendorZip) {
+		this.vendorZip = vendorZip;
 	}
-	public Integer getSalesCallHdrId() {
-		return salesCallHdrId;
+	public String getVendorCountry() {
+		return vendorCountry;
 	}
-	public void setSalesCallHdrId(Integer salesCallHdrId) {
-		this.salesCallHdrId = salesCallHdrId;
+	public void setVendorCountry(String vendorCountry) {
+		this.vendorCountry = vendorCountry;
 	}
+	public String getDestinationAddress() {
+		return destinationAddress;
+	}
+	public void setDestinationAddress(String destinationAddress) {
+		this.destinationAddress = destinationAddress;
+	}
+	public String getDestinationCity() {
+		return destinationCity;
+	}
+	public void setDestinationCity(String destinationCity) {
+		this.destinationCity = destinationCity;
+	}
+	public String getDestinationState() {
+		return destinationState;
+	}
+	public void setDestinationState(String destinationState) {
+		this.destinationState = destinationState;
+	}
+	public Integer getDestinationZip() {
+		return destinationZip;
+	}
+	public void setDestinationZip(Integer destinationZip) {
+		this.destinationZip = destinationZip;
+	}
+	public String getDestinationCountry() {
+		return destinationCountry;
+	}
+	public void setDestinationCountry(String destinationCountry) {
+		this.destinationCountry = destinationCountry;
+	}
+//	public LpoDetailBeanOne[] getLpoDetailBeanOne() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//	public Object getLpoDetailBeanTwo() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+	
+
+	private List<LpoDetailBeanOne> lpoDetailBeanOne;
 	
 	
-	public List<LpoDetailBean> getSalescallEntryDetailBean() {
-		return salescallEntryDetailBean;
+	
+	public List<LpoDetailBeanOne> getLpoDetailBeanOne() {
+		return lpoDetailBeanOne;
 	}
-	public void setSalescallEntryDetailBean(List<LpoDetailBean> salescallEntryDetailBean) {
-		this.salescallEntryDetailBean = salescallEntryDetailBean;
+	public void setLpoDetailBeanOne(List<LpoDetailBeanOne> lpoDetailBeanOne) {
+		this.lpoDetailBeanOne = lpoDetailBeanOne;
+	}
+private List<LpoDetailBeanTwo> lpoDetailBeanTwo;
+	
+	
+	
+	public List<LpoDetailBeanTwo> getLpoDetailBeanTwo() {
+		return lpoDetailBeanTwo;
+	}
+	public void setLpoDetailBeanTwo(List<LpoDetailBeanTwo> lpoDetailBeanTwo) {
+		this.lpoDetailBeanTwo = lpoDetailBeanTwo;
 	}
 
 }

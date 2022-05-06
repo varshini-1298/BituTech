@@ -11,17 +11,17 @@ public class LpoResultBean extends BasicResultBean implements Serializable {
 	
 	public boolean success;
 
-	public List<LpoBean> salesCallEntryDetails;
-	private List<LpoDetailBean> SalescallEntryDetailBean;
-
-	private LpoBean salesCallEntryBean;
+	public List<LpoBean> lpoDetails;
+	private List<LpoDetailBeanOne> LpoDetailBeanOne;
+	private List<LpoDetailBeanTwo> LpoDetailBeanTwo;
+	private LpoBean lpoBean;
 	
-	public List<LpoBean> getSalesCallEntryDetails() {
-		return salesCallEntryDetails;
+	public List<LpoBean> getLpoDetails() {
+		return lpoDetails;
 	}
 
-	public void setSalesCallEntryDetails(List<LpoBean> salesCallEntryDetails) {
-		this.salesCallEntryDetails = salesCallEntryDetails;
+	public void setLpoDetails(List<LpoBean> lpoDetails) {
+		this.lpoDetails = lpoDetails;
 	}
 
 	public boolean isSuccess() {
@@ -32,19 +32,26 @@ public class LpoResultBean extends BasicResultBean implements Serializable {
 		this.success = success;
 	}
 
-	public LpoBean getSalesCallEntryBean() {
-		return salesCallEntryBean;
+	public LpoBean getLpoBean() {
+		return lpoBean;
 	}
 
-	public void setSalesCallEntryBean(LpoBean salesCallEntryBean) {
-		this.salesCallEntryBean = salesCallEntryBean;
+	public void setLpoBean(LpoBean lpoBean) {
+		this.lpoBean = lpoBean;
 	}
-	public List<LpoDetailBean> getSalescallEntryDetailBean() {
-		return SalescallEntryDetailBean;
+	public List<LpoDetailBeanOne> getLpoDetailBeanOne() {
+		return LpoDetailBeanOne;
 	}
 
-	public void setSalescallEntryDetailBean(List<LpoDetailBean> salescallEntryDetailBean) {
-		SalescallEntryDetailBean = salescallEntryDetailBean;
+	public void setLpoDetailBeanOne(List<LpoDetailBeanOne> lpoDetailBeanOne) {
+		LpoDetailBeanOne = lpoDetailBeanOne;
+	}
+	public List<LpoDetailBeanTwo> getLpoDetailBeanTwo() {
+		return LpoDetailBeanTwo;
+	}
+
+	public void setLpoDetailBeanTwo(List<LpoDetailBeanTwo> lpoDetailBeanTwo) {
+		LpoDetailBeanTwo = lpoDetailBeanTwo;
 	}
 
 }
