@@ -11,6 +11,11 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.bitutech.itemMaster.ItemMasterBean;
+import com.bitutech.itemMaster.ItemMasterDetailBean;
+import com.bitutech.itemMaster.ItemMasterQueryUtil;
+import com.bitutech.itemMaster.ItemMasterResultBean;
+
 @Repository
 public class GatePassDaoImpl implements GatePassDao{
 	
@@ -63,6 +68,51 @@ public class GatePassDaoImpl implements GatePassDao{
 			e.printStackTrace();
 		}
 		return objGatePassBean;
+	}
+
+	@Override
+	public GatePassResultBean edit(Integer bean) throws Exception {
+		GatePassResultBean resultBean = new GatePassResultBean();
+		 resultBean.setSuccess(false);
+		 try {
+		 resultBean.setGatePassBean(jdbcTemplate.queryForObject(GatePassQueryUtil. SELECT_GATE_PASS,new Object[] { bean }, new
+		  BeanPropertyRowMapper<GatePassBean>(GatePassBean.class)));
+		 
+		 
+			List<GatePassDtlBean> gatePassDtlBean = jdbcTemplate.query(GatePassQueryUtil.SELECT_GATE_PASS_DTL,
+					new Object[] { bean },
+					new BeanPropertyRowMapper<GatePassDtlBean>(GatePassDtlBean.class));	
+			  resultBean.setGatePassDtlBean(gatePassDtlBean);
+		  resultBean.setSuccess(true);
+		  } catch(Exception e)
+		    {
+			  e.printStackTrace();
+			  }
+		  return resultBean; 
+		  }
+
+	@Override
+	public GatePassResultBean update(GatePassBean itemMaster) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public GatePassResultBean delete(Integer bean) throws Exception {
+		GatePassResultBean resultBean = new GatePassResultBean();
+		try {
+			if(bean!=null) {
+				jdbcTemplate.update(GatePassQueryUtil.DELETE_GATE_PASS_hdr,bean);
+				jdbcTemplate.update(GatePassQueryUtil.DELETE_GATE_PASS_DTL,bean);
+				
+			}
+			resultBean.setSuccess(true);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			resultBean.setSuccess(false);
+		}	
+		return resultBean;
 	}
 
 }

@@ -13,7 +13,26 @@ public class GatePassResultBean extends BasicResultBean implements Serializable 
 	private List<GatePassBean> gatePassDetails;
 	private List<GatePassBean> organizationList;
 	private List<GatePassBean> locationList;
+	private List<GatePassDtlBean> GatePassDtlBean;
+	private GatePassBean gatePassBean;
 	
+	
+	public List<GatePassDtlBean> getGatePassDtlBean() {
+		return GatePassDtlBean;
+	}
+
+	public void setGatePassDtlBean(List<GatePassDtlBean> gatePassDtlBean) {
+		GatePassDtlBean = gatePassDtlBean;
+	}
+
+	public GatePassBean getGatePassBean() {
+		return gatePassBean;
+	}
+
+	public void setGatePassBean(GatePassBean gatePassBean) {
+		this.gatePassBean = gatePassBean;
+	}
+
 	public boolean isSuccess() {
 		return Success;
 	}
