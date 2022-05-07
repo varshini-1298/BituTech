@@ -11,10 +11,10 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.bitutech.itemMaster.ItemMasterBean;
-import com.bitutech.itemMaster.ItemMasterDetailBean;
-import com.bitutech.itemMaster.ItemMasterQueryUtil;
-import com.bitutech.itemMaster.ItemMasterResultBean;
+
+
+
+
 
 @Repository
 public class GatePassDaoImpl implements GatePassDao{
@@ -29,12 +29,51 @@ public class GatePassDaoImpl implements GatePassDao{
 		GatePassResultBean resultBean = new GatePassResultBean();
 		try {
 			Map<String, Object> gatePassMap = new HashMap<String, Object>();
-			
-			gatePassMap.put("organizationName",bean.getOrganizationName());
-			gatePassMap.put("location",bean.getLocation());
+			gatePassMap.put(" organizationName",bean.getOrganizationName());
+			gatePassMap.put(" manualGatePassNumber",bean.getManualGatePassNumber());
+			gatePassMap.put(" location",bean.getLocation());
+			gatePassMap.put("gatePassDate",bean.getGatePassDate());
+			gatePassMap.put("address",bean.getAddress());
 			gatePassMap.put("deliveryOrderNo",bean.getDeliveryOrderNo());
+			gatePassMap.put("party",bean.getParty());
+			gatePassMap.put("invoiceNo",bean.getInvoiceNo());
+			gatePassMap.put("modeOfDelivery",bean.getModeOfDelivery());
+			gatePassMap.put("vendor",bean.getVendor());
+			gatePassMap.put(" personName",bean.getPersonName());
+			gatePassMap.put("purchaseOrder",bean.getPurchaseOrder());
+		    gatePassMap.put("reasonRemarks",bean.getReasonRemarks());
+			  
+			
 		
-			namedParameterJdbcTemplate.update(GatePassQueryUtil.INSERT_GATE_PASS,gatePassMap);
+			
+			Integer purchaseReqNo = namedParameterJdbcTemplate.queryForObject(GatePassQueryUtil.INSERT_GATE_PASS,gatePassMap,Integer.class);
+
+			  if(purchaseReqNo != null) {
+					 
+				     if(bean.getGatePassDtlBean().length>0) {
+				             
+				    	 for(GatePassDtlBean gatePassDtlBean: bean.getGatePassDtlBean() )
+		    {
+				    		 Map<String, Object> gatePassDtlMap = new HashMap<String, Object>();
+			gatePassDtlMap.put("outItemName", gatePassDtlBean.getInItemName());	    		
+			gatePassDtlMap.put("uom", gatePassDtlBean.getUom());
+			gatePassDtlMap.put("quantity", gatePassDtlBean.getQuantity());
+			gatePassDtlMap.put("alternateUOM", gatePassDtlBean.getAlternateUOM());
+			gatePassDtlMap.put("alternateQuantity", gatePassDtlBean.getAlternateQuantity());
+			gatePassDtlMap.put("inItemName", gatePassDtlBean.getInItemName());
+			gatePassDtlMap.put("inVendorUOM", gatePassDtlBean.getInVendorUOM());
+			gatePassDtlMap.put("receivingVendorQty", gatePassDtlBean.getReceivingVendorQty());
+			gatePassDtlMap.put("comvertePurchaseQty", gatePassDtlBean.getComvertePurchaseQty());
+			gatePassDtlMap.put("unitPrice", gatePassDtlBean.getUnitPrice());
+			gatePassDtlMap.put("description",gatePassDtlBean.getDescription());
+			gatePassDtlMap.put("action", gatePassDtlBean.getAction());
+			
+
+			namedParameterJdbcTemplate.update(GatePassQueryUtil.INSERT_GATE_PASS_DTL,gatePassDtlMap);
+			  
+			         }
+			      }
+			     }
 			resultBean.setSuccess(false);
 		}
 		catch(Exception e){
@@ -92,9 +131,63 @@ public class GatePassDaoImpl implements GatePassDao{
 		  }
 
 	@Override
-	public GatePassResultBean update(GatePassBean itemMaster) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public GatePassResultBean update(GatePassBean bean) throws Exception {
+		GatePassResultBean resultBean = new GatePassResultBean();
+		try {
+			Map<String, Object> gatePassMap = new HashMap<String, Object>();
+			gatePassMap.put(" organizationName",bean.getOrganizationName());
+			gatePassMap.put(" manualGatePassNumber",bean.getManualGatePassNumber());
+			gatePassMap.put(" location",bean.getLocation());
+			gatePassMap.put("gatePassDate",bean.getGatePassDate());
+			gatePassMap.put("address",bean.getAddress());
+			gatePassMap.put("deliveryOrderNo",bean.getDeliveryOrderNo());
+			gatePassMap.put("party",bean.getParty());
+			gatePassMap.put("invoiceNo",bean.getInvoiceNo());
+			gatePassMap.put("modeOfDelivery",bean.getModeOfDelivery());
+			gatePassMap.put("vendor",bean.getVendor());
+			gatePassMap.put(" personName",bean.getPersonName());
+			gatePassMap.put("purchaseOrder",bean.getPurchaseOrder());
+		    gatePassMap.put("reasonRemarks",bean.getReasonRemarks());
+			  
+
+			namedParameterJdbcTemplate.update(GatePassQueryUtil.UPDATE__GATE_PASS,gatePassMap);
+			
+		//	if(deliveryOrderNo != null) {
+				 
+			     if(bean.getGatePassDtlBean().length>0) {
+			             
+			    	 for(GatePassDtlBean gatePassDtlBean: bean.getGatePassDtlBean() )
+	    {
+			    		 Map<String, Object> gatePassDtlMap = new HashMap<String, Object>();
+		gatePassDtlMap.put("outItemName", gatePassDtlBean.getInItemName());	    		
+		gatePassDtlMap.put("uom", gatePassDtlBean.getUom());
+		gatePassDtlMap.put("quantity", gatePassDtlBean.getQuantity());
+		gatePassDtlMap.put("alternateUOM", gatePassDtlBean.getAlternateUOM());
+		gatePassDtlMap.put("alternateQuantity", gatePassDtlBean.getAlternateQuantity());
+		gatePassDtlMap.put("inItemName", gatePassDtlBean.getInItemName());
+		gatePassDtlMap.put("inVendorUOM", gatePassDtlBean.getInVendorUOM());
+		gatePassDtlMap.put("receivingVendorQty", gatePassDtlBean.getReceivingVendorQty());
+		gatePassDtlMap.put("comvertePurchaseQty", gatePassDtlBean.getComvertePurchaseQty());
+		gatePassDtlMap.put("unitPrice", gatePassDtlBean.getUnitPrice());
+		gatePassDtlMap.put("description",gatePassDtlBean.getDescription());
+		gatePassDtlMap.put("action", gatePassDtlBean.getAction());
+		
+
+	namedParameterJdbcTemplate.update(GatePassQueryUtil.INSERT_GATE_PASS_DTL,gatePassDtlMap);
+		  
+			    } 
+			    
+			    }
+			
+			resultBean.setSuccess(true);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			resultBean.setSuccess(false);
+		}
+		
+		return resultBean;
+		//return null;
 	}
 
 	@Override

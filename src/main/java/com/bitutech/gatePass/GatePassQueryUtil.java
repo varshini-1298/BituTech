@@ -9,5 +9,8 @@ public class GatePassQueryUtil {
 	public static final String SELECT_GATE_PASS_DTL = null;
 	public static final String DELETE_GATE_PASS_hdr = null;
 	public static final String DELETE_GATE_PASS_DTL = null;
+	public static final String INSERT_GATE_PASS_DTL = null;
+	public static final String UPDATE__GATE_PASS = null;
 
+	
 }
