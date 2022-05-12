@@ -35,25 +35,25 @@ public class DeliveryOrderServiceImpl implements DeliveryOrderService {
 	@Override
 	public DeliveryOrderResultBean getCompanyList() {
 		// TODO Auto-generated method stub
-		return null;
+		return deliveryOrderDao.getCompanyList();
 	}
 
 	@Override
 	public DeliveryOrderResultBean getCustomerList() {
 		// TODO Auto-generated method stub
-		return null;
+		return deliveryOrderDao.getCustomerList();
 	}
 
 	@Override
 	public DeliveryOrderResultBean getLocationList() {
 		// TODO Auto-generated method stub
-		return null;
+		return deliveryOrderDao.getLocationList();
 	}
 
 	@Override
 	public DeliveryOrderResultBean getItemList() {
 		// TODO Auto-generated method stub
-		return null;
+		return deliveryOrderDao.getItemList();
 	}
 
 }

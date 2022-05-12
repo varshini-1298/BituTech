@@ -18,9 +18,10 @@ public class DeliveryOrderDaoImpl implements DeliveryOrderDao {
 	@Override
 	public DeliveryOrderResultBean getDeliveryOrderList() {
 		DeliveryOrderResultBean rb = new DeliveryOrderResultBean();
+		DeliveryOrder objbean = new DeliveryOrder();
 		List<DeliveryOrder> deliveryOrderList = null;
-		try {
-			deliveryOrderList = jdbcTemplate.query(new DeliveryOrderQueryUtil().getDeliveyOrderList, new BeanPropertyRowMapper<DeliveryOrder>(DeliveryOrder.class));
+ 		try { 
+			deliveryOrderList = jdbcTemplate.query(new DeliveryOrderQueryUtil().getDeliveyOrderList,new Object[] {objbean.getDeliveryNo() }, new BeanPropertyRowMapper<DeliveryOrder>(DeliveryOrder.class));
 			rb.setDeliveryOrderList(deliveryOrderList);
 		}catch(Exception e){
 			e.printStackTrace();
@@ -32,18 +33,19 @@ public class DeliveryOrderDaoImpl implements DeliveryOrderDao {
 	public DeliveryOrderResultBean saveOrUpdateDO(DeliveryOrder bean) throws Exception {
 		DeliveryOrderResultBean rb = new DeliveryOrderResultBean();
 		String doNumber = null;
+		bean.setUserId("E0001");
 		try {
 			doNumber = jdbcTemplate.queryForObject(new DeliveryOrderQueryUtil().saveOrUpdateDO(bean.getAction(), bean), String.class);
 			if(bean.getDeliveryOrderDtlList() != null && !bean.getDeliveryOrderDtlList().isEmpty()) {
 				String itemstr = "";
 				for(DeliveryOrderDtl dtlBean: bean.getDeliveryOrderDtlList()) {
 					if(itemstr.isEmpty()) {
-						itemstr = dtlBean.getItemId()+"-"+dtlBean.getItemQty();
+						itemstr = dtlBean.getItemId()+","+dtlBean.getItemQty()+","+dtlBean.getGinDtlId();
 					}else {
-						itemstr = itemstr+"#-#"+dtlBean.getItemId()+"-"+dtlBean.getItemQty();
+						itemstr = itemstr+"#-#"+dtlBean.getItemId()+"-"+dtlBean.getItemQty()+"-"+dtlBean.getGinDtlId();
 					}
 				}
-				jdbcTemplate.update(new DeliveryOrderQueryUtil().saveOrUpdateDODtl(bean.getAction(), doNumber, itemstr, bean.getUserId()));
+				jdbcTemplate.execute(new DeliveryOrderQueryUtil().saveOrUpdateDODtl(bean.getAction(), doNumber, itemstr, bean.getUserId()));
 			}
 			rb.setSuccess(true);
 		}catch(Exception e){

@@ -17,8 +17,25 @@ public class DeliveryOrder {
 	private String remarks;
 	private String userId;
 	private String action;
-	private List<DeliveryOrderDtl> deliveryOrderDtlList = new ArrayList<DeliveryOrderDtl>();
+	private String customername;
+	private String customerAddress;
 	
+	
+	
+	public String getCustomerAddress() {
+		return customerAddress;
+	}
+	public void setCustomerAddress(String customerAddress) {
+		this.customerAddress = customerAddress;
+	}
+	public String getCustomername() {
+		return customername;
+	}
+	public void setCustomername(String customername) {
+		this.customername = customername;
+	}
+	private List<DeliveryOrderDtl> deliveryOrderDtlList = new ArrayList<DeliveryOrderDtl>();
+ 	 
 	public String getDeliveryNo() {
 		return deliveryNo;
 	}

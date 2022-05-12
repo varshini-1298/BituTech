@@ -3,6 +3,7 @@ package com.bitutech.inventory.deliveryorder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -14,7 +15,7 @@ public class DeliveryOrderController {
 	
 	@RequestMapping(value = "/getList")
    	public DeliveryOrderResultBean getDoList() {
-		DeliveryOrderResultBean rb = null;;
+		DeliveryOrderResultBean rb = null;
 		try {
 			rb = deliveryOrderService.getDeliveryOrderList();
 		} catch (Exception e) {
@@ -36,7 +37,7 @@ public class DeliveryOrderController {
 	}
 	
 	@RequestMapping(value = "/edit")
-   	public DeliveryOrderResultBean editDO(@RequestBody String doNumber) {
+   	public DeliveryOrderResultBean editDO(@RequestParam("deliveryNo") String doNumber) {
 		DeliveryOrderResultBean rb = null;
 		try {
 			rb = deliveryOrderService.editDO(doNumber);
@@ -48,7 +49,7 @@ public class DeliveryOrderController {
    	}
 	
 	@RequestMapping(value = "/delete")
-   	public DeliveryOrderResultBean deleteDO(@RequestBody String doNumber) {
+   	public DeliveryOrderResultBean deleteDO(@RequestParam("deliveryNo") String doNumber) {
 		DeliveryOrderResultBean rb = null;
 		try {
 			rb = deliveryOrderService.deleteDO(doNumber, "");
@@ -61,7 +62,7 @@ public class DeliveryOrderController {
 	
 	@RequestMapping(value = "/getCompanyList")
    	public DeliveryOrderResultBean getCompanyList() {
-		DeliveryOrderResultBean rb = null;;
+		DeliveryOrderResultBean rb = null;
 		try {
 			rb = deliveryOrderService.getCompanyList();
 		} catch (Exception e) {
@@ -73,7 +74,7 @@ public class DeliveryOrderController {
 	
 	@RequestMapping(value = "/getCustomerList")
    	public DeliveryOrderResultBean getCustomerList() {
-		DeliveryOrderResultBean rb = null;;
+		DeliveryOrderResultBean rb = null;
 		try {
 			rb = deliveryOrderService.getCustomerList();
 		} catch (Exception e) {
@@ -85,7 +86,7 @@ public class DeliveryOrderController {
 	
 	@RequestMapping(value = "/getItemList")
    	public DeliveryOrderResultBean getItemList() {
-		DeliveryOrderResultBean rb = null;;
+		DeliveryOrderResultBean rb = null;
 		try {
 			rb = deliveryOrderService.getItemList();
 		} catch (Exception e) {
@@ -97,9 +98,9 @@ public class DeliveryOrderController {
 	
 	@RequestMapping(value = "/getLocationList")
    	public DeliveryOrderResultBean getLocationList() {
-		DeliveryOrderResultBean rb = null;;
+		DeliveryOrderResultBean rb = null;
 		try {
-			rb = deliveryOrderService.getCompanyList();
+			rb = deliveryOrderService.getLocationList();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
