@@ -355,7 +355,7 @@ public class GRNDaoImpl implements GRNDao {
 //				srcLocId = getTransitLocation(transLoc, jdbcTemplate);
 //
 //			} else if (type == 142 || type == 161) {
-//				destLocId = getTransitLocation(transLoc, jdbcTemplate);
+//				destLocId = getTransitLocation(transLoc, jdbcTemplate) ;
 //
 //			} else 
 //			if (type == 88) {

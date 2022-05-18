@@ -96,7 +96,7 @@ public class GRNQueryUtil {
 
 	public static final String GRN_LIST = "select grn_number grnCode,to_char(grn_date,'YYYY-MM-DD') grnDate,entity_name vendorName,purchase_order_no poNo,pr.requisition_number poRequisition,g.purchase_order_id poId,coalesce(po.purchase_type ,0) as purchaseType, (select emp_name from employee where emp_id = g.created_by limit 1) as preparedBy from grn g left join entity en on g.entity_id = en.entity_id left join purchase_order po on g.purchase_order_id = po.purchase_order_id left join purchase_requisition pr using (purchase_requisition_id) order by grn_number desc";
 
-	public static final String MAX_INVENTORY = "select max(inventory_id) from inventory where location_id=? and item_id=?";
+	public static final String MAX_INVENTORY = "select max(inventory_id) from inventory where location_id=? and item_id=?" ;
 
 	public static final String GET_GRN_DTL = "select grn_id grnId, grn.grn_detail_id grnDtlId,grn.cost_center as costcenter,grn.item_id dtlItemId, "
 			+ "coalesce(grn.quantity,0) dtlQty,coalesce(grn.pending_qty,0) pendingQty,coalesce(grn.quantity,0) dtlQty, "
